@@ -2,3 +2,49 @@ body {
   font-family: "Merriweather", serif;
 }
 
+//testi colori
+.text-extra-light-green {
+    color: #c3e2a5;
+}
+.text-light-green {
+    color: #b0e29d;
+}
+
+.text-middle-green {
+    color: #73b760;
+}
+
+.text-dark-green {
+    color: #43762b;
+}
+
+//background colori
+.bg-extra-light-green {
+    background-color: #c3e2a5;
+}
+.bg-light-green {
+    background-color: #b0e29d;
+}
+
+.bg-middle-green {
+    background-color: #73b760;
+}
+
+.bg-dark-green {
+    background-color: #43762b;
+}
+
+.bg-extra-dark-green {
+    background-color: #274b16;
+}
+
+//Cursor 
+.cursor-pointer {
+    cursor: pointer;
+}
+
+//Hover
+li:hover {
+    color: #ddf5c5;
+    cursor: pointer;
+}
