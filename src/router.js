@@ -3,7 +3,7 @@ import Homepage from "./views/Homepage.vue";
 import Contacts from "./views/Contact.vue";
 import DoctorsIndex from "./views/doctors/Index.vue";
 import DoctorsShow from "./views/doctors/Show.vue";
-import SpecializationArchive from "./views/specializations/Archive.vue"
+import SpecializationArchive from "./views/specializations/Archive.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -24,7 +24,7 @@ const router = createRouter({
       component: DoctorsIndex,
     },
     {
-      path: "/medici/:slug",
+      path: "/medici/show",
       name: "doctors.show",
       props: true,
       component: DoctorsShow,
@@ -35,7 +35,6 @@ const router = createRouter({
       props: true,
       component: SpecializationArchive,
     },
-
   ],
 });
 
