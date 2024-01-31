@@ -13,7 +13,7 @@ export default {
 <template>
   <AppHeader></AppHeader>
 
-  <!--router-->
+  <router-view></router-view>
 
   <AppFooter></AppFooter>
 </template>

@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-
+import { router } from "./router";
 import App from "./App.vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
@@ -9,4 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 //library.add(...)
 
-createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
+createApp(App)
+  .use(router)
+  .component("font-awesome-icon", FontAwesomeIcon)
+  .mount("#app");
