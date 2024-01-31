@@ -43,7 +43,7 @@ const router = createRouter({
       component: Message,
     },
     {
-      path: "medici/show/review",
+      path: "/medici/show/review",
       name: "doctors.review",
       component: Review,
     },
