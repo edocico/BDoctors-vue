@@ -39,12 +39,12 @@ const router = createRouter({
     },
     {
       path: "/medici/show/message",
-      name: "doctors.message",
+      name: "doctors.show.message",
       component: Message,
     },
     {
       path: "/medici/show/review",
-      name: "doctors.review",
+      name: "doctors.show.review",
       component: Review,
     },
   ],

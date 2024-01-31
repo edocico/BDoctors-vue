@@ -28,7 +28,7 @@
                 >
               </li>
               <li class="header-item" v-if="!authenticated">
-                <a href="http://127.0.0.1:8000/login">Accedi (icona)</a>
+                <a class="decoration-none text-light" href="http://127.0.0.1:8000/login">Accedi (icona)</a>
               </li>
             </ul>
           </div>
