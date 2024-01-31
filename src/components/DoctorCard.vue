@@ -22,7 +22,7 @@ export default {};
 <style lang="scss" scoped>
 .card {
   border-color: transparent;
-  background-color: #73b760;
+  background-color: #c3e2a5;
   min-height: 100px;
 
   figure {
