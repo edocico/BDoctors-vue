@@ -4,6 +4,8 @@ import Contacts from "./views/Contact.vue";
 import DoctorsIndex from "./views/doctors/Index.vue";
 import DoctorsShow from "./views/doctors/Show.vue";
 import SpecializationArchive from "./views/specializations/Archive.vue";
+import Message from "./views/doctors/Message.vue";
+import Review from "./views/doctors/Review.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -34,6 +36,16 @@ const router = createRouter({
       name: "specializations.archive",
       props: true,
       component: SpecializationArchive,
+    },
+    {
+      path: "/medici/show/message",
+      name: "doctors.message",
+      component: Message,
+    },
+    {
+      path: "medici/show/review",
+      name: "doctors.review",
+      component: Review,
     },
   ],
 });
