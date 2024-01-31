@@ -3,9 +3,12 @@
         <div class="container">
             <div class="footer-top">
                 <div class="d-flex justify-content-between">
-                    <div class="pt-5">
+                    <div class="pt-2">
                         <h5 >
-                            <router-link :to="{ name: 'home' }"   class="decoration-none text-light-green ">LOGO</router-link>
+                            <router-link :to="{ name: 'home' }" 
+                            class="decoration-none text-light-green">
+                                <img class="logo-full-color" src="../assets/logo-color.png" alt="">
+                            </router-link>
                         </h5>
                         <p class="text-medium-footer">Per qualunque informazione ci troverai nella sezione
                             <router-link :to="{ name: 'contacts' }" class="decoration-none text-light">
@@ -72,6 +75,10 @@ export default {};
 footer {
     background-color: #274b16;
     color: white;
+}
+
+.logo-full-color {
+    width: 140px;
 }
 .text-small-footer {
     font-size: 12px;
