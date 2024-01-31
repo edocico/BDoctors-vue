@@ -13,6 +13,10 @@
         <h2>top rated</h2>
         <div class="card-container">
           <DoctorCard />
+          <DoctorCard />
+          <DoctorCard />
+          <DoctorCard />
+          <DoctorCard />
         </div>
       </div>
     </section>
