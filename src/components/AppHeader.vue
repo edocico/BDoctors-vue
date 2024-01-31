@@ -16,7 +16,9 @@
                             <li class="header-item">
                                 <router-link :to="{ name: 'contacts' }" class="decoration-none text-light">Contattaci</router-link>
                             </li>
-                            <li class="header-item">Accedi (icona)</li>
+                            <li class="header-item">
+                                <a href="http://127.0.0.1:8000/login">Accedi (icona)</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
