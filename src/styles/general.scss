@@ -50,15 +50,16 @@ li:hover {
 }
 
 //Button
-.btn {
+.btn-cust {
     color: white;
-    font-size: 25px;
+    font-size: 18px;
     text-align: 40px;
     padding: 0px 15px;
     font-weight: bold;
     background-color: #73b760;
+    border-radius: 99px;
 }
 
-.btn:hover {
+.btn-cust:hover {
     background-color: #43762b;
 }
