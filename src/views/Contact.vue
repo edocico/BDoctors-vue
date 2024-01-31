@@ -29,7 +29,7 @@
                   </div>
                   <textarea class="input-cust" name="message" id="" cols="100" rows="10" placeholder="messaggio"></textarea>
               </div>
-            <input class="btn" type="submit" value="Invia">
+            <input class="btn-cust" type="submit" value="Invia">
         </form>
     </div>
   </section>
@@ -56,17 +56,17 @@ export default {};
   width: 70%;
 }
 
-.btn {
-  color: white;
-  font-size: 25px;
-  text-align: 40px;
-  padding: 0px 15px;
-  font-weight: bold;
-  background-color: #73b760;
-}
+// .btn {
+//   color: white;
+//   font-size: 25px;
+//   text-align: 40px;
+//   padding: 0px 15px;
+//   font-weight: bold;
+//   background-color: #73b760;
+// }
 
-.btn:hover {
-  background-color: #43762b;
-}
+// .btn:hover {
+//   background-color: #43762b;
+// }
 
 </style>
