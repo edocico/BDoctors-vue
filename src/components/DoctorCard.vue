@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <figure>
-      <img src="https://picsum.photos/100" alt="" />
+      <img src="https://picsum.photos/100" alt="" class="rounded-circle" />
     </figure>
     <div class="card-bottom">
       <p>nome dottore</p>
