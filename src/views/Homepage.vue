@@ -36,13 +36,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .home-search {
-  padding: 150px 20px;
+    padding: 250px 20px 20px 20px;
+    background-image: url(../assets/logo-color.png);
+    background-size: 700px;
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-position-x: 120px;
+
 
   .search {
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: #c3e2a5;
+    padding: 20px;
+    border-radius: 50%;;
+    
+    
   }
 }
 

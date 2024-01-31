@@ -6,9 +6,9 @@
           <div class="logo-home">
             <router-link
               :to="{ name: 'home' }"
-              class="decoration-none text-light"
-              >LOGO</router-link
-            >
+              class="decoration-none text-light">
+                <img class="logo-full-header" src="../assets/logo-white.png" alt="BDoctors">
+            </router-link>
             <!-- <img src="" alt=""> -->
           </div>
           <div class="menu-item">
@@ -51,9 +51,12 @@ export default {
 <style lang="scss" scoped>
 header {
   color: white;
-  padding: 20px 0px;
+  padding: 20px 0px 0px 0px;
 }
 
+.logo-full-header {
+    width: 150px;
+}
 .header-item {
   padding: 5px;
   vertical-align: 5px;
