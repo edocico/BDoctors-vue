@@ -4,8 +4,14 @@
             <div class="footer-top">
                 <div class="d-flex justify-content-between">
                     <div class="pt-5">
-                        <h5 class="text-light-green ">LOGO</h5>
-                        <p class="text-medium-footer">Per qualunque informazione ci troverai nella sezione <strong class="text-light-green">Contatti</strong></p>
+                        <h5 >
+                            <router-link :to="{ name: 'home' }"   class="decoration-none text-light-green ">LOGO</router-link>
+                        </h5>
+                        <p class="text-medium-footer">Per qualunque informazione ci troverai nella sezione
+                            <router-link :to="{ name: 'contacts' }" class="decoration-none text-light">
+                                <strong class="text-light-green">Contattaci</strong>
+                            </router-link>    
+                        </p>
                         <ul class="d-flex gap-4">
                             <li>fb</li>
                             <li>insta</li>
@@ -14,7 +20,9 @@
                         </ul>
                     </div>
                     <div>
-                        <h5 class="text-large-footer text-light-green text-center">I nostri specialisti</h5>
+                        <h5 class="text-large-footer  text-center">
+                            <router-link :to="{ name: 'doctors.index' }" class="decoration-none text-light-green" >I nostri specialisti</router-link>    
+                        </h5>
                         <div class="d-flex justify-content-between">
                             <ul class="text-medium-footer ">
                                 <li class="mb-2">Neurologia</li>

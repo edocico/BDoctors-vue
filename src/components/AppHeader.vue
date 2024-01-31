@@ -4,13 +4,18 @@
             <nav class="nav-bar">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo-home">
-                        <h3>LOGO</h3>
+                        
+                        <router-link :to="{ name: 'home' }"   class="decoration-none text-light">LOGO</router-link>
                         <!-- <img src="" alt=""> -->
                     </div>
                     <div class="menu-item">
                         <ul class="d-flex align-items-center gap-4 ">
-                            <li class="header-item">I nostri medici</li>
-                            <li class="header-item">Contatti</li>
+                            <li class="header-item">
+                                <router-link :to="{ name: 'doctors.index' }" class="decoration-none text-light" >I nostri medici</router-link>    
+                            </li>
+                            <li class="header-item">
+                                <router-link :to="{ name: 'contacts' }" class="decoration-none text-light">Contattaci</router-link>
+                            </li>
                             <li class="header-item">Accedi (icona)</li>
                         </ul>
                     </div>
