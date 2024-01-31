@@ -6,7 +6,11 @@
     <div class="card-bottom">
       <p>nome dottore</p>
       <p>specializzazione</p>
-      <a href="#">vai al profilo</a>
+      <p>
+        <router-link :to="{ name: 'doctors.show' }"
+          >Vai al profilo...</router-link
+        >
+      </p>
     </div>
   </div>
 </template>
