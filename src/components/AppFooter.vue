@@ -26,10 +26,12 @@
               </router-link>
             </p>
             <ul class="d-flex gap-4">
-              <li>fb</li>
-              <li>insta</li>
-              <li>in</li>
-              <li>yt</li>
+              <li><font-awesome-icon icon="fa-brands fa-facebook" /></li>
+              <li>
+                <font-awesome-icon icon="fa-brands fa-square-instagram" />
+              </li>
+              <li><font-awesome-icon icon="fa-brands fa-linkedin" /></li>
+              <li><font-awesome-icon icon="fa-brands fa-youtube" /></li>
             </ul>
           </div>
           <div>
