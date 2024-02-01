@@ -38,21 +38,21 @@
             </div>
             <div class="contact-profile col-3 d-flex flex-column justify-content-around align-items-center">
               <div class="message">
-                <button class="btn-cust">
+                <div class="btn-cust">
                   <router-link :to="{ name: 'doctors.show.message' }"
                   class="decoration-none text-light">
                     Mando un messaggio
                   </router-link>
                   
-                </button>
+                </div>
               </div>
               <div class="review">
-                <button class="btn-cust">
+                <div class="btn-cust">
                   <router-link :to="{ name: 'doctors.show.review' }"
                   class="decoration-none text-light"> 
                     Lascia una recensione
                   </router-link>
-                </button>
+                </div>
               </div>
             </div>
           </div>
