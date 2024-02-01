@@ -1,17 +1,30 @@
 <template>
   <div class="input-search">
-      <input type="text" class="input-text" placeholder="cerca un medico" />
-      <input class="btn-search-bar" type="button" value="cerca" />
+    <input
+      type="text"
+      class="input-text"
+      placeholder="cerca un medico"
+      v-model="store.searchQuery"
+    />
+    <input class="btn-search-bar" type="button" value="cerca" />
   </div>
 </template>
 
 <script>
-export default {};
+import { store } from "../store.js";
+export default {
+  data() {
+    return {
+      store: store,
+    };
+  },
+  mounted() {},
+};
 </script>
 
 <style lang="scss" scoped>
 .input-search {
-  background-color: white ;
+  background-color: white;
   padding: 5px;
   border-radius: 10px;
 
