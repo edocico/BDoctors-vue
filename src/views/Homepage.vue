@@ -36,15 +36,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .home-search {
-    padding: 250px 20px 20px 20px;
-    background-image: url(../assets/logo-color.png);
-    background-size: 700px;
-    background-repeat: no-repeat;
-    background-position: inherit;
-    background-position-x: 120px;
-
+  padding: 250px 20px 20px 20px;
+  background-image: url(../assets/logo-color.png);
+  background-size: 700px;
+  background-repeat: no-repeat;
+  background-position: inherit;
+  background-position-x: 120px;
 
   .search {
     display: flex;
@@ -52,9 +50,8 @@ export default {
     flex-direction: column;
     background-color: #c3e2a5;
     padding: 20px;
-    border-radius: 50%;;
-    
-    
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px #c3e2a5;
   }
 }
 

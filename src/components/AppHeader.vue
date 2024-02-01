@@ -6,8 +6,13 @@
           <div class="logo-home">
             <router-link
               :to="{ name: 'home' }"
-              class="decoration-none text-light">
-                <img class="logo-full-header" src="../assets/logo-white.png" alt="BDoctors">
+              class="decoration-none text-light"
+            >
+              <img
+                class="logo-full-header"
+                src="../assets/logo-white.png"
+                alt="BDoctors"
+              />
             </router-link>
             <!-- <img src="" alt=""> -->
           </div>
@@ -28,7 +33,11 @@
                 >
               </li>
               <li class="header-item" v-if="!authenticated">
-                <a class="decoration-none text-light" href="http://127.0.0.1:8000/login">Accedi (icona)</a>
+                <a
+                  class="decoration-none text-light"
+                  href="http://127.0.0.1:8000/login"
+                  >Accedi (icona)</a
+                >
               </li>
             </ul>
           </div>
@@ -52,10 +61,11 @@ export default {
 header {
   color: white;
   padding: 20px 0px 0px 0px;
+  box-shadow: 0px 0px 10px #73b760;
 }
 
 .logo-full-header {
-    width: 150px;
+  width: 150px;
 }
 .header-item {
   padding: 5px;

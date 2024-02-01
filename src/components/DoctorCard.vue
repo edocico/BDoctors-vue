@@ -31,6 +31,7 @@ export default {};
   //   min-height: 100px;
   padding: 5px;
   border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px 0px 10px #c3e2a5;
 
   figure {
     display: flex;
