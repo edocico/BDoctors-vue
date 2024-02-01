@@ -15,6 +15,7 @@
                 placeholder="inserisci nome e cognome"
                 name="name"
                 required
+                v-model="nameParam"
               />
             </div>
           </div>
@@ -22,7 +23,7 @@
             <div class="label-cust">
               <label for="vote">lascia un voto</label>
             </div>
-            <select name="vote" id="vote" required>
+            <select name="vote" id="vote" required v-model="voteParam">
               <option value="1">insufficiente</option>
               <option value="2">sufficiente</option>
               <option value="3">buono</option>
@@ -42,6 +43,7 @@
               rows="10"
               placeholder="recensione"
               required
+              v-model="reviewParam"
             ></textarea>
           </div>
           <input class="btn-cust" type="submit" value="Invia" />
@@ -52,7 +54,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      nameParam: "",
+      voteParam: "",
+      reviewParam: "",
+    };
+  },
+  methods: {
+    sendReview() {},
+  },
+};
 </script>
 
 <style lang="scss" scoped>
