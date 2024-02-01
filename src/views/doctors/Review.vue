@@ -15,6 +15,7 @@
                 placeholder="inserisci nome e cognome"
                 name="name"
                 required
+                pattern="[A-Za-z]+"
                 v-model="nameParam"
               />
             </div>
@@ -42,11 +43,15 @@
               cols="100"
               rows="10"
               placeholder="recensione"
-              required
               v-model="reviewParam"
             ></textarea>
           </div>
-          <input class="btn-cust" type="submit" value="Invia" />
+          <input
+            class="btn-cust"
+            type="submit"
+            value="Invia"
+            @click="sendReview()"
+          />
         </form>
       </div>
     </div>
@@ -63,7 +68,17 @@ export default {
     };
   },
   methods: {
-    sendReview() {},
+    sendReview() {
+      if (!this.nameParam || !this.voteParam) {
+        alert("compila i campi obbligatori mancanti");
+        console.log("condizione");
+      } else {
+        this.procNameParam = this.nameParam.trim();
+        this.procReviewParam = this.reviewParam.trim();
+        console.log(this.procNameParam);
+        console.log(this.procReviewParam);
+      }
+    },
   },
 };
 </script>
