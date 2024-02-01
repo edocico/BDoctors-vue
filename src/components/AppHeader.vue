@@ -18,6 +18,10 @@
           <div class="menu-item">
             <ul class="d-flex align-items-center gap-4">
               <li class="header-item">
+                <font-awesome-icon
+                  icon="fa-solid fa-user-doctor"
+                  class="icon"
+                />
                 <router-link
                   :to="{ name: 'doctors.index' }"
                   class="decoration-none text-light"
@@ -25,6 +29,10 @@
                 >
               </li>
               <li class="header-item">
+                <font-awesome-icon
+                  icon="fa-solid fa-address-book"
+                  class="icon"
+                />
                 <router-link
                   :to="{ name: 'contacts' }"
                   class="decoration-none text-light"
@@ -40,7 +48,8 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span>profilo dottore (icon)</span>
+                  <font-awesome-icon icon="fa-solid fa-user" class="icon" />
+                  <span>profilo dottore </span>
                 </a>
                 <ul class="dropdown-menu" v-if="!authenticated">
                   <li>
@@ -117,5 +126,9 @@ li:hover {
   // font-weight: 700;
   background-color: #43762b;
   border-radius: 99px;
+}
+
+.icon {
+  margin-right: 5px;
 }
 </style>

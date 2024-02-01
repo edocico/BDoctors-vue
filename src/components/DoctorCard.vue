@@ -8,9 +8,18 @@
       />
     </figure>
     <div class="card-bottom">
-      <p>nome dottore</p>
-      <p>specializzazione</p>
-      <p>voto</p>
+      <div>
+        <font-awesome-icon icon="fa-solid fa-user-doctor" />
+        <p>nome dottore</p>
+      </div>
+      <div>
+        <font-awesome-icon icon="fa-solid fa-stethoscope" />
+        <p>specializzazione</p>
+      </div>
+      <div>
+        <font-awesome-icon icon="fa-solid fa-square-poll-vertical" />
+        <p>voto</p>
+      </div>
       <p>
         <router-link :to="{ name: 'doctors.show' }"
           >Vai al profilo...</router-link
