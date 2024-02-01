@@ -4,19 +4,9 @@
       <nav class="nav-bar">
         <div class="d-flex justify-content-between align-items-center">
           <div class="logo-home">
-            <router-link
-              :to="{ name: 'home' }"
-              class="decoration-none text-light"
-            >
-              <img
-                class="logo-full-header"
-                src="../assets/logo-white.png"
-                alt="BDoctors"
-              />
             <router-link :to="{ name: 'home' }" class="decoration-none text-light">
               <img class="logo-full-header" src="../assets/logo-white.png" alt="BDoctors">
             </router-link>
-            <!-- <img src="" alt=""> -->
           </div>
           <div class="menu-item">
             <ul class="d-flex align-items-center gap-4">
