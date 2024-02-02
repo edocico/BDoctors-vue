@@ -6,6 +6,7 @@ import DoctorsShow from "./views/doctors/Show.vue";
 import SpecializationArchive from "./views/specializations/Archive.vue";
 import Message from "./views/doctors/Message.vue";
 import Review from "./views/doctors/Review.vue";
+import NotFound from "./views/404.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -46,6 +47,11 @@ const router = createRouter({
       path: "/medici/show/review",
       name: "doctors.show.review",
       component: Review,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: NotFound,
     },
   ],
 });
