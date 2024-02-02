@@ -2,7 +2,7 @@
   <section class="message">
     <h1>Manda un messaggio</h1>
     <div class="container">
-        <form action="" method="POST">
+        <form v-on:submit.prevent="messageForm" action="" method="POST">
               <div class="d-flex gap-5  mb-2 ">
                 <div>
                   <div class="label-cust">
@@ -47,16 +47,43 @@ import axios from "axios";
 export default {
   data() {
     return {
-      nameParam:'giogio',
-      surnameParam:'pergiogio',
-      phoneParam:'02030445',
-      emailParam:'mail',
-      textParam:'cose',
-      BASE_URL:'http://127.0.0.1:8000'
+      nameParam:'',
+      surnameParam:'',
+      phoneParam:'',
+      emailParam:'',
+      textParam:'',
+      BASE_URL:'http://127.0.0.1:8000',
     }
   },
 
   methods: {
+    messageForm() {
+      if (!this.validateName() || !this.validateSurname() || !this.validatePhoneNUmber() || !this.valideEmail() || !this.validateText() ) {
+        alert('Validazione del modulo fallita. Controlla i tuoi inserimenti.');
+        return;
+      }
+      
+    },
+
+    validateName() {
+      return this.nameParam.trim() !== '';
+    },
+
+    validateSurname() {
+      return this.surnameParam.trim() !== '';
+    },
+
+    validatePhoneNumber() {
+      return /^[0-9]{10}$/.test(this.phoneParam);
+    },
+
+    validateEmail() {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.emailParam);
+    },
+
+    validateText() {
+      return this.textParam.trim() !== '';
+    }
     // sendMessage() {
     //   axios.post('http://127.0.0.1:8000/api/messages?name=Prova Fede&surname=Prova Surname&phone_number=123456789&email=prova@prova.com&message=blablabla&doctor_id=2').then (res=>{
     //     console.log(res.data)
