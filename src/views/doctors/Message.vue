@@ -66,11 +66,11 @@ export default {
     },
 
     validateName() {
-      return this.nameParam.trim() !== '';
+      return this.nameParam.trim() !== '' && this.nameParam.trim().length >= 2;
     },
 
     validateSurname() {
-      return this.surnameParam.trim() !== '';
+      return this.surnameParam.trim() !== '' && this.surnameParam.trim().length >= 2 ;
     },
 
     validatePhoneNumber() {
@@ -82,7 +82,7 @@ export default {
     },
 
     validateText() {
-      return this.textParam.trim() !== '';
+      return this.textParam.trim() !== '' && this.textParam.trim().lenght >= 5;
     }
     // sendMessage() {
     //   axios.post('http://127.0.0.1:8000/api/messages?name=Prova Fede&surname=Prova Surname&phone_number=123456789&email=prova@prova.com&message=blablabla&doctor_id=2').then (res=>{
