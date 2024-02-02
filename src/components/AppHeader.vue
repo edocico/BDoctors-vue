@@ -5,8 +5,12 @@
         <div class="d-flex justify-content-between align-items-center">
           <div class="logo-home">
             <router-link :to="{ name: 'home' }" class="decoration-none text-light">
-              <img class="logo-full-header" src="../assets/logo-white.png" alt="BDoctors" />
+              
+              <img class="logo-full-header " src="../assets/logo-white.png" alt="BDoctors" />
+              <img class="logo-small-header display-none" src="../assets/logo-small-white.png" alt="BDoctors" />
+              
             </router-link>
+
           </div>
           <div class="menu-item">
             <ul class="d-flex align-items-center gap-4">
@@ -63,6 +67,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$breakpoint-small: 460px;
+$breakpoint-medium: 700px;
+$breakpoint-large: 992px;
+
 header {
   color: white;
   padding: 20px 0px 0px 0px;
@@ -83,10 +91,21 @@ header {
   }
 }
 
+.logo-small-header {
+  width: 80px;
+}
+
+.display-none {
+  display: none;
+}
+
 .logo-full-header {
   width: 150px;
-  width: 150px;
 }
+
+
+
+
 
 .header-item {
   padding: 5px;
@@ -105,4 +124,47 @@ li:hover {
 .icon {
   margin-right: 5px;
 }
+
+
+// @media (min-width: $breakpoint-small) {
+  
+//   .logo-full-header {
+//     display: none;
+//   }
+
+//   .logo-small-header {
+//     display: inline-block;
+//   }
+    
+// }
+
+// @media (min-width: $breakpoint-medium) {
+  
+  
+//   .logo-full-header {
+//     display: none;
+//   }
+
+//   .logo-small-header {
+//     display: inline-block;
+//   }
+  
+// }
+
+// @media (min-width: $breakpoint-large) {
+  
+//   .logo-full-header {
+//     display: inline-block;
+//   }
+
+//   .logo-small-header {
+//     display: none;
+//   }
+  
+// }
+
+
+
+
+
 </style>
