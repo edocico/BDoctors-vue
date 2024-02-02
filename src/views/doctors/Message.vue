@@ -72,11 +72,11 @@ export default {
       this.resetErrorMessages();
 
       if(!this.validateName()) {
-        this.nameError = 'Il nome deve avere almeno 2 caratteri'
+        this.nameError = 'Il nome deve avere un min 2 max 100 caratteri'
       }
 
       if(!this.validateSurname()) {
-        this.surnameError = 'Il cognome deve avere almeno 2 caratteri'
+        this.surnameError = 'Il cognome deve avere un min 2 max 100 caratteri'
       }
 
       if(!this.validatePhoneNumber()) {
@@ -104,11 +104,11 @@ export default {
     },
 
     validateName() {
-      return this.nameParam.trim() !== '' && this.nameParam.trim().length >= 2;
+      return this.nameParam.trim() !== '' && this.nameParam.trim().length >= 2 && this.nameParam.trim().length <= 100;
     },
 
     validateSurname() {
-      return this.surnameParam.trim() !== '' && this.surnameParam.trim().length >= 2 ;
+      return this.surnameParam.trim() !== '' && this.surnameParam.trim().length >= 2 && this.surnameParam.trim().length <= 100;;
     },
 
     validatePhoneNumber() {
