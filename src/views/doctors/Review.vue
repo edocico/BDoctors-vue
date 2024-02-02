@@ -77,15 +77,25 @@ export default {
     return {
       nameParam: "",
       voteParam: "",
+      allowedValues: [1, 2, 3, 4, 5],
       reviewParam: "",
       errorMessage: false,
     };
+  },
+  watch: {
+    voteParam() {
+      if (!this.allowedValues.includes(this.voteParam)) {
+        this.voteParam = "";
+        console.log("parametro non in range");
+      }
+    },
   },
   methods: {
     sendReview() {
       if (
         !this.nameParam ||
         this.nameParam.trim().length < 3 ||
+        this.nameParam.trim().length > 100 ||
         !this.voteParam
       ) {
         alert(
