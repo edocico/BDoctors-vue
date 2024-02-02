@@ -28,7 +28,13 @@
             <div class="label-cust">
               <label for="vote">lascia un voto</label>
             </div>
-            <select name="vote" id="vote" required v-model="voteParam">
+            <select
+              name="vote"
+              id="vote"
+              required
+              v-model="voteParam"
+              class="select-vote"
+            >
               <option value="1">insufficiente</option>
               <option value="2">sufficiente</option>
               <option value="3">buono</option>
@@ -77,7 +83,11 @@ export default {
   },
   methods: {
     sendReview() {
-      if (!this.nameParam || this.nameParam.length < 3 || !this.voteParam) {
+      if (
+        !this.nameParam ||
+        this.nameParam.trim().length < 3 ||
+        !this.voteParam
+      ) {
         alert(
           "i campi non sono compilati correttamente: sono obbligatori nome e voto , e il nome deve essere di almeno 3 caratteri"
         );
@@ -110,6 +120,11 @@ export default {
     .fail-message {
       font-size: 10px;
       color: red;
+      padding-left: 5px;
+    }
+
+    .select-vote {
+      margin-bottom: 5px;
     }
 
     .review-form {
@@ -125,6 +140,7 @@ export default {
         min-width: 250px;
         padding-left: 5px;
         border-radius: 30px 30px 30px 30px;
+        margin-bottom: 5px;
       }
     }
   }
