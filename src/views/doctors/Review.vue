@@ -18,6 +18,10 @@
                 pattern="[A-Za-z]+"
                 v-model="nameParam"
               />
+              <div v-if="errorMessage" class="fail-message">
+                Il campo del nome è obbligatorio e deve essere almeno tre
+                caratteri
+              </div>
             </div>
           </div>
           <div class="mb-2">
@@ -31,6 +35,9 @@
               <option value="4">ottimo</option>
               <option value="5">eccellente</option>
             </select>
+            <div v-if="errorMessage" class="fail-message">
+              Campo obbligatorio
+            </div>
           </div>
           <div class="mb-2">
             <div class="label-cust mb-2">
@@ -65,16 +72,21 @@ export default {
       nameParam: "",
       voteParam: "",
       reviewParam: "",
+      errorMessage: false,
     };
   },
   methods: {
     sendReview() {
-      if (!this.nameParam || !this.voteParam) {
-        alert("compila i campi obbligatori mancanti");
+      if (!this.nameParam || this.nameParam.length < 3 || !this.voteParam) {
+        alert(
+          "i campi non sono compilati correttamente: sono obbligatori nome e voto , e il nome deve essere di almeno 3 caratteri"
+        );
+        this.errorMessage = true;
         console.log("condizione");
       } else {
         this.procNameParam = this.nameParam.trim();
         this.procReviewParam = this.reviewParam.trim();
+        this.errorMessage = false;
         console.log(this.procNameParam);
         console.log(this.procReviewParam);
       }
@@ -94,6 +106,11 @@ export default {
     border: 10px solid #c3e2a5;
     box-shadow: 0px 0px 10px #c3e2a5;
     border-radius: 20px 20px 20px 20px;
+
+    .fail-message {
+      font-size: 10px;
+      color: red;
+    }
 
     .review-form {
       padding: 30px 50px;
