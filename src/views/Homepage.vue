@@ -11,12 +11,25 @@
     <section class="top-rated">
       <div class="container">
         <h2>top rated</h2>
-        <div class="card-container">
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
+        <div class="card-container d-md-flex">
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
         </div>
       </div>
     </section>
@@ -58,10 +71,15 @@ export default {
 .top-rated {
   padding: 70px 0px;
   .card-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
+    /* display: grid;
+    grid-template-columns: repeat(1, 1fr); */
+    // gap: 30px;
     margin-top: 50px;
+    flex-wrap: wrap;
+
+    .column {
+      padding: 15px 10px;
+    }
   }
 }
 </style>
