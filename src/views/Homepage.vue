@@ -2,6 +2,9 @@
   <main>
     <section class="home-search">
       <div class="container">
+        <figure>
+          <img src="../assets/logo-color.png" alt="" class="logo" />
+        </figure>
         <div class="search">
           <h3>Cerca un medico</h3>
           <SearchBar />
@@ -50,12 +53,22 @@ export default {
 
 <style lang="scss" scoped>
 .home-search {
-  padding: 250px 20px 20px 20px;
-  background-image: url(../assets/logo-color.png);
+  padding: 100px 20px 20px 20px;
+  // background-image: url(../assets/logo-color.png);
   background-size: 700px;
   background-repeat: no-repeat;
   background-position: inherit;
   background-position-x: 120px;
+
+  figure {
+    display: flex;
+    justify-content: center;
+
+    .logo {
+      display: block;
+      max-width: 100%;
+    }
+  }
 
   .search {
     display: flex;
