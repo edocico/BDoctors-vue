@@ -2,39 +2,8 @@
   <footer>
     <div class="container">
       <div class="footer-top">
-        <div class="d-flex justify-content-between">
-          <div class="pt-2">
-            <h5>
-              <router-link
-                :to="{ name: 'home' }"
-                class="decoration-none text-light-green"
-              >
-                <img
-                  class="logo-full-color"
-                  src="../assets/logo-color.png"
-                  alt=""
-                />
-              </router-link>
-            </h5>
-            <p class="text-medium-footer">
-              Per qualunque informazione ci troverai nella sezione
-              <router-link
-                :to="{ name: 'contacts' }"
-                class="decoration-none text-light"
-              >
-                <strong class="text-light-green">Contattaci</strong>
-              </router-link>
-            </p>
-            <ul class="d-flex gap-4">
-              <li><font-awesome-icon icon="fa-brands fa-facebook" /></li>
-              <li>
-                <font-awesome-icon icon="fa-brands fa-square-instagram" />
-              </li>
-              <li><font-awesome-icon icon="fa-brands fa-linkedin" /></li>
-              <li><font-awesome-icon icon="fa-brands fa-youtube" /></li>
-            </ul>
-          </div>
-          <div>
+        <div class="d-lg-flex justify-content-between ">
+          <div class="order-lg-2">
             <h5 class="text-large-footer text-center">
               <router-link
                 :to="{ name: 'doctors.index' }"
@@ -42,7 +11,12 @@
                 >I nostri specialisti</router-link
               >
             </h5>
-            <div class="d-flex justify-content-between">
+            <div class="d-block d-md-flex justify-content-between">
+              <ul v-for="column in 4" :key="column" class="">
+                <li v-for="item in 5" :key="item">testo medio</li>
+              </ul>
+            </div>
+            <!-- <div class="d-flex justify-content-between">
               <ul class="text-medium-footer">
                 <li class="mb-2">Neurologia</li>
                 <li class="mb-2">Neuropsichiatria infantile</li>
@@ -71,8 +45,45 @@
                 <li class="mb-2">Reumatologia</li>
                 <li class="mb-2">Allergologia</li>
               </ul>
-            </div>
+            </div> -->
           </div>
+          <div class="order-lg-1  pt-2">
+            <h5>
+              <router-link
+                :to="{ name: 'home' }"
+                class="decoration-none text-light-green"
+              >
+                <img
+                  class="logo-full-color"
+                  src="../assets/logo-color.png"
+                  alt=""
+                />
+              </router-link>
+            </h5>
+            <p class="text-medium-footer">
+              Per qualunque informazione ci troverai nella sezione
+              <router-link
+                :to="{ name: 'contacts' }"
+                class="decoration-none text-light"
+              >
+                <strong class="text-light-green">Contattaci</strong>
+              </router-link>
+            </p>
+            <ul class="d-flex gap-5 ">
+              <li class="social-icon">
+                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-facebook" /></a>
+              </li>
+              <li class="social-icon">
+                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-square-instagram" /></a>
+              </li>
+              <li class="social-icon">
+                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
+              </li>
+              <li class="social-icon ">
+                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-youtube" /></a>
+              </li>
+            </ul>
+          </div>  
         </div>
       </div>
       <div class="footer-bottom">
@@ -120,7 +131,19 @@ li:hover {
 
 .footer-top {
   padding-top: 30px;
+
+  .social-icon {
+    font-size: 24px;
+    
+    // &:hover {
+    //   color: #73b760;
+    // }
+  }
+
+  
 }
+
+
 
 .footer-bottom {
   padding: 30px 0px;
