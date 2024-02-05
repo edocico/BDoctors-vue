@@ -6,7 +6,7 @@ import "bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCrown } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faUserDoctor } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +17,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faSquareInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+
 
 // qua inseriamo singolarmente le icon da usare
 
@@ -31,7 +32,9 @@ library.add(
   faFacebook,
   faSquareInstagram,
   faLinkedin,
-  faYoutube
+  faYoutube,
+  faMagnifyingGlass,
+
 );
 
 createApp(App)
