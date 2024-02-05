@@ -12,7 +12,6 @@
             />
             <div class="">
               <h3>Nome e Cognome dottore</h3>
-              <!-- <h3></h3> -->
               <p>
                 <em>Sponsorizzato</em>
                 <font-awesome-icon icon="fa-solid fa-crown" class="crown" />
@@ -21,8 +20,8 @@
           </div>
         </div>
         <div class="body-profile">
-          <div class="d-flex">
-            <div class="information-profile col-9">
+          <div class="d-block ">
+            <div class="information-profile d-block d-md-col-9">
               <div>
                 <h4 class="badge-specialization">Specializzazione</h4>
                 <h4>Altra Specializzazione</h4>
@@ -43,12 +42,12 @@
                   ipsum in omnis iure, harum voluptatem? Quos, nisi at!
                 </p>
               </div>
-              <div>VOTO</div>
+              <div class="mb-4">VOTO</div>
             </div>
             <div
-              class="contact-profile col-3 d-flex flex-column justify-content-around align-items-center"
+              class="contact-profile d-inline-block"
             >
-              <div class="message">
+              <div class="message mb-3">
                 <div class="btn-cust">
                   <span class="icon"
                     ><font-awesome-icon icon="fa-solid fa-envelope" />
@@ -61,7 +60,7 @@
                   </router-link>
                 </div>
               </div>
-              <div class="review">
+              <div class="review mb-3">
                 <div class="btn-cust">
                   <router-link
                     :to="{ name: 'doctors.show.review' }"
@@ -85,7 +84,6 @@ export default {};
 
 <style lang="scss" scoped>
 .profile {
-  // background-color: #c3e2a5;
   padding: 50px 0px 100px 0px;
 }
 
@@ -100,17 +98,13 @@ export default {};
 }
 
 .body-profile {
-  // background-color: #c3e2a5;
   border: 5px solid #c3e2a5;
   padding: 20px;
 }
 
-// .contact-profile {
-//   border: 5px solid #c3e2a5;
-// }
-// .badge-specialization {
-//   border: 1px solid black;
-// }
+.btn-cust {
+  line-height: 2.5em;
+}
 
 .crown {
   color: goldenrod;
