@@ -6,8 +6,8 @@
           <div class="logo-home">
             <router-link :to="{ name: 'home' }" class="decoration-none text-light">
               
-              <img class="logo-full-header " src="../assets/logo-white.png" alt="BDoctors" />
-              <img class="logo-small-header display-none" src="../assets/logo-small-white.png" alt="BDoctors" />
+              <img class="logo-full-header d-none d-md-inline-block " src="../assets/logo-white.png" alt="BDoctors" />
+              <img class="logo-small-header d-md-none pb-4 pt-2 " src="../assets/logo-small-white.png" alt="BDoctors" />
               
             </router-link>
 
@@ -15,21 +15,25 @@
           <div class="menu-item">
             <ul class="d-flex align-items-center gap-4">
               <li class="header-item">
-                <font-awesome-icon icon="fa-solid fa-user-doctor" class="icon" />
-                <router-link :to="{ name: 'doctors.index' }" class="decoration-none text-light">I nostri
-                  medici</router-link>
-              </li>
-              <li class="header-item">
-                <font-awesome-icon icon="fa-solid fa-address-book" class="icon" />
-                <router-link :to="{ name: 'contacts' }" class="decoration-none text-light">Contattaci</router-link>
+                <router-link :to="{ name: 'doctors.index' }" class="decoration-none text-light">
+                  <font-awesome-icon icon="fa-solid fa-user-doctor" class="icon " />
+                  <span class="d-none d-md-inline-block">I nostri medici</span>
+                </router-link>
               </li>
 
-              <div class="dropdown">
+              <li class="header-item">  
+                <router-link :to="{ name: 'contacts' }" class="decoration-none text-light">
+                  <font-awesome-icon icon="fa-solid fa-address-book" class="icon" />
+                  <span class="d-none d-md-inline-block ">Contattaci</span>
+                </router-link>
+              </li>
+
+              <li class="dropdown">
                 <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   <font-awesome-icon icon="fa-solid fa-user" class="icon" />
-                  <span v-if="!authenticated">profilo dottore </span>
-                  <span v-if="authenticated">{{ doctorLog.name }} {{  doctorLog.surname  }}</span>
+                  <span v-if="!authenticated" class="d-none d-md-inline-block">profilo dottore </span>
+                  <span v-if="authenticated" class="d-none d-md-inline-block">{{ doctorLog.name }} {{  doctorLog.surname  }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <div v-if="!authenticated">
@@ -46,7 +50,8 @@
                     </li>
                   </div>
                 </ul>
-              </div>
+              </li>
+
             </ul>
           </div>
         </div>
@@ -67,13 +72,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$breakpoint-small: 460px;
-$breakpoint-medium: 700px;
-$breakpoint-large: 992px;
 
 header {
   color: white;
-  padding: 20px 0px 0px 0px;
+  padding: 5px 0px 0px 0px;
   box-shadow: 0px 0px 10px #73b760;
 }
 
@@ -92,19 +94,12 @@ header {
 }
 
 .logo-small-header {
-  width: 80px;
-}
-
-.display-none {
-  display: none;
+  width: 70px;
 }
 
 .logo-full-header {
   width: 150px;
 }
-
-
-
 
 
 .header-item {
@@ -124,47 +119,5 @@ li:hover {
 .icon {
   margin-right: 5px;
 }
-
-
-// @media (min-width: $breakpoint-small) {
-  
-//   .logo-full-header {
-//     display: none;
-//   }
-
-//   .logo-small-header {
-//     display: inline-block;
-//   }
-    
-// }
-
-// @media (min-width: $breakpoint-medium) {
-  
-  
-//   .logo-full-header {
-//     display: none;
-//   }
-
-//   .logo-small-header {
-//     display: inline-block;
-//   }
-  
-// }
-
-// @media (min-width: $breakpoint-large) {
-  
-//   .logo-full-header {
-//     display: inline-block;
-//   }
-
-//   .logo-small-header {
-//     display: none;
-//   }
-  
-// }
-
-
-
-
 
 </style>
