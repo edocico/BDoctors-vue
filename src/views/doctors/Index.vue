@@ -6,17 +6,27 @@
       </div>
     </section>
     <section class="search-results">
-      <div class="container-fluid">
+      <div class="container">
         <p>(n) risultati</p>
-        <div class="card-container">
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
-          <DoctorCard />
+        <div class="card-container d-md-flex">
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
+          <div class="column d-sm-block col-md-4 col-xl-2">
+            <DoctorCard />
+          </div>
         </div>
       </div>
     </section>
@@ -50,13 +60,17 @@ main {
   }
 
   .search-results {
-    .container-fluid {
-      padding: 20px 200px;
+    .container {
+      padding: 20px 0px;
 
       .card-container {
-        display: grid;
+        /* display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
+        gap: 30px; */
+        flex-wrap: wrap;
+        .column {
+          padding: 15px 10px;
+        }
       }
     }
   }
