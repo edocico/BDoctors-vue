@@ -61,31 +61,33 @@
 </template>
 
 <script>
-import { store } from "../store.js";
-import axios from 'axios';
+// import { store } from "../store.js";
+// import axios from 'axios';
 
 
 export default {
   data() {
     return {
-      store: store,
+      // store: store,
       authenticated: false,
       doctorLog: { doctorId: 1, name: 'francesco', surname: 'rossi' },
     };
   },
 
   methods: {
-    fetchUser() {
-      axios.get(`${this.store.BASE_URL}/dashboard`).then(res => {
-        console.log(res)
-      } )
+    // fetchUser() {
+    //   axios.get(`${this.store.BASE_URL}/dashboard`)
+    //   .then((res) => {
 
-    }
+    //     console.log(res);
+    //   } )
+
+    // }
     
   },
 
   created() {
-    this.fetchUser()
+    // this.fetchUser()
   }
 };
 </script>
