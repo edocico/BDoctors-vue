@@ -3,39 +3,33 @@
     <section class="search-bar bg-middle-green">
       <div class="">
         <div class="dropdown">
-          <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
+          <a
+            class="decoration-none text-light header-item"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             <font-awesome-icon icon="fa-solid fa-user" class="icon fs-3" />
-            <span  class="d-none d-md-inline-block"> Specializzazioni </span>  
+            <span class="d-none d-md-inline-block"> Specializzazioni </span>
           </a>
           <ul class="dropdown-menu">
-            <li v-for="specialization in store.specializations"> {{ specialization.name }}</li>
+            <li v-for="specialization in store.specializations">
+              {{ specialization.name }}
+            </li>
           </ul>
         </div>
       </div>
     </section>
     <section class="search-results">
       <div class="container">
-        <p>(n) risultati</p>
-        <div class="card-container d-md-flex">
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
+        <p>{{ store.allDoctors.length }} risultati</p>
+        <div class="card-container d-block mb-2 d-md-flex gap-4">
+          <DoctorCard
+            v-for="(doctor, index) in store.allDoctors"
+            :key="index"
+            :item="doctor"
+          />
         </div>
       </div>
     </section>
@@ -46,6 +40,7 @@
 import SearchBar from "../../components/SearchBar.vue";
 import DoctorCard from "../../components/DoctorCard.vue";
 import { store, getSpecialization } from "../../store";
+import axios from "axios";
 
 export default {
   components: {
@@ -53,22 +48,27 @@ export default {
     DoctorCard,
   },
 
-  data(){
-    return{
-      store:store,
-
-    }
+  data() {
+    return {
+      store: store,
+    };
   },
   methods: {
-    fetchData(){
-      getSpecialization()
-    }
+    fetchData() {
+      getSpecialization();
+    },
+    fetchAllDoctors() {
+      (this.store.allDoctors = []),
+        axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
+          console.log(res);
+          this.store.allDoctors = res.data.doctors;
+        });
+    },
   },
-  created(){
-    this.fetchData()
-  }
-
-
+  created() {
+    this.fetchData();
+    this.fetchAllDoctors();
+  },
 };
 </script>
 
@@ -90,13 +90,13 @@ main {
     background-color: #73b760;
     line-height: 40px;
     padding: 5px 10px;
-    
+
     .dropdown-menu {
-    background-color: #43762b;
-    color: white;
-    overflow-y: scroll;
-    height: 350px;
-    padding: 10px;
+      background-color: #43762b;
+      color: white;
+      overflow-y: scroll;
+      height: 350px;
+      padding: 10px;
 
       .dropdown-item {
         font-weight: 600;
@@ -113,7 +113,6 @@ main {
       font-weight: 600;
     }
   }
-  
 
   .search-results {
     .container {
@@ -124,9 +123,7 @@ main {
         grid-template-columns: repeat(3, 1fr);
         gap: 30px; */
         flex-wrap: wrap;
-        .column {
-          padding: 15px 10px;
-        }
+        /*  */
       }
     }
   }
