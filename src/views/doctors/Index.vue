@@ -2,7 +2,6 @@
   <main>
     <section class="search-bar bg-middle-green">
       <div class="container-fluid">
-        <SearchBar />
       </div>
     </section>
     <section class="search-results">

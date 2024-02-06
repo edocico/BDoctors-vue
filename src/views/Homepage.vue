@@ -6,8 +6,14 @@
           <img src="../assets/logo-color.png" alt="" class="logo" />
         </figure>
         <div class="search">
-          <h3>Cerca un medico</h3>
-          <SearchBar />
+          <h3>Seleziona una specializzazione</h3>
+          <div class="d-block d-md-flex justify-content-between">
+              <ul v-for="column in 4" :key="column" class="">
+                <li class="badge-special" v-for="item in 5" :key="item">
+                  specializzazione
+                </li>
+              </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -52,9 +58,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.badge-special {
+  background-color: #43762b;
+  color: white;
+  font-size: 25px;
+  padding: 0px 20px;
+  line-height: 40px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  &:hover {
+    color: #c3e2a5;
+  }
+}
+
 .home-search {
-  padding: 100px 20px 20px 20px;
-  // background-image: url(../assets/logo-color.png);
+  padding: 20px 20px 20px 20px;
   background-size: 700px;
   background-repeat: no-repeat;
   background-position: inherit;
@@ -63,6 +84,7 @@ export default {
   figure {
     display: flex;
     justify-content: center;
+    width: 350px;
 
     .logo {
       display: block;
