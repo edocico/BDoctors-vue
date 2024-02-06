@@ -9,7 +9,7 @@
             <span  class="d-none d-md-inline-block"> Specializzazioni </span>  
           </a>
           <ul class="dropdown-menu">
-            <li v-for="specialization in 20">Specializzazione</li>
+            <li v-for="specialization in store.specializations"> {{ specialization.name }}</li>
           </ul>
         </div>
       </div>
@@ -45,12 +45,30 @@
 <script>
 import SearchBar from "../../components/SearchBar.vue";
 import DoctorCard from "../../components/DoctorCard.vue";
+import { store, getSpecialization } from "../../store";
 
 export default {
   components: {
     SearchBar,
     DoctorCard,
   },
+
+  data(){
+    return{
+      store:store,
+
+    }
+  },
+  methods: {
+    fetchData(){
+      getSpecialization()
+    }
+  },
+  created(){
+    this.fetchData()
+  }
+
+
 };
 </script>
 
@@ -69,13 +87,16 @@ main {
   }
 
   .dropdown {
-    background-color: #43762b;
+    background-color: #73b760;
     line-height: 40px;
     padding: 5px 10px;
     
     .dropdown-menu {
     background-color: #43762b;
     color: white;
+    overflow-y: scroll;
+    height: 350px;
+    padding: 10px;
 
       .dropdown-item {
         font-weight: 600;
