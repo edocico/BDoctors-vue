@@ -8,9 +8,9 @@
         <div class="search">
           <h3>Seleziona una specializzazione</h3>
           <div class="d-block d-md-flex justify-content-between">
-              <ul v-for="column in 4" :key="column" class="">
-                <li class="badge-special" v-for="item in 5" :key="item">
-                  specializzazione
+              <ul>
+                <li class="badge-special" v-for="specializzazione in store.specializations" :key="specializzazione">
+                  {{specializzazione.name}}
                 </li>
               </ul>
           </div>
@@ -48,13 +48,28 @@
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import DoctorCard from "../components/DoctorCard.vue";
+import { store, prova } from "../store";
 
 export default {
   components: {
     SearchBar,
     DoctorCard,
   },
-};
+  data(){
+    return{
+      store:store,
+
+    }
+  },
+  methods: {
+    fetchData(){
+      prova()
+    }
+  },
+  created(){
+    this.fetchData()
+  }
+}
 </script>
 
 <style lang="scss" scoped>
