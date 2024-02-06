@@ -61,60 +61,7 @@
                     Mando un messaggio
                   </router-link> -->
                 </button>
-                <section class="message" v-else>
-                  <h1>Nuovo Messaggio</h1>
-                  <div class="container">
-                    <form v-on:submit.prevent="messageForm" action="" method="POST">
-                      <div class="d-flex flex-column flex-md-row gap-5 mb-2">
-                        <div class="d-flex flex-column">
-                          <div class="label-cust">
-                            <label for="name">Inserisci nome:</label>
-                          </div>
-                          <input class="input-cust" type="text" placeholder="Francesco" name="name" v-model="nameParam">
-                          <div class="error-message" v-if="nameError">{{ nameError }}</div>
-                        </div>
-                        <div class="d-flex flex-column">
-                          <div class="label-cust">
-                            <label for="surname">Inserisci cognome:</label>
-                          </div>
-                          <input class="input-cust" type="text" placeholder="Rossi" name="surname" v-model="surnameParam">
-                          <div class="error-message" v-if="surnameError">{{ surnameError }}</div>
-                        </div>
-                      </div>
-                      <div class="d-flex flex-column flex-md-row gap-5 mb-2">
-                        <div class="d-flex flex-column">
-                          <div class="label-cust">
-                            <label for="phone">Inserisci cellulare:</label>
-                          </div>
-                          <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" required v-model="phoneParam">
-                          <div class="error-message" v-if="phoneError">{{ phoneError }}</div>
-                        </div>
-                        <div class="d-flex flex-column">
-                          <div class="label-cust">
-                            <label for="email">Inserisci mail:</label>
-                          </div>
-                          <input class="input-cust" type="email" name="email" id="email"
-                            placeholder="francescorossi@gmail.com" v-model="emailParam">
-                          <div class="error-message" v-if="emailError">{{ emailError }}</div>
-                        </div>
-                      </div>
-
-                      <div class="mb-2">
-                        <div class="label-cust mb-2">
-                          <label for="name">Scrivi messaggio:</label>
-                        </div>
-                        <textarea class="input-cust" name="message" id="" cols="40" rows="10" placeholder="messaggio"
-                          v-model="textParam"></textarea>
-                        <div class="error-message" v-if="textError">{{ textError }}</div>
-                      </div>
-                      <div class="d-flex gap-5">
-                        <input class="btn-cust" type="submit" value="Invia">
-                        <button class="btn btn-danger" @click="closeForm">Chiudi</button>
-                      </div>
-
-                    </form>
-                  </div>
-                </section>
+                <MessageForm v-else />
               </div>
             </div>
 
@@ -191,7 +138,13 @@
 </template>
 
 <script>
+import MessageForm from '../../components/MessageForm.vue';
+
 export default {
+  components: {
+    MessageForm,
+  },
+
   data() {
     return {
       showForm: false,
