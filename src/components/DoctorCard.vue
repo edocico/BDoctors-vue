@@ -15,7 +15,7 @@
         </div>
         <div>
           <font-awesome-icon icon="fa-solid fa-stethoscope" />
-          <p>{{ item.medical_services }}</p>
+          <p>specializzazione</p>
         </div>
         <div>
           <font-awesome-icon icon="fa-solid fa-square-poll-vertical" />
@@ -33,11 +33,11 @@
 
 <script>
 export default {
-  props: {
+  /* props: {
     item: {
       type: Object,
     },
-  },
+  }, */
 };
 </script>
 
