@@ -1,36 +1,44 @@
 <template>
-  <div class="card-cust">
-    <figure>
-      <img
-        src="https://picsum.photos/100"
-        alt=""
-        class="rounded-circle img-thumbnail"
-      />
-    </figure>
-    <div class="card-bottom">
-      <div>
-        <font-awesome-icon icon="fa-solid fa-user-doctor" />
-        <p>nome dottore</p>
+  <div class="d-sm-col-12 d-md-col-3 d-xl-col-2">
+    <div class="card-cust">
+      <figure>
+        <img
+          src="https://picsum.photos/100"
+          alt=""
+          class="rounded-circle img-thumbnail"
+        />
+      </figure>
+      <div class="card-bottom">
+        <div>
+          <font-awesome-icon icon="fa-solid fa-user-doctor" />
+          <p>nome dottore</p>
+        </div>
+        <div>
+          <font-awesome-icon icon="fa-solid fa-stethoscope" />
+          <p>{{ item.medical_services }}</p>
+        </div>
+        <div>
+          <font-awesome-icon icon="fa-solid fa-square-poll-vertical" />
+          <p>voto</p>
+        </div>
+        <p>
+          <router-link :to="{ name: 'doctors.show' }"
+            >Vai al profilo...</router-link
+          >
+        </p>
       </div>
-      <div>
-        <font-awesome-icon icon="fa-solid fa-stethoscope" />
-        <p>specializzazione</p>
-      </div>
-      <div>
-        <font-awesome-icon icon="fa-solid fa-square-poll-vertical" />
-        <p>voto</p>
-      </div>
-      <p>
-        <router-link :to="{ name: 'doctors.show' }"
-          >Vai al profilo...</router-link
-        >
-      </p>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    item: {
+      type: Object,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
