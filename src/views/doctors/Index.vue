@@ -1,7 +1,17 @@
 <template>
   <main>
     <section class="search-bar bg-middle-green">
-      <div class="container-fluid">
+      <div class="">
+        <div class="dropdown">
+          <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <font-awesome-icon icon="fa-solid fa-user" class="icon fs-3" />
+            <span  class="d-none d-md-inline-block"> Specializzazioni </span>  
+          </a>
+          <ul class="dropdown-menu">
+            <li v-for="specialization in 20">Specializzazione</li>
+          </ul>
+        </div>
       </div>
     </section>
     <section class="search-results">
@@ -57,6 +67,32 @@ main {
       justify-content: center;
     }
   }
+
+  .dropdown {
+    background-color: #43762b;
+    line-height: 40px;
+    padding: 5px 10px;
+    
+    .dropdown-menu {
+    background-color: #43762b;
+    color: white;
+
+      .dropdown-item {
+        font-weight: 600;
+      }
+
+      .dropdown-item:hover {
+        color: #b0e29d;
+        background-color: #43762b;
+      }
+    }
+
+    li {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+  }
+  
 
   .search-results {
     .container {
