@@ -98,9 +98,6 @@ export default {
         this.nameParam.trim().length > 100 ||
         !this.voteParam
       ) {
-        alert(
-          "i campi non sono compilati correttamente: sono obbligatori nome e voto , e il nome deve essere di almeno 3 caratteri"
-        );
         this.errorMessage = true;
         console.log("condizione");
       } else {
