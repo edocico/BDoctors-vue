@@ -52,7 +52,7 @@
             <DoctorCard
               v-for="(doctor, index) in store.doctorsPerSpecialization"
               :key="index"
-              :item="doctor"
+              :data="doctor"
             />
           </template>
         </div>

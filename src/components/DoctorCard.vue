@@ -3,7 +3,14 @@
     <div class="card-cust">
       <figure>
         <img
-          src="https://picsum.photos/100"
+          v-if="item"
+          :src="store.Url + item.photo"
+          alt=""
+          class="rounded-circle img-thumbnail"
+        />
+        <img
+          v-else-if="data"
+          :src="store.Url + data.photo"
           alt=""
           class="rounded-circle img-thumbnail"
         />
@@ -11,15 +18,32 @@
       <div class="card-bottom">
         <div>
           <font-awesome-icon icon="fa-solid fa-user-doctor" />
-          <p>nome dottore</p>
+          <p>name dottore</p>
         </div>
         <div>
           <font-awesome-icon icon="fa-solid fa-stethoscope" />
-          <p>specializzazione</p>
+          <ul v-if="item">
+            <li
+              v-for="(specializzazione, index) in item.specializations"
+              :key="index"
+            >
+              {{ specializzazione.name }}
+            </li>
+          </ul>
+          <ul v-else-if="data">
+            <li
+              v-for="(specializzazione, index) in data.specializations"
+              :key="index"
+            >
+              {{ specializzazione.name }}
+            </li>
+          </ul>
+          <!-- <p>specializzazione dottore</p> -->
         </div>
         <div>
           <font-awesome-icon icon="fa-solid fa-square-poll-vertical" />
-          <p>voto</p>
+          <p v-if="item">{{ item.phone_number }}</p>
+          <p v-else-if="data">{{ data.phone_number }}</p>
         </div>
         <p>
           <router-link :to="{ name: 'doctors.show' }"
@@ -39,6 +63,14 @@ export default {
     return {
       store: store,
     };
+  },
+  props: {
+    item: {
+      type: Object,
+    },
+    data: {
+      type: Object,
+    },
   },
 };
 </script>
