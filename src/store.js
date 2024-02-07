@@ -7,6 +7,7 @@ export const store = reactive({
   BASE_URL: "http://127.0.0.1:8000/api",
   specializations: [],
   allDoctors: [],
+  doctorsPerSpecialization: [],
 });
 export function getSpecialization() {
   axios.get(`${store.BASE_URL}/specializations`).then((res) => {

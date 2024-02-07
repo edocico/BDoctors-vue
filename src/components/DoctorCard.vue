@@ -32,12 +32,14 @@
 </template>
 
 <script>
+import { store } from "../store";
+
 export default {
-  /* props: {
-    item: {
-      type: Object,
-    },
-  }, */
+  data() {
+    return {
+      store: store,
+    };
+  },
 };
 </script>
 
