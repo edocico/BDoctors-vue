@@ -77,7 +77,7 @@ export default {
 
   methods: {
     closeForm() {
-      this.showForm = false;
+      this.$emit('close');
     },
 
     messageForm() {

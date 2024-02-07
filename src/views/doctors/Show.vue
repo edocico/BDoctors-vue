@@ -61,7 +61,7 @@
                     Mando un messaggio
                   </router-link> -->
                 </button>
-                <MessageForm v-else />
+                <MessageForm v-else @close="closeForm" />
               </div>
             </div>
             <!-- form reviews  -->
