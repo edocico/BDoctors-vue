@@ -57,9 +57,6 @@
                   <span>
                     Messaggio
                   </span>
-                  <!-- <router-link :to="{ name: 'doctors.show.message' }" class="decoration-none text-light">
-                    Mando un messaggio
-                  </router-link> -->
                 </button>
                 <MessageForm v-else />
               </div>
@@ -72,22 +69,13 @@
                     <font-awesome-icon icon="fa-solid fa-star" />
                   </span>
                   <span> Recensione</span>
-                  <!-- <router-link :to="{ name: 'doctors.show.review' }" class="decoration-none text-light">
-                  Lascia una recensione
-                </router-link> -->
                 </button>
                 <RewievForm v-else @close="closeReviewForm"/>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-      <!-- form messaggio -->
-
-
-
-
     </section>
   </div>
 </template>

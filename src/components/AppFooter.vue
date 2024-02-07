@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="d-lg-flex justify-content-between ">
-          <div class="order-lg-2">
+          <div class="order-lg-2 d-md-col-9">
             <h5 class="text-large-footer text-center">
               <router-link
                 :to="{ name: 'doctors.index' }"
@@ -11,44 +11,17 @@
                 >I nostri specialisti</router-link
               >
             </h5>
-            <div class="d-block d-md-flex justify-content-between">
-              <ul v-for="column in 4" :key="column" class="">
-                <li v-for="item in 5" :key="item">testo medio</li>
+              <div class="container">
+                <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between">
+                  <li class="col-3 ju" v-for="(specialization,index ) in store.specializations" 
+                    :key="index">
+                      {{ specialization.name }}
+                  </li>
               </ul>
-            </div>
-            <!-- <div class="d-flex justify-content-between">
-              <ul class="text-medium-footer">
-                <li class="mb-2">Neurologia</li>
-                <li class="mb-2">Neuropsichiatria infantile</li>
-                <li class="mb-2">Psichiatria</li>
-                <li class="mb-2">Dermatologia</li>
-                <li class="mb-2">Cardiologia</li>
-              </ul>
-              <ul class="text-medium-footer">
-                <li class="mb-2">Ortopedia</li>
-                <li class="mb-2">Gastroenterologia</li>
-                <li class="mb-2">Oncologia</li>
-                <li class="mb-2">Endocrinologia</li>
-                <li class="mb-2">Nefrologia</li>
-              </ul>
-              <ul class="text-medium-footer">
-                <li class="mb-2">Oculistica</li>
-                <li class="mb-2">Pediatria</li>
-                <li class="mb-2">Chirurgia generale</li>
-                <li class="mb-2">Radiologia</li>
-                <li class="mb-2">Ginecologia</li>
-              </ul>
-              <ul class="text-medium-footer">
-                <li class="mb-2">Urologia</li>
-                <li class="mb-2">Pneumologia</li>
-                <li class="mb-2">Otorinolaringoiatria</li>
-                <li class="mb-2">Reumatologia</li>
-                <li class="mb-2">Allergologia</li>
-              </ul>
-            </div> -->
+              </div>
           </div>
-          <div class="order-lg-1  pt-2">
-            <h5>
+          <div class="order-lg-1 d-md-col-3  pt-2">
+            <div class="text-center">
               <router-link
                 :to="{ name: 'home' }"
                 class="decoration-none text-light-green"
@@ -59,8 +32,8 @@
                   alt=""
                 />
               </router-link>
-            </h5>
-            <p class="text-medium-footer">
+            </div>
+            <p class="text-medium-footer text-center">
               Per qualunque informazione ci troverai nella sezione
               <router-link
                 :to="{ name: 'contacts' }"
@@ -69,7 +42,7 @@
                 <strong class="text-light-green">Contattaci</strong>
               </router-link>
             </p>
-            <ul class="d-flex gap-5 ">
+            <ul class="d-flex justify-content-center  gap-5 ">
               <li class="social-icon">
                 <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-facebook" /></a>
               </li>
@@ -98,7 +71,26 @@
 </template>
 
 <script>
-export default {};
+import { store,getSpecialization } from '../store.js'
+ 
+export default {
+  data() {
+    return {
+      store:store,
+    }
+  },
+
+  methods: {
+    fetchData(){
+      getSpecialization()
+    }
+  },
+
+  created(){
+    this.fetchData()
+  }
+
+};
 </script>
 
 <style lang="scss" scoped>
