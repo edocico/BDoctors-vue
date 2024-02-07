@@ -8,11 +8,21 @@
         <div class="search">
           <h3>Seleziona una specializzazione</h3>
           <div class="d-block d-md-flex justify-content-between">
-              <ul class="row justify-content-center gap-2 ">
-                <li class="badge-special col-auto " v-for="specializzazione in store.specializations" :key="specializzazione">
-                  {{specializzazione.name}}
-                </li>
-              </ul>
+            <ul class="row justify-content-center gap-2">
+              <li
+                class="badge-special col-auto"
+                v-for="(specializzazione, index) in store.specializations"
+                :key="index"
+                @click="fetchPerSpecialization(specializzazione.id)"
+              >
+                <RouterLink
+                  :to="{ name: 'doctors.index' }"
+                  class="text-light decoration-none"
+                >
+                  {{ specializzazione.name }}</RouterLink
+                >
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -49,31 +59,49 @@
 import SearchBar from "../components/SearchBar.vue";
 import DoctorCard from "../components/DoctorCard.vue";
 import { store, getSpecialization } from "../store";
+import axios from "axios";
+import { RouterLink } from "vue-router";
 
 export default {
   components: {
     SearchBar,
     DoctorCard,
+    RouterLink,
   },
-  data(){
-    return{
-      store:store,
-
-    }
+  data() {
+    return {
+      store: store,
+    };
   },
   methods: {
-    fetchData(){
-      getSpecialization()
-    }
+    fetchData() {
+      getSpecialization();
+    },
+    fetchPerSpecialization(index) {
+      (this.store.allDoctors = []), console.log(index);
+      axios
+        .get(`${this.store.BASE_URL}/doctors`, {
+          params: {
+            specialization_ids: [index],
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.store.doctorsPerSpecialization = res.data.results;
+          console.log(this.store.doctorsPerSpecialization);
+        });
+    },
   },
-  created(){
-    this.fetchData()
-  }
-}
+  created() {
+    this.fetchData();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
+li:hover {
+  color: #c3e2a5;
+}
 .badge-special {
   background-color: #43762b;
   color: white;

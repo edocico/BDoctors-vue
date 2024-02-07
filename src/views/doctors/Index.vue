@@ -14,7 +14,11 @@
             <span class="d-none d-md-inline-block"> Specializzazioni </span>
           </a>
           <ul class="dropdown-menu">
-            <li v-for="specialization in store.specializations">
+            <li
+              v-for="(specialization, index) in store.specializations"
+              :key="index"
+              @click="fetchPerSpecialization(specialization.id)"
+            >
               {{ specialization.name }}
             </li>
           </ul>
@@ -23,13 +27,34 @@
     </section>
     <section class="search-results">
       <div class="container">
-        <p>{{ store.allDoctors.length }} risultati</p>
+        <p v-if="store.allDoctors.length > 0">
+          {{ store.allDoctors.length }}
+          risultati
+        </p>
+        <p v-else-if="store.doctorsPerSpecialization.length > 0">
+          {{ store.doctorsPerSpecialization.length }} risultati
+        </p>
         <div class="card-container d-block mb-2 d-md-flex gap-4">
-          <DoctorCard
-            v-for="(doctor, index) in store.allDoctors"
-            :key="index"
-            :item="doctor"
-          />
+          <template v-if="store.allDoctors.length > 0">
+            <DoctorCard
+              v-for="(doctor, index) in store.allDoctors"
+              :key="index"
+              :item="doctor"
+            />
+          </template>
+
+          <template
+            v-if="
+              store.allDoctors.length === 0 &&
+              store.doctorsPerSpecialization.length > 0
+            "
+          >
+            <DoctorCard
+              v-for="(doctor, index) in store.doctorsPerSpecialization"
+              :key="index"
+              :item="doctor"
+            />
+          </template>
         </div>
       </div>
     </section>
@@ -58,16 +83,28 @@ export default {
       getSpecialization();
     },
     fetchAllDoctors() {
-      (this.store.allDoctors = []),
-        axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
-          console.log(res);
-          this.store.allDoctors = res.data.doctors;
+      (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
+      axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
+        console.log(res);
+        this.store.allDoctors = res.data.doctors;
+      });
+    },
+    fetchPerSpecialization(index) {
+      (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
+      axios
+        .get(`${this.store.BASE_URL}/doctors`, {
+          params: {
+            specialization_ids: [index],
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
         });
     },
   },
   created() {
     this.fetchData();
-    this.fetchAllDoctors();
+    // this.fetchAllDoctors();
   },
 };
 </script>
