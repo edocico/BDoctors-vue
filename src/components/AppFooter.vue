@@ -14,8 +14,14 @@
               <div class="container">
                 <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between">
                   <li class="col-3 ju" v-for="(specialization,index ) in store.specializations" 
-                    :key="index">
-                      {{ specialization.name }}
+                    :key="index"
+                    @click="fetchPerSpecialization(specialization.id)">
+                    <RouterLink
+                  :to="{ name: 'doctors.index' }"
+                  class="text-light decoration-none"
+                >
+                  {{ specialization.name }}</RouterLink
+                >
                   </li>
               </ul>
               </div>
@@ -72,18 +78,35 @@
 
 <script>
 import { store,getSpecialization } from '../store.js'
+import axios from 'axios';
  
 export default {
   data() {
     return {
-      store:store,
+      store: store,
     }
   },
 
   methods: {
     fetchData(){
       getSpecialization()
-    }
+    },
+
+    fetchPerSpecialization(index) {
+      (this.store.allDoctors = []), 
+      console.log(index);
+      axios
+        .get(`${this.store.BASE_URL}/doctors`, {
+          params: {
+            specialization_ids: [index],
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.store.doctorsPerSpecialization = res.data.results;
+          console.log(this.store.doctorsPerSpecialization);
+        });
+    },
   },
 
   created(){
