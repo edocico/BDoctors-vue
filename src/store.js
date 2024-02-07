@@ -12,7 +12,7 @@ export const store = reactive({
 });
 export function getSpecialization() {
   axios.get(`${store.BASE_URL}/specializations`).then((res) => {
-    console.log(res.data.results);
+    // console.log(res.data.results);
     store.specializations = res.data.results;
   });
 }

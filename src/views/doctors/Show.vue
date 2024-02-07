@@ -83,6 +83,9 @@
 <script>
 import MessageForm from '../../components/MessageForm.vue';
 import RewievForm from '../../components/RewievForm.vue';
+import { store } from '../../store'
+import axios from 'axios'
+
 
 export default {
   components: {
@@ -90,20 +93,40 @@ export default {
     RewievForm,
   },
 
+  props: {
+    id: String,
+  },
+
   data() {
     return {
+      store: store,
+      doctor: null,
       showForm: false,
       showReviewForm: false
 
     }
   },
   methods: {
+    fetchDoctor() {
+      axios.get(`${this.store.BASE_URL}/doctors/${this.id}`)
+      .then((res) => {
+        console.log(res)
+        this.doctor = res.data.doctor
+        console.log(this.doctor)
+      })
+    },
+
+
     closeForm() {
       this.showForm = false;
     },
     closeReviewForm() {
       this.showReviewForm = false;
     }
+  },
+
+  created() {
+    this.fetchDoctor();
   }
 }
 </script>
