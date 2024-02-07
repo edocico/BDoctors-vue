@@ -46,7 +46,7 @@
           <p v-else-if="data">{{ data.phone_number }}</p>
         </div>
         <p>
-          <router-link :to="{ name: 'doctors.show' }"
+          <router-link :to="{ name: 'doctors.show'}"
             >Vai al profilo...</router-link
           >
         </p>

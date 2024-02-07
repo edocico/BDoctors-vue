@@ -19,7 +19,12 @@
               :key="index"
               @click="fetchPerSpecialization(specialization.id)"
             >
-              {{ specialization.name }}
+              <RouterLink
+                  :to="{ name: 'doctors.index' }"
+                  class="text-light decoration-none"
+                >
+                  {{ specialization.name }}
+              </RouterLink>
             </li>
           </ul>
         </div>
@@ -83,14 +88,16 @@ export default {
       getSpecialization();
     },
     fetchAllDoctors() {
-      (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
+      (this.store.allDoctors = []),
+       (this.store.doctorsPerSpecialization = []);
       axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
         console.log(res);
         this.store.allDoctors = res.data.doctors;
       });
     },
     fetchPerSpecialization(index) {
-      (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
+      (this.store.allDoctors = []), 
+      console.log(index);
       axios
         .get(`${this.store.BASE_URL}/doctors`, {
           params: {
@@ -99,6 +106,8 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+          this.store.doctorsPerSpecialization = res.data.results;
+          console.log(this.store.doctorsPerSpecialization);
         });
     },
   },
@@ -106,6 +115,10 @@ export default {
     this.fetchData();
     // this.fetchAllDoctors();
   },
+
+  mounted() {
+    // this.fetchAllDoctors();
+  }
 };
 </script>
 
