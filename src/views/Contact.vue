@@ -1,46 +1,48 @@
 <template>
   <section class="contact">
-    <h1>Pagina contatti</h1>
     <div class="container">
-        <form action="" method="POST">
-              <div class="d-flex gap-5  mb-2 ">
-                <div>
-                  <div class="label-cust">
-                      <label for="name">Inserisci il tuo nome</label>
-                  </div>
-                  <input class="input-cust " type="text" placeholder="Francesco" name="name">
-                </div>
-                <div>
-                  <div class="label-cust">
-                      <label for="surname">Inserisci il tuo cognome</label>
-                  </div>
-                  <input class="input-cust " type="text" placeholder="Rossi" name="surname">
-                </div>  
-              </div>
-              <div class="mb-2">
-                  <div class="label-cust">
-                      <label for="name">Inserisci la tua mail</label>
-                  </div>
-                  <input class="input-cust " type="email" name="Inserisci la tua mail" id="email" placeholder="francescorossi@gmail.com">
-              </div>
-              <div class="mb-2">
-                  <div class="label-cust mb-2">
-                      <label for="name">Inserisci un messaggio</label>
-                  </div>
-                  <textarea class="input-cust" name="message" id="" cols="100" rows="10" placeholder="messaggio"></textarea>
-              </div>
-            <input class="btn-cust" type="submit" value="Invia">
-        </form>
+      <div class="row">
+        <DoctorCard
+          v-for="(doctor, index) in store.allDoctors"
+          :key="index"
+          :item="doctor"
+        />
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+import DoctorCard from "../components/DoctorCard.vue";
+import { store } from "../store";
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      store: store,
+    };
+  },
+  components: {
+    DoctorCard,
+  },
+  methods: {
+    fetchAllDoctors() {
+      (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
+      axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
+        console.log(res);
+        this.store.allDoctors = res.data.results;
+        console.log(this.store.allDoctors);
+      });
+    },
+  },
+  created() {
+    this.fetchAllDoctors();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 .contact {
   padding: 30px 15px;
 }
@@ -68,5 +70,4 @@ export default {};
 // .btn:hover {
 //   background-color: #43762b;
 // }
-
 </style>

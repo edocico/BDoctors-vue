@@ -91,9 +91,25 @@ export default {
           console.log(this.store.doctorsPerSpecialization);
         });
     },
+    fetchAllDoctors() {
+      (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
+      axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
+        console.log(res);
+        this.store.allDoctors = res.data.results;
+        console.log(this.store.allDoctors);
+      });
+    },
   },
   created() {
     this.fetchData();
+    console.log("created homepage");
+    this.fetchAllDoctors();
+  },
+  mounted() {
+    console.log("mounted homepage");
+  },
+  unmounted() {
+    console.log("unmounted homepage");
   },
 };
 </script>

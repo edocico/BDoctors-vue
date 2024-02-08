@@ -22,7 +22,7 @@
           </div>
           <div class="menu-item">
             <ul class="d-flex align-items-end gap-4">
-              <li class="header-item" @click="fetchAllDoctors()">
+              <li class="header-item" @click="fetchPerSpecialization1()">
                 <router-link
                   :to="{ name: 'doctors.index' }"
                   class="decoration-none text-light"
@@ -124,6 +124,19 @@ export default {
         this.store.allDoctors = res.data.results;
         console.log(this.store.allDoctors);
       });
+    },
+    fetchPerSpecialization1() {
+      axios
+        .get(`${this.store.BASE_URL}/doctors`, {
+          params: {
+            specialization_ids: [1],
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          this.store.doctorsPerSpecialization = res.data.results;
+          console.log(this.store.doctorsPerSpecialization);
+        });
     },
   },
 
