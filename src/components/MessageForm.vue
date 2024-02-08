@@ -3,6 +3,7 @@
         
         <div class="container">
           <h2 class="mb-4">Invia Messaggio</h2>
+          <p class="rule">(*) campi obbligatori</p>
           <form v-on:submit.prevent="messageForm" action="" method="POST">
 
               <div class="d-flex flex-column flex-md-row gap-5 mb-5">
@@ -173,7 +174,7 @@ export default {
 
   mounted() {
     // this.sendMessage()
-    console.log(this.nameParam,this.surnameParam,this.phoneParam,this.emailParam,this.textParam)
+    // console.log(this.nameParam,this.surnameParam,this.phoneParam,this.emailParam,this.textParam)
   }
 };
 </script>
@@ -184,46 +185,13 @@ export default {
   border: 5px solid #c3e2a5;
   box-shadow: 0px 0px 10px #c3e2a5;
   border-radius: 20px 20px 20px 20px;
+
+  .rule {
+    font-size: 14px;
+    font-weight: 600;
+  }
 }
 
-.label-cust {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.input-cust {
-  text-align: 30px;
-  font-size: 16px;
-  line-height: 30px;
-  width: 100%;
-  border: 2px solid rgb(206, 205, 205);
-  border-radius: 5px;
-  padding: 0px 5px;
-  
-}
-
-.error-message {
-  color: red;
-  position: absolute;
-  width: 220px;
-  font-size: 12px;
-
-}
-
-.error-label {
-  color: red;
-}
-
-.error-input {
-  border: 1px solid red;
-  border-radius: 5px;
-  background-color: rgb(247, 230, 230);
-
-}
-
-.position-relative {
-  position: relative;
-}
 
 
 </style>
