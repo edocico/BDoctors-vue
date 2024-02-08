@@ -13,14 +13,21 @@
                 class="badge-special col-auto"
                 v-for="(specializzazione, index) in store.specializations"
                 :key="index"
-                @click="newFilteredDoctors(specializzazione.id)"
+                @click="
+                  newFilteredDoctors(
+                    filtDoctors,
+                    store.allDoctors,
+                    specializzazione.id
+                  )
+                "
               >
-                <RouterLink
+                {{ specializzazione.name }}
+                <!-- <RouterLink
                   :to="{ name: 'doctors.index' }"
                   class="text-light decoration-none"
                 >
                   {{ specializzazione.name }}</RouterLink
-                >
+                > -->
               </li>
             </ul>
           </div>
@@ -29,27 +36,11 @@
     </section>
     <section class="top-rated">
       <div class="container">
-        <h2>top rated</h2>
-        <div class="card-container d-md-flex">
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-        </div>
+        <ul>
+          <li v-for="(doctor, index) in filtDoctors">
+            {{ doctor.phone_number }}
+          </li>
+        </ul>
       </div>
     </section>
   </main>
@@ -71,6 +62,7 @@ export default {
   data() {
     return {
       store: store,
+      filtDoctors: [],
     };
   },
   methods: {
@@ -102,21 +94,19 @@ export default {
         console.log(this.store.allDoctors);
       });
     },
-    newFilteredDoctors(param) {
+    newFilteredDoctors(array, doctors, param) {
       console.log(this.store.allDoctors);
-      let newDoctors = [];
-      const search = "";
-      this.store.allDoctors.forEach((doctor) => {
-        console.log(doctor);
-        console.log(
-          doctor.specializations.some(
-            (specialization) => specialization === param
-          )
-        );
-        doctor.specializations.some(
-          (specialization) => specialization === param
-        );
-      });
+
+      for (let doctor of doctors) {
+        for (let specializzazione of doctor.specializations) {
+          if (specializzazione.id === param) {
+            array.push(doctor);
+          }
+        }
+      }
+
+      console.log(array);
+      return array;
     },
   },
   created() {
