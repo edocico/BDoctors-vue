@@ -1,40 +1,24 @@
 <template>
-  <div class="d-sm-col-12 d-md-col-3 d-xl-col-2">
-    <div class="card-cust">
+  <div class="col-12 col-md-5 col-lg-3 ">
+    <div class="card-cust ">
       <figure>
-        <img
-          v-if="item"
-          :src="store.Url + item.photo"
-          alt=""
-          class="rounded-circle img-thumbnail"
-        />
-        <img
-          v-else-if="data"
-          :src="store.Url + data.photo"
-          alt=""
-          class="rounded-circle img-thumbnail"
-        />
+        <img v-if="item" :src="store.Url + item.photo" alt="" class="img-cust rounded-circle img-thumbnail" />
+        <img v-else-if="data" :src="store.Url + data.photo" alt="" class="img-cust rounded-circle img-thumbnail" />
       </figure>
-      <div class="card-bottom">
+      <div class="card-bottom ">
         <div>
           <font-awesome-icon icon="fa-solid fa-user-doctor" />
           <p>name dottore</p>
         </div>
-        <div>
+        <div class="h-100">
           <font-awesome-icon icon="fa-solid fa-stethoscope" />
           <ul v-if="item">
-            <li
-              v-for="(specializzazione, index) in item.specializations"
-              :key="index"
-            >
+            <li v-for="(specializzazione, index) in item.specializations" :key="index">
               {{ specializzazione.name }}
             </li>
           </ul>
           <ul v-else-if="data">
-            <li
-              v-for="(specializzazione, index) in data.specializations"
-              :key="index"
-            >
+            <li v-for="(specializzazione, index) in data.specializations" :key="index">
               {{ specializzazione.name }}
             </li>
           </ul>
@@ -46,14 +30,10 @@
           <p v-else-if="data">{{ data.phone_number }}</p>
         </div>
         <p v-if="item">
-          <router-link :to="{ name: 'doctors.show', params: { id: item.id } }"
-            >Vai al profilo...</router-link
-          >
+          <router-link :to="{ name: 'doctors.show', params: { id: item.id } }">Vai al profilo...</router-link>
         </p>
         <p v-else-if="data">
-          <router-link :to="{ name: 'doctors.show', params: { id: data.id } }"
-            >Vai al profilo...</router-link
-          >
+          <router-link :to="{ name: 'doctors.show', params: { id: data.id } }">Vai al profilo...</router-link>
         </p>
       </div>
     </div>
@@ -81,6 +61,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+figure {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .img-cust {
+    width: 200px;
+    height: 200px;
+  }
+
+}
+
+
 .card-cust {
   border-color: transparent;
   background-color: #c3e2a5;
