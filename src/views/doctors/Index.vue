@@ -1,4 +1,7 @@
 <template>
+  <!-- <button class="btn btn-primary" :click="fetchAllDoctors()"> -->
+
+  <!-- </button> -->
   <main>
     <section class="search-bar bg-middle-green">
       <div class="">
@@ -17,7 +20,7 @@
             <li
               v-for="(specialization, index) in store.specializations"
               :key="index"
-              @click="fetchPerSpecialization(specialization.id)"
+              @click="axiosDoctors(specialization.id)"
             >
               <RouterLink
                   :to="{ name: 'doctors.index' }"
@@ -64,12 +67,13 @@
       </div>
     </section>
   </main>
+
 </template>
 
 <script>
 import SearchBar from "../../components/SearchBar.vue";
 import DoctorCard from "../../components/DoctorCard.vue";
-import { store, getSpecialization } from "../../store";
+import { store, getSpecialization, getDoctors } from "../../store";
 import axios from "axios";
 
 export default {
@@ -87,36 +91,36 @@ export default {
     fetchData() {
       getSpecialization();
     },
-    fetchAllDoctors() {
-      (this.store.allDoctors = []),
-       (this.store.doctorsPerSpecialization = []);
-      axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
-        console.log(res);
-        this.store.allDoctors = res.data.doctors;
-      });
+    axiosDoctors(id){
+      getDoctors(id);
     },
-    fetchPerSpecialization(index) {
-      (this.store.allDoctors = []), 
-      console.log(index);
-      axios
-        .get(`${this.store.BASE_URL}/doctors`, {
-          params: {
-            specialization_ids: [index],
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.store.doctorsPerSpecialization = res.data.results;
-          console.log(this.store.doctorsPerSpecialization);
-        });
-    },
+    // fetchPerSpecialization(index) {
+    //   (this.store.allDoctors = []), 
+    //   console.log(index);
+    //   axios
+    //     .get(`${this.store.BASE_URL}/doctors`, {
+    //       params: {
+    //         specialization_ids: [index],
+    //       },
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       this.store.doctorsPerSpecialization = res.data.results;
+    //       console.log(this.store.doctorsPerSpecialization);
+    //     });
+    // },
   },
   created() {
     this.fetchData();
     // this.fetchAllDoctors();
   },
-
   mounted() {
+    this.axiosDoctors();
+  },
+  beforeUpdated(){
+    // this.fetchAllDoctors();
+  },
+  updated(){
     // this.fetchAllDoctors();
   }
 };
