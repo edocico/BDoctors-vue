@@ -1,34 +1,26 @@
 <template>
-  <main>
-    <section class="search-bar bg-middle-green">
-      <div class="">
-        <div class="dropdown">
-          <a
-            class="decoration-none text-light header-item"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <font-awesome-icon icon="fa-solid fa-user" class="icon fs-3" />
-            <span class="d-none d-md-inline-block"> Specializzazioni </span>
-          </a>
-          <ul class="dropdown-menu">
-            <li
-              v-for="(specialization, index) in store.specializations"
-              :key="index"
-              @click="fetchPerSpecialization(specialization.id)"
-            >
-              <RouterLink
-                  :to="{ name: 'doctors.index' }"
-                  class="text-light decoration-none"
-                >
+  <main class="pt-2">
+    <section class="bg-middle-green bg-light">
+      <div class="container">
+        <div class="d-flex flex-row-reverse">
+          <div class="btn bg-middle-green dropdown">
+            <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="icon fs-3 pe-2" />
+              <span class="d-none d-md-inline-block fs-5"> Specializzazioni </span>
+            </a>
+            <ul class="dropdown-menu">
+              <li v-for="(specialization, index) in store.specializations" :key="index"
+                @click="fetchPerSpecialization(specialization.id)">
+                <RouterLink :to="{ name: 'doctors.index' }" class="text-light decoration-none">
                   {{ specialization.name }}
-              </RouterLink>
-            </li>
-          </ul>
+                </RouterLink>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+
     </section>
     <section class="search-results">
       <div class="container">
@@ -39,26 +31,15 @@
         <p v-else-if="store.doctorsPerSpecialization.length > 0">
           {{ store.doctorsPerSpecialization.length }} risultati
         </p>
-        <div class="card-container d-block mb-2 d-md-flex gap-4">
+        <div class="card-container d-block  d-md-flex gap-4 justify-content-around h-100">
           <template v-if="store.allDoctors.length > 0">
-            <DoctorCard
-              v-for="(doctor, index) in store.allDoctors"
-              :key="index"
-              :item="doctor"
-            />
+            <DoctorCard class="h-100" v-for="(doctor, index) in store.allDoctors" :key="index" :item="doctor" />
           </template>
 
-          <template
-            v-if="
-              store.allDoctors.length === 0 &&
-              store.doctorsPerSpecialization.length > 0
-            "
-          >
-            <DoctorCard
-              v-for="(doctor, index) in store.doctorsPerSpecialization"
-              :key="index"
-              :data="doctor"
-            />
+          <template v-if="store.allDoctors.length === 0 &&
+            store.doctorsPerSpecialization.length > 0
+            ">
+            <DoctorCard class="h-100" v-for="(doctor, index) in store.doctorsPerSpecialization" :key="index" :data="doctor" />
           </template>
         </div>
       </div>
@@ -67,14 +48,14 @@
 </template>
 
 <script>
-import SearchBar from "../../components/SearchBar.vue";
+// import SearchBar from "../../components/SearchBar.vue";
 import DoctorCard from "../../components/DoctorCard.vue";
 import { store, getSpecialization } from "../../store";
 import axios from "axios";
 
 export default {
   components: {
-    SearchBar,
+    // SearchBar,
     DoctorCard,
   },
 
@@ -89,15 +70,16 @@ export default {
     },
     fetchAllDoctors() {
       (this.store.allDoctors = []),
-       (this.store.doctorsPerSpecialization = []);
+        (this.store.doctorsPerSpecialization = []);
       axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
+
         console.log(res);
         this.store.allDoctors = res.data.doctors;
       });
     },
     fetchPerSpecialization(index) {
-      (this.store.allDoctors = []), 
-      console.log(index);
+      (this.store.allDoctors = []),
+        console.log(index);
       axios
         .get(`${this.store.BASE_URL}/doctors`, {
           params: {
@@ -117,7 +99,7 @@ export default {
   },
 
   mounted() {
-    // this.fetchAllDoctors();
+    this.fetchAllDoctors();
   }
 };
 </script>
@@ -169,11 +151,7 @@ main {
       padding: 20px 0px;
 
       .card-container {
-        /* display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px; */
         flex-wrap: wrap;
-        /*  */
       }
     }
   }
