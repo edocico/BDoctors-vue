@@ -23,10 +23,10 @@
               @click="axiosDoctors(specialization.id)"
             >
               <RouterLink
-                  :to="{ name: 'doctors.index' }"
-                  class="text-light decoration-none"
-                >
-                  {{ specialization.name }}
+                :to="{ name: 'doctors.index' }"
+                class="text-light decoration-none"
+              >
+                {{ specialization.name }}
               </RouterLink>
             </li>
           </ul>
@@ -67,7 +67,6 @@
       </div>
     </section>
   </main>
-
 </template>
 
 <script>
@@ -91,11 +90,11 @@ export default {
     fetchData() {
       getSpecialization();
     },
-    axiosDoctors(id){
+    axiosDoctors(id) {
       getDoctors(id);
     },
     // fetchPerSpecialization(index) {
-    //   (this.store.allDoctors = []), 
+    //   (this.store.allDoctors = []),
     //   console.log(index);
     //   axios
     //     .get(`${this.store.BASE_URL}/doctors`, {
@@ -117,12 +116,12 @@ export default {
   mounted() {
     this.axiosDoctors();
   },
-  beforeUpdated(){
+  beforeUpdated() {
     // this.fetchAllDoctors();
   },
-  updated(){
+  updated() {
     // this.fetchAllDoctors();
-  }
+  },
 };
 </script>
 

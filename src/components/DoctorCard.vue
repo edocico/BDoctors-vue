@@ -1,20 +1,22 @@
 <template>
   <div class="d-sm-col-12 d-md-col-3 d-xl-col-2">
-    <div class="card-cust">
-      <figure>
-        <img
-          v-if="item"
-          :src="store.Url + item.photo"
-          alt=""
-          class="rounded-circle img-thumbnail"
-        />
-        <img
-          v-else-if="data"
-          :src="store.Url + data.photo"
-          alt=""
-          class="rounded-circle img-thumbnail"
-        />
-      </figure>
+    <div class="card-cust h-100">
+      <div class="card-top">
+        <figure>
+          <img
+            v-if="item"
+            :src="store.Url + item.photo"
+            alt=""
+            class="rounded-circle img-thumbnail"
+          />
+          <img
+            v-else-if="data"
+            :src="store.Url + data.photo"
+            alt=""
+            class="rounded-circle img-thumbnail"
+          />
+        </figure>
+      </div>
       <div class="card-bottom">
         <div>
           <font-awesome-icon icon="fa-solid fa-user-doctor" />
@@ -22,7 +24,7 @@
         </div>
         <div>
           <font-awesome-icon icon="fa-solid fa-stethoscope" />
-          <ul v-if="item">
+          <ul v-if="item" class="list">
             <li
               v-for="(specializzazione, index) in item.specializations"
               :key="index"
@@ -30,7 +32,7 @@
               {{ specializzazione.name }}
             </li>
           </ul>
-          <ul v-else-if="data">
+          <ul v-else-if="data" class="list">
             <li
               v-for="(specializzazione, index) in data.specializations"
               :key="index"
@@ -84,7 +86,8 @@ export default {
 .card-cust {
   border-color: transparent;
   background-color: #c3e2a5;
-  //   min-height: 100px;
+  display: flex;
+  flex-direction: column;
   padding: 5px;
   border-radius: 20px 20px 0px 0px;
   box-shadow: 0px 0px 10px #c3e2a5;
@@ -93,12 +96,30 @@ export default {
     display: flex;
     justify-content: center;
     padding: 20px 0px;
+    max-width: 250px;
+    aspect-ratio: 1/1;
+
+    img {
+      display: block;
+    }
   }
 
   .card-bottom {
     padding: 10px 20px;
     color: black;
     background-color: white;
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
   }
 }
 </style>
