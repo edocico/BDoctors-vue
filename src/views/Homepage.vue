@@ -22,27 +22,33 @@
       </section>
       <section class="top-rated">
         <div class="container">
-          <h2>top rated</h2>
-          <div class="card-container d-md-flex">
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
+          <h2 class="text-center mb-5">Top rated (quelli che hanno pagato per farsi vedere)</h2>
+          <div class="d-block mb-2 d-md-flex gap-5 justify-content-evenly ">
+            <template v-if="store.allDoctors.length > 0">
+              <DoctorCard v-for="(doctor, index) in store.allDoctors.slice(0, 4)" :key="index" :item="doctor" />
+            </template>
           </div>
+          
+          <!-- <div class="card-container d-md-flex">
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+          </div> -->
         </div>
       </section>
     </div>
