@@ -20,10 +20,10 @@
               @click="fetchPerSpecialization(specialization.id)"
             >
               <RouterLink
-                  :to="{ name: 'doctors.index' }"
-                  class="text-light decoration-none"
-                >
-                  {{ specialization.name }}
+                :to="{ name: 'doctors.index' }"
+                class="text-light decoration-none"
+              >
+                {{ specialization.name }}
               </RouterLink>
             </li>
           </ul>
@@ -32,15 +32,13 @@
     </section>
     <section class="search-results">
       <div class="container">
-        <p v-if="store.allDoctors.length > 0">
+        <p v-if="(store.filteredDoctors.length = 0)">
           {{ store.allDoctors.length }}
           risultati
         </p>
-        <p v-else-if="store.doctorsPerSpecialization.length > 0">
-          {{ store.doctorsPerSpecialization.length }} risultati
-        </p>
+        <p v-else>{{ store.filteredDoctors.length }} risultati</p>
         <div class="card-container d-block mb-2 d-md-flex gap-4">
-          <template v-if="store.allDoctors.length > 0">
+          <template v-if="(store.filteredDoctors.length = 0)">
             <DoctorCard
               v-for="(doctor, index) in store.allDoctors"
               :key="index"
@@ -48,14 +46,9 @@
             />
           </template>
 
-          <template
-            v-if="
-              store.allDoctors.length === 0 &&
-              store.doctorsPerSpecialization.length > 0
-            "
-          >
+          <template v-if="store.filteredDoctors.length > 0">
             <DoctorCard
-              v-for="(doctor, index) in store.doctorsPerSpecialization"
+              v-for="(doctor, index) in store.filteredDoctors"
               :key="index"
               :data="doctor"
             />
@@ -88,16 +81,14 @@ export default {
       getSpecialization();
     },
     fetchAllDoctors() {
-      (this.store.allDoctors = []),
-       (this.store.doctorsPerSpecialization = []);
+      (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
       axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
         console.log(res);
         this.store.allDoctors = res.data.doctors;
       });
     },
     fetchPerSpecialization(index) {
-      (this.store.allDoctors = []), 
-      console.log(index);
+      (this.store.allDoctors = []), console.log(index);
       axios
         .get(`${this.store.BASE_URL}/doctors`, {
           params: {
@@ -118,7 +109,7 @@ export default {
 
   mounted() {
     // this.fetchAllDoctors();
-  }
+  },
 };
 </script>
 

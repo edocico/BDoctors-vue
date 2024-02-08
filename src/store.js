@@ -9,6 +9,7 @@ export const store = reactive({
   specializations: [],
   allDoctors: [],
   doctorsPerSpecialization: [],
+  filteredDoctors: [],
 });
 export function getSpecialization() {
   axios.get(`${store.BASE_URL}/specializations`).then((res) => {

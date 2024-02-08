@@ -13,7 +13,7 @@
                 class="badge-special col-auto"
                 v-for="(specializzazione, index) in store.specializations"
                 :key="index"
-                @click="fetchPerSpecialization(specializzazione.id)"
+                @click="newFilteredDoctors(specializzazione.id)"
               >
                 <RouterLink
                   :to="{ name: 'doctors.index' }"
@@ -91,9 +91,37 @@ export default {
           console.log(this.store.doctorsPerSpecialization);
         });
     },
+    storeCleaner() {
+      this.store.filteredDoctors = [];
+    },
+    fetchAllDoctors() {
+      console.log(this.store.specializations);
+      axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
+        console.log(res);
+        this.store.allDoctors = res.data.results;
+        console.log(this.store.allDoctors);
+      });
+    },
+    newFilteredDoctors(param) {
+      console.log(this.store.allDoctors);
+      let newDoctors = [];
+      const search = "";
+      this.store.allDoctors.forEach((doctor) => {
+        console.log(doctor);
+        console.log(
+          doctor.specializations.some(
+            (specialization) => specialization === param
+          )
+        );
+        doctor.specializations.some(
+          (specialization) => specialization === param
+        );
+      });
+    },
   },
   created() {
     this.fetchData();
+    this.fetchAllDoctors();
   },
 };
 </script>

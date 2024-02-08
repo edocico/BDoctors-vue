@@ -22,7 +22,7 @@
           </div>
           <div class="menu-item">
             <ul class="d-flex align-items-end gap-4">
-              <li class="header-item" @click="fetchAllDoctors()">
+              <li class="header-item" @click="storeCleaner()">
                 <router-link
                   :to="{ name: 'doctors.index' }"
                   class="decoration-none text-light"
@@ -124,6 +124,9 @@ export default {
         this.store.allDoctors = res.data.results;
         console.log(this.store.allDoctors);
       });
+    },
+    storeCleaner() {
+      this.store.filteredDoctors = [];
     },
   },
 
