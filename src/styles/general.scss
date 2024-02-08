@@ -2,7 +2,7 @@ body {
   font-family: "Merriweather", serif;
 }
 
-//testi colori
+//TEXT COLOR
 .text-extra-light-green {
     color: #c3e2a5;
 }
@@ -18,7 +18,7 @@ body {
     color: #43762b;
 }
 
-//background colori
+//BACKGROUND COLOR
 .bg-extra-light-green {
     background-color: #c3e2a5;
 }
@@ -38,18 +38,18 @@ body {
     background-color: #274b16;
 }
 
-//Cursor 
+//CURSOR
 .cursor-pointer {
     cursor: pointer;
 }
 
-//Hover
+//HOVER
 li:hover {
     color: #ddf5c5;
     cursor: pointer;
 }
 
-//Button
+//BUTTON
 .btn-cust {
     color: white;
     font-size: 18px;
@@ -80,4 +80,43 @@ li:hover {
       background-color: rgb(216, 3, 3);
     }
     
+}
+
+// INPUT
+.label-cust {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.input-cust {
+    text-align: 30px;
+    font-size: 16px;
+    line-height: 30px;
+    width: 100%;
+    border: 2px solid rgb(206, 205, 205);
+    border-radius: 5px;
+    padding: 0px 5px;
+}
+
+//ERROR MESSAGE/SIGN
+.error-message {
+    color: red;
+    position: absolute;
+    width: 200px;
+    font-size: 12px;  
+}
+  
+.error-label {
+color: red;
+}
+  
+.error-input {
+border: 1px solid red;
+border-radius: 5px;
+background-color: rgb(247, 230, 230);
+}
+
+//POSITION
+.position-relative {
+    position: relative;
 }
