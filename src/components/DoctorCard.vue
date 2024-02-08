@@ -1,5 +1,5 @@
 <template>
-  <div class="d-sm-col-12 d-md-col-3 d-xl-col-2">
+  <div class="col-12 col-md-5 col-lg-3">
     <div class="card-cust h-100">
       <div class="card-top">
         <figure>
@@ -92,6 +92,12 @@ export default {
   border-radius: 20px 20px 0px 0px;
   box-shadow: 0px 0px 10px #c3e2a5;
 
+  &:hover {
+    box-shadow: 0px 3px 3px 3px #73b760;
+    border-radius: 20px 20px 0px 0px;
+    transform: scale(1.1);
+  }
+
   figure {
     display: flex;
     justify-content: center;
@@ -101,6 +107,9 @@ export default {
 
     img {
       display: block;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
     }
   }
 
