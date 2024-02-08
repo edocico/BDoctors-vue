@@ -13,7 +13,7 @@
                 class="badge-special col-auto"
                 v-for="(specializzazione, index) in store.specializations"
                 :key="index"
-                @click="fetchPerSpecialization(specializzazione.id)"
+                @click="axiosDoctors(specializzazione.id)"
               >
                 <RouterLink
                   :to="{ name: 'doctors.index' }"
@@ -58,7 +58,7 @@
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import DoctorCard from "../components/DoctorCard.vue";
-import { store, getSpecialization } from "../store";
+import { store, getSpecialization, getDoctors } from "../store";
 import axios from "axios";
 import { RouterLink } from "vue-router";
 
@@ -77,20 +77,23 @@ export default {
     fetchData() {
       getSpecialization();
     },
-    fetchPerSpecialization(index) {
-      (this.store.allDoctors = []), console.log(index);
-      axios
-        .get(`${this.store.BASE_URL}/doctors`, {
-          params: {
-            specialization_ids: [index],
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          this.store.doctorsPerSpecialization = res.data.results;
-          console.log(this.store.doctorsPerSpecialization);
-        });
+    axiosDoctors(id){
+      getDoctors(id);
     },
+    // fetchPerSpecialization(index) {
+    //   (this.store.allDoctors = []), console.log(index);
+    //   axios
+    //     .get(`${this.store.BASE_URL}/doctors`, {
+    //       params: {
+    //         specialization_ids: [index],
+    //       },
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       this.store.doctorsPerSpecialization = res.data.results;
+    //       console.log(this.store.doctorsPerSpecialization);
+    //     });
+    // },
   },
   created() {
     this.fetchData();

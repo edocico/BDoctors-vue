@@ -22,7 +22,7 @@
           </div>
           <div class="menu-item">
             <ul class="d-flex align-items-end gap-4">
-              <li class="header-item" @click="fetchAllDoctors()">
+              <li class="header-item" @click="axiosDoctors()">
                 <router-link
                   :to="{ name: 'doctors.index' }"
                   class="decoration-none text-light"
@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import { store } from "../store.js";
+import { store, getDoctors } from "../store.js";
 import axios from "axios";
 
 export default {
@@ -117,14 +117,17 @@ export default {
   },
 
   methods: {
-    fetchAllDoctors() {
-      (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
-      axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
-        console.log(res);
-        this.store.allDoctors = res.data.results;
-        console.log(this.store.allDoctors);
-      });
+    axiosDoctors(){
+      getDoctors();
     },
+    // fetchAllDoctors() {
+    //   (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);
+    //   axios.get(`${this.store.BASE_URL}/doctors`).then((res) => {
+    //     console.log(res);
+    //     this.store.allDoctors = res.data.results;
+    //     console.log(this.store.allDoctors);
+    //   });
+    // },
   },
 
   created() {
