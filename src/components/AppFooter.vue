@@ -2,7 +2,7 @@
   <footer>
     <div class="container">
       <div class="footer-top">
-        <div class="d-lg-flex justify-content-between ">
+        <div class="d-lg-flex justify-content-between">
           <div class="order-lg-2 d-md-col-9">
             <h5 class="text-large-footer text-center">
               <router-link
@@ -11,22 +11,27 @@
                 >I nostri specialisti</router-link
               >
             </h5>
-              <div class="container">
-                <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between">
-                  <li class="col-3 ju" v-for="(specialization,index ) in store.specializations" 
-                    :key="index"
-                    @click="fetchPerSpecialization(specialization.id)">
-                    <RouterLink
-                  :to="{ name: 'doctors.index' }"
-                  class="text-light decoration-none"
+            <div class="container">
+              <ul
+                class="d-block d-md-flex flex-wrap gap-1 justify-content-between"
+              >
+                <li
+                  class="col-3 ju"
+                  v-for="(specialization, index) in store.specializations"
+                  :key="index"
+                  @click="axiosDoctors(specialization.id)"
                 >
-                  {{ specialization.name }}</RouterLink
-                >
-                  </li>
+                  <RouterLink
+                    :to="{ name: 'doctors.index' }"
+                    class="text-light decoration-none"
+                  >
+                    {{ specialization.name }}</RouterLink
+                  >
+                </li>
               </ul>
-              </div>
+            </div>
           </div>
-          <div class="order-lg-1 d-md-col-3  pt-2">
+          <div class="order-lg-1 d-md-col-3 pt-2">
             <div class="text-center">
               <router-link
                 :to="{ name: 'home' }"
@@ -48,21 +53,29 @@
                 <strong class="text-light-green">Contattaci</strong>
               </router-link>
             </p>
-            <ul class="d-flex justify-content-center  gap-5 ">
+            <ul class="d-flex justify-content-center gap-5">
               <li class="social-icon">
-                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-facebook" /></a>
+                <a class="text-light-green" href="#"
+                  ><font-awesome-icon icon="fa-brands fa-facebook"
+                /></a>
               </li>
               <li class="social-icon">
-                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-square-instagram" /></a>
+                <a class="text-light-green" href="#"
+                  ><font-awesome-icon icon="fa-brands fa-square-instagram"
+                /></a>
               </li>
               <li class="social-icon">
-                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
+                <a class="text-light-green" href="#"
+                  ><font-awesome-icon icon="fa-brands fa-linkedin"
+                /></a>
               </li>
-              <li class="social-icon ">
-                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-youtube" /></a>
+              <li class="social-icon">
+                <a class="text-light-green" href="#"
+                  ><font-awesome-icon icon="fa-brands fa-youtube"
+                /></a>
               </li>
             </ul>
-          </div>  
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -77,22 +90,25 @@
 </template>
 
 <script>
-import { store,getSpecialization } from '../store.js'
-import axios from 'axios';
- 
+import { store, getSpecialization, getDoctors } from "../store.js";
+import axios from "axios";
+
 export default {
   data() {
     return {
       store: store,
-    }
+    };
   },
 
   methods: {
-    fetchData(){
-      getSpecialization()
+    fetchData() {
+      getSpecialization();
+    },
+    axiosDoctors(id) {
+      getDoctors(id);
     },
 
-    fetchPerSpecialization(index) {
+    /* fetchPerSpecialization(index) {
       (this.store.allDoctors = []), 
       console.log(index);
       axios
@@ -106,13 +122,12 @@ export default {
           this.store.doctorsPerSpecialization = res.data.results;
           console.log(this.store.doctorsPerSpecialization);
         });
-    },
+    }, */
   },
 
-  created(){
-    this.fetchData()
-  }
-
+  created() {
+    this.fetchData();
+  },
 };
 </script>
 
@@ -149,16 +164,12 @@ li:hover {
 
   .social-icon {
     font-size: 24px;
-    
+
     // &:hover {
     //   color: #73b760;
     // }
   }
-
-  
 }
-
-
 
 .footer-bottom {
   padding: 30px 0px;
