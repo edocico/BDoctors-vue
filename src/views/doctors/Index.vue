@@ -1,9 +1,9 @@
 <template>
-  <main class="pt-2">
+  <main class="pt-4">
 
     <section class="bg-middle-green bg-light">
       <div class="container">
-        <div class="d-flex flex-row-reverse">
+        <div class="d-flex flex-row-reverse ">
           <div class="btn bg-middle-green dropdown">
             <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
