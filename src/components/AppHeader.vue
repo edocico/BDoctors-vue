@@ -21,7 +21,7 @@
             </router-link>
           </div>
           <div class="menu-item">
-            <ul class="d-flex align-items-end gap-4">
+            <ul class="d-flex align-items-end gap-2">
               <li class="header-item" @click="axiosDoctors()">
                 <router-link
                   :to="{ name: 'doctors.index' }"
@@ -31,7 +31,7 @@
                     icon="fa-solid fa-user-doctor"
                     class="icon fs-3"
                   />
-                  <span class="d-none d-md-inline-block">I nostri medici</span>
+                  <span class="d-none d-md-inline-block text-uppercase">I nostri medici</span>
                 </router-link>
               </li>
 
@@ -44,7 +44,7 @@
                     icon="fa-solid fa-address-book"
                     class="icon fs-3"
                   />
-                  <span class="d-none d-md-inline-block">Contattaci</span>
+                  <span class="d-none d-md-inline-block text-uppercase">Contattaci</span>
                 </router-link>
               </li>
 
@@ -60,7 +60,7 @@
                     icon="fa-solid fa-user"
                     class="icon fs-3"
                   />
-                  <span v-if="!authenticated" class="d-none d-md-inline-block"
+                  <span v-if="!authenticated" class="d-none d-md-inline-block text-uppercase"
                     >profilo dottore
                   </span>
                   <span v-else="authenticated" class="d-none d-md-inline-block"
@@ -148,11 +148,13 @@ header {
 
   .dropdown-item {
     color: white;
+   
     font-weight: 600;
   }
 
   .dropdown-item:hover {
     color: #b0e29d;
+    
     background-color: #43762b;
   }
 }
@@ -166,7 +168,8 @@ header {
 }
 
 .header-item {
-  padding: 5px;
+  padding: 0px 15px;
+  line-height: 30px;
   vertical-align: 5px;
   font-size: 16px;
   font-weight: 800;
@@ -174,7 +177,6 @@ header {
 
 li:hover {
   color: white;
-  // font-weight: 700;
   background-color: #43762b;
   border-radius: 99px;
 }
