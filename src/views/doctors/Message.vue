@@ -2,47 +2,82 @@
   <section class="message">
     <h1>Manda un messaggio</h1>
     <div class="container">
-        <form v-on:submit.prevent="messageForm" action="" method="POST">
-              <div class="d-flex gap-5  mb-2 ">
-                <div>
-                  <div class="label-cust">
-                      <label for="name">Inserisci nome:</label>
-                  </div>
-                  <input class="input-cust " type="text" placeholder="Francesco" name="name" v-model="nameParam">
-                  <div class="error-message" v-if="nameError">{{ nameError }}</div>
-                </div>
-                <div>
-                  <div class="label-cust">
-                      <label for="surname">Inserisci cognome:</label>
-                  </div>
-                  <input class="input-cust " type="text" placeholder="Rossi" name="surname" v-model="surnameParam">
-                  <div class="error-message" v-if="surnameError">{{ surnameError }}</div>
-                </div>
-                <div>
-                  <div class="label-cust">
-                      <label for="surname">Inserisci cellulare:</label>   
-                  </div>
-                  <input type="tel" name="phone number" id="phone number" pattern="[0-9]{10}" required v-model="phoneParam">
-                  <div class="error-message" v-if="phoneError">{{ phoneError }}</div>
-                </div>  
-              </div>
-              <div class="mb-2">
-                  <div class="label-cust">
-                      <label for="name">Inserisci mail:</label>
-                  </div>
-                  <input class="input-cust " type="email" name="Inserisci la tua mail" id="email" placeholder="francescorossi@gmail.com" v-model="emailParam">
-                  <div class="error-message" v-if="emailError">{{ emailError }}</div>
-              </div>
-              <div class="mb-2
-              ">
-                  <div class="label-cust mb-2">
-                      <label for="name">Scrivi messaggio:</label>
-                  </div>
-                  <textarea class="input-cust" name="message" id="" cols="100" rows="10" placeholder="messaggio" v-model="textParam"></textarea>
-                  <div class="error-message" v-if="textError">{{ textError }}</div>
-              </div>
-            <input class="btn-cust" type="submit" value="Invia">
-        </form>
+      <form v-on:submit.prevent="messageForm" action="" method="POST">
+        <div class="d-flex gap-5 mb-2">
+          <div class="input-box">
+            <div class="label-cust">
+              <label for="name">Inserisci nome:</label>
+            </div>
+            <input
+              class="input-cust"
+              type="text"
+              placeholder="Francesco"
+              name="name"
+              v-model="nameParam"
+            />
+            <div class="error-message" v-if="nameError">{{ nameError }}</div>
+          </div>
+          <div class="input-box">
+            <div class="label-cust">
+              <label for="surname">Inserisci cognome:</label>
+            </div>
+            <input
+              class="input-cust"
+              type="text"
+              placeholder="Rossi"
+              name="surname"
+              v-model="surnameParam"
+            />
+            <div class="error-message" v-if="surnameError">
+              {{ surnameError }}
+            </div>
+          </div>
+          <div class="input-box">
+            <div class="label-cust">
+              <label for="surname">Inserisci cellulare:</label>
+            </div>
+            <input
+              type="tel"
+              name="phone number"
+              id="phone number"
+              pattern="[0-9]{10}"
+              required
+              v-model="phoneParam"
+            />
+            <div class="error-message" v-if="phoneError">{{ phoneError }}</div>
+          </div>
+        </div>
+        <div class="mb-2 input-box">
+          <div class="label-cust">
+            <label for="name">Inserisci mail:</label>
+          </div>
+          <input
+            class="input-cust"
+            type="email"
+            name="Inserisci la tua mail"
+            id="email"
+            placeholder="francescorossi@gmail.com"
+            v-model="emailParam"
+          />
+          <div class="error-message" v-if="emailError">{{ emailError }}</div>
+        </div>
+        <div class="mb-2 input-box">
+          <div class="label-cust mb-2">
+            <label for="name">Scrivi messaggio:</label>
+          </div>
+          <textarea
+            class="input-cust"
+            name="message"
+            id=""
+            cols="100"
+            rows="10"
+            placeholder="messaggio"
+            v-model="textParam"
+          ></textarea>
+          <div class="error-message" v-if="textError">{{ textError }}</div>
+        </div>
+        <input class="btn-cust" type="submit" value="Invia" />
+      </form>
     </div>
   </section>
 </template>
@@ -52,46 +87,46 @@ import axios from "axios";
 export default {
   data() {
     return {
-      nameParam: '',
-      surnameParam: '',
-      phoneParam: '',
-      emailParam: '',
-      textParam: '',
-      BASE_URL:'http://127.0.0.1:8000',
-      nameError: '',
-      surnameError: '',
-      phoneError:'',
-      emailError: '',
-      textError: '',
-    }
+      nameParam: "",
+      surnameParam: "",
+      phoneParam: "",
+      emailParam: "",
+      textParam: "",
+      BASE_URL: "http://127.0.0.1:8000",
+      nameError: "",
+      surnameError: "",
+      phoneError: "",
+      emailError: "",
+      textError: "",
+    };
   },
 
   methods: {
     messageForm() {
-
       this.resetErrorMessages();
 
-      if(!this.validateName()) {
-        this.nameError = 'Il nome deve avere un min 2 max 100 caratteri'
+      if (!this.validateName()) {
+        this.nameError = "Il nome deve avere un min 2 max 100 caratteri";
       }
 
-      if(!this.validateSurname()) {
-        this.surnameError = 'Il cognome deve avere un min 2 max 100 caratteri'
+      if (!this.validateSurname()) {
+        this.surnameError = "Il cognome deve avere un min 2 max 100 caratteri";
       }
 
-      if(!this.validatePhoneNumber()) {
-        this.phoneError = 'Il numero di telefono deve contenere almeno 10 cifre'
+      if (!this.validatePhoneNumber()) {
+        this.phoneError =
+          "Il numero di telefono deve contenere almeno 10 cifre";
       }
 
-      if(!this.emailParam) {
-        this.emailError = 'Inserisci una mail valida'
+      if (!this.emailParam) {
+        this.emailError = "Inserisci una mail valida";
       }
 
-      if(!this.validateText()) {
-        this.textError = 'Il messaggio deve contenere come minimo 5 caratteri'
+      if (!this.validateText()) {
+        this.textError = "Il messaggio deve contenere come minimo 5 caratteri";
       }
 
-      if (this.hasErrors()) {
+      /* if (this.hasErrors()) {
         alert('Validazione del modulo fallita. Controlla i tuoi inserimenti:\n' +
           `- ${this.nameError}\n` +
           `- ${this.surnameError}\n` +
@@ -99,16 +134,23 @@ export default {
           `- ${this.emailError}\n` +
           `- ${this.textError}`);
         return;
-      }
-      
+      } */
     },
 
     validateName() {
-      return this.nameParam.trim() !== '' && this.nameParam.trim().length >= 2 && this.nameParam.trim().length <= 100;
+      return (
+        this.nameParam.trim() !== "" &&
+        this.nameParam.trim().length >= 2 &&
+        this.nameParam.trim().length <= 100
+      );
     },
 
     validateSurname() {
-      return this.surnameParam.trim() !== '' && this.surnameParam.trim().length >= 2 && this.surnameParam.trim().length <= 100;;
+      return (
+        this.surnameParam.trim() !== "" &&
+        this.surnameParam.trim().length >= 2 &&
+        this.surnameParam.trim().length <= 100
+      );
     },
 
     validatePhoneNumber() {
@@ -120,22 +162,26 @@ export default {
     // },
 
     validateText() {
-      return this.textParam.trim() !== '' && this.textParam.trim().length >= 5;
+      return this.textParam.trim() !== "" && this.textParam.trim().length >= 5;
     },
 
     resetErrorMessages() {
-      
-      this.nameError = '';
-      this.surnameError = '';
-      this.phoneError = '';
-      this.emailError = '';
-      this.textError = '';
-
+      this.nameError = "";
+      this.surnameError = "";
+      this.phoneError = "";
+      this.emailError = "";
+      this.textError = "";
     },
 
     hasErrors() {
-      return this.nameError || this.surnameError || this.phoneError || this.emailError || this.textError;
-    }
+      return (
+        this.nameError ||
+        this.surnameError ||
+        this.phoneError ||
+        this.emailError ||
+        this.textError
+      );
+    },
     // sendMessage() {
     //   axios.post('http://127.0.0.1:8000/api/messages?name=Prova Fede&surname=Prova Surname&phone_number=123456789&email=prova@prova.com&message=blablabla&doctor_id=2').then (res=>{
     //     console.log(res.data)
@@ -146,8 +192,14 @@ export default {
 
   mounted() {
     // this.sendMessage()
-    console.log(this.nameParam,this.surnameParam,this.phoneParam,this.emailParam,this.textParam)
-  }
+    console.log(
+      this.nameParam,
+      this.surnameParam,
+      this.phoneParam,
+      this.emailParam,
+      this.textParam
+    );
+  },
 };
 </script>
 
@@ -170,5 +222,10 @@ export default {
 .error-message {
   color: red;
   padding-top: 3px;
+  position: absolute;
+}
+
+.input-box {
+  position: relative;
 }
 </style>
