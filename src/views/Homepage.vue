@@ -27,9 +27,8 @@
             <template v-if="store.allDoctors.length > 0">
               <DoctorCard v-for="(doctor, index) in store.allDoctors.slice(0, 4)" :key="index" :item="doctor" />
             </template>
-          </div>
-          
-          <!-- <div class="card-container d-md-flex">
+
+            <!-- <div class="card-container d-md-flex">
             <div class="column d-sm-block col-md-4 col-xl-2">
               <DoctorCard />
             </div>
@@ -49,13 +48,14 @@
               <DoctorCard />
             </div>
           </div> -->
+          </div>
         </div>
       </section>
     </div>
+
     <div v-else class="loading">
       Caricamento...
     </div>
-
 
   </main>
 </template>
@@ -102,6 +102,7 @@ export default {
   },
   created() {
     this.fetchData();
+    this.axiosDoctors();
   },
 };
 </script>
@@ -166,9 +167,6 @@ li:hover {
   padding: 70px 0px;
 
   .card-container {
-    /* display: grid;
-    grid-template-columns: repeat(1, 1fr); */
-    // gap: 30px;
     margin-top: 50px;
     flex-wrap: wrap;
 
