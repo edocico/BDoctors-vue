@@ -123,6 +123,7 @@ export default {
     },
     FilteredDoctors(array, doctors, param) {
       console.log(this.store.allDoctors);
+      this.store.filteredDoctors = [];
 
       for (let doctor of doctors) {
         for (let specializzazione of doctor.specializations) {
