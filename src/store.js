@@ -9,6 +9,7 @@ export const store = reactive({
   specializations: [],
   allDoctors: [],
   doctorsPerSpecialization: [],
+  Idspec: "",
 });
 
 export function getSpecialization() {
@@ -19,14 +20,16 @@ export function getSpecialization() {
 }
 
 export function getDoctors(index) {
-  console.log(index, 'index');
-  axios.get(`http://127.0.0.1:8000/api/doctors`, {
-    params: {
-      specialization_ids: [index]
-    }
-  }).then((res) => {
-    console.log(res, 'chiamata prova');
-    store.allDoctors = res.data.results;
-  });
+  console.log(index, "index");
+  store.Idspec = index;
+  axios
+    .get(`http://127.0.0.1:8000/api/doctors`, {
+      params: {
+        specialization_ids: [index],
+      },
+    })
+    .then((res) => {
+      console.log(res, "chiamata prova");
+      store.allDoctors = res.data.results;
+    });
 }
-
