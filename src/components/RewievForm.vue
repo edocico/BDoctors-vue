@@ -5,7 +5,7 @@
       <p class="rule">(*) campi obbligatori</p>
       <div class="container review-form">
         <form action="" method="POST">
-
+          <!-- input fullname -->
           <div class="mb-5">  
             <div class="label-cust">
               <label for="name">Inserisci il tuo nome: *</label>
@@ -13,15 +13,15 @@
             <div class="position-relative">
               <input class="input-cust"
               :class="{ 'error-input': errorMessage && (!nameParam || nameParam.trim().length < 3 || nameParam.trim().length > 100) }" 
-              type="text" placeholder="Francesco Rossi" name="name" required
-                pattern="[A-Za-z]+" v-model="nameParam" />
+              type="text" placeholder="Francesco Rossi" name="name" 
+              v-model="nameParam" />
               <div v-if="errorMessage" class="error-message">
                 Il campo del nome è obbligatorio e deve essere almeno tre
                 caratteri
               </div>
             </div>
           </div>
-
+          <!-- input vote -->
           <div class="mb-4">
             <div class="label-cust">
               <label for="vote">lascia un voto *</label>
@@ -40,6 +40,7 @@
               Campo obbligatorio
             </div>
           </div>
+          <!-- input rewiev -->
           <div class="mb-2">
             <div class="label-cust mb-2">
               <label for="name">Recensione <span class="optional">(opzionale)</span></label>
@@ -47,8 +48,9 @@
             <textarea class="input-cust" name="review" id="" cols="50" rows="6" placeholder="recensione"
               v-model="reviewParam"></textarea>
           </div>
+
           <div class="d-flex gap-5">
-            <input class="btn-cust" type="submit" value="Invia" @click="sendReview()" />
+            <input class="btn-cust" type="submit" value="Invia" />
             <button class="btn-cust-red" @click="closeReviewForm()">Chiudi</button>
           </div>
         </form>
@@ -66,7 +68,8 @@ export default {
       allowedValues: [1, 2, 3, 4, 5],
       reviewParam: "",
       errorMessage: false,
-      showReviewForm: false
+      showReviewForm: false,
+      rewievSend: false,
 
     };
   },
