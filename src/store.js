@@ -31,5 +31,6 @@ export function getDoctors(index) {
     .then((res) => {
       console.log(res, "chiamata prova");
       store.allDoctors = res.data.results;
+      store.Idspec = "";
     });
 }

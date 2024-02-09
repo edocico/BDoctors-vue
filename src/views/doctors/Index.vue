@@ -19,10 +19,11 @@
                   >{{ store.doctorsPerSpecialization.length }} risultati</span
                 >
               </p> -->
-              <p>
+              <p v-if="store.Idspec > 0">
                 stai visualizzando
                 {{ findSpecName(store.specializations, store.Idspec) }}
               </p>
+              <p v-else>stai visualizzando tutti i medici</p>
             </div>
             <div class="btn bg-middle-green dropdown">
               <a
