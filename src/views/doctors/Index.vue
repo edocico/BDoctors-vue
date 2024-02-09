@@ -1,9 +1,17 @@
 <template>
   <main class="pt-2">
     <div v-if="store.allDoctors.length > 0 || store.doctorsPerSpecialization.length > 0">
-      <section class="">
+      <section class="search-header mb-4">
         <div class="container">
-          <div class="d-flex align-items-center flex-row-reverse">
+          <div class="d-flex align-items-center justify-content-between">
+            <span>
+              <p v-if="store.allDoctors.length > 0">
+                <span  class="results text-dark-green">{{ store.allDoctors.length }} risultati</span>  
+              </p>
+              <p v-else-if="store.doctorsPerSpecialization.length > 0">
+                <span class="">{{ store.doctorsPerSpecialization.length }} risultati</span>
+              </p>
+            </span>
             <div class="btn bg-middle-green dropdown">
               <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -24,14 +32,7 @@
       </section>
       <section class="search-results">
         <div class="container">
-          <span>
-              <p v-if="store.allDoctors.length > 0">
-                <span  class="results text-dark-green">{{ store.allDoctors.length }} risultati</span>  
-              </p>
-              <p v-else-if="store.doctorsPerSpecialization.length > 0">
-                <span class="">{{ store.doctorsPerSpecialization.length }} risultati</span>
-              </p>
-          </span>
+         
           <!-- <p v-if="store.allDoctors.length > 0">
           {{ store.allDoctors.length }}
           risultati
