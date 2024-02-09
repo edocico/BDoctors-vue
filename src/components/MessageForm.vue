@@ -1,6 +1,6 @@
 <template>
     <section class="message" >
-        <h1>Nuovo Messaggio</h1>
+        <h1>Contatta il medico</h1>
         <div class="container">
         <form v-on:submit.prevent="messageForm" action="" method="POST">
             <div class="d-flex flex-column flex-md-row gap-5 mb-2">
