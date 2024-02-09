@@ -1,78 +1,123 @@
 <template>
   <main>
-    <section class="home-search">
-      <div class="container">
-        <figure>
-          <img src="../assets/logo-color.png" alt="" class="logo" />
-        </figure>
-        <div class="search">
-          <h3>Seleziona una specializzazione</h3>
-          <div class="d-block d-md-flex justify-content-between">
-              <ul class="row justify-content-center gap-2 ">
-                <li class="badge-special col-auto " v-for="specializzazione in store.specializations" :key="specializzazione">
-                  {{specializzazione.name}}
+    <div v-if="store.specializations.length > 0">
+      <section class="home-search">
+        <div class="container">
+          <figure>
+            <img src="../assets/logo-color.png" alt="" class="logo" />
+          </figure>
+          <div class="search">
+            <h3>Seleziona una specializzazione</h3>
+            <div class="d-block d-md-flex justify-content-between">
+              <ul class="row justify-content-center gap-2">
+                <li class="badge-special col-auto" v-for="(specializzazione, index) in store.specializations" :key="index"
+                  @click="axiosDoctors(specializzazione.id)">
+                  <RouterLink :to="{ name: 'doctors.index' }" class="text-light decoration-none">
+                    {{ specializzazione.name }}</RouterLink>
                 </li>
               </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="top-rated">
-      <div class="container">
-        <h2>top rated</h2>
-        <div class="card-container d-md-flex">
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
-          </div>
-          <div class="column d-sm-block col-md-4 col-xl-2">
-            <DoctorCard />
+      </section>
+      <section class="top-rated">
+        <div class="container">
+          <h2 class="text-center mb-5">Top rated (quelli che hanno pagato per farsi vedere)</h2>
+          <div class="d-block mb-2 d-md-flex gap-5 justify-content-evenly ">
+            <template v-if="store.allDoctors.length > 0">
+              <DoctorCard v-for="(doctor, index) in store.allDoctors.slice(0, 4)" :key="index" :item="doctor" />
+            </template>
+
+            <!-- <div class="card-container d-md-flex">
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+            <div class="column d-sm-block col-md-4 col-xl-2">
+              <DoctorCard />
+            </div>
+          </div> -->
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+
+    <div v-else class="loading">
+      Caricamento...
+    </div>
+
   </main>
 </template>
 
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import DoctorCard from "../components/DoctorCard.vue";
-import { store, getSpecialization } from "../store";
+import { store, getSpecialization, getDoctors } from "../store";
+import axios from "axios";
+import { RouterLink } from "vue-router";
 
 export default {
   components: {
     SearchBar,
     DoctorCard,
+    RouterLink,
   },
-  data(){
-    return{
-      store:store,
-
-    }
+  data() {
+    return {
+      store: store,
+    };
   },
   methods: {
-    fetchData(){
-      getSpecialization()
-    }
+    fetchData() {
+      getSpecialization();
+    },
+    axiosDoctors(id) {
+      getDoctors(id);
+    },
+    // fetchPerSpecialization(index) {
+    //   (this.store.allDoctors = []), console.log(index);
+    //   axios
+    //     .get(`${this.store.BASE_URL}/doctors`, {
+    //       params: {
+    //         specialization_ids: [index],
+    //       },
+    //     })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       this.store.doctorsPerSpecialization = res.data.results;
+    //       console.log(this.store.doctorsPerSpecialization);
+    //     });
+    // },
   },
-  created(){
-    this.fetchData()
-  }
-}
+  created() {
+    this.fetchData();
+    this.axiosDoctors();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+.loading {
+  text-align: center;
+  font-size: 100px;
+  padding: 130px 0px;
+}
+
+
+li:hover {
+  color: #c3e2a5;
+}
 
 .badge-special {
   background-color: #43762b;
@@ -120,10 +165,8 @@ export default {
 
 .top-rated {
   padding: 70px 0px;
+
   .card-container {
-    /* display: grid;
-    grid-template-columns: repeat(1, 1fr); */
-    // gap: 30px;
     margin-top: 50px;
     flex-wrap: wrap;
 
