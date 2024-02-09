@@ -19,9 +19,11 @@
                   >{{ store.doctorsPerSpecialization.length }} risultati</span
                 >
               </p> -->
-              <p>
-                stai visualizzando
-                {{ findSpecName(store.specializations, store.Idspec) }}
+              <p class="text-dark-green fst-italic fs-5">
+                stai visualizzando:
+                <span class="text-uppercase fw-bold fs-3 mx-2">
+                  {{ findSpecName(store.specializations, store.Idspec) }}
+                </span>
               </p>
               <!-- <p v-else>stai visualizzando tutti i medici</p> -->
             </div>
@@ -34,7 +36,7 @@
                 aria-expanded="false"
               >
                 <font-awesome-icon
-                  icon="fa-solid fa-user"
+                  icon="fa-solid fa-magnifying-glass"
                   class="icon fs-5 pe-3"
                 />
                 <span class="d-none d-md-inline-block fs-5">
