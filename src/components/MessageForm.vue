@@ -80,13 +80,12 @@
         <div v-else class="success">
           <div class="d-flex align-items-center mb-4">
             <font-awesome-icon class="pe-2 text-middle-green icon-success" icon="fa-solid fa-circle-check" />
-            <p class="mb-0 msg-success">messaggio inviato inviato con successo</p>
+            <p class="mb-0 msg-success">messaggio inviato con successo</p>
             
           </div>
           <div class="d-flex justify-content-center">
             <button class="btn-cust-red" @click="closeForm">Chiudi</button>
-          </div>
-            
+          </div>    
         </div>
     </section>
 </template>
@@ -242,7 +241,10 @@ export default {
     font-weight: 600;
   }
 
-  .success {
+  
+}
+
+.success {
     padding: 5px;
 
     .icon-success {
@@ -254,8 +256,4 @@ export default {
       text-align:center;
     }
   }
-}
-
-
-
 </style>
