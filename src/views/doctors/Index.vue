@@ -19,11 +19,11 @@
                   >{{ store.doctorsPerSpecialization.length }} risultati</span
                 >
               </p> -->
-              <p v-if="store.Idspec > 0">
+              <p>
                 stai visualizzando
                 {{ findSpecName(store.specializations, store.Idspec) }}
               </p>
-              <p v-else>stai visualizzando tutti i medici</p>
+              <!-- <p v-else>stai visualizzando tutti i medici</p> -->
             </div>
             <div class="btn bg-middle-green dropdown">
               <a
@@ -118,7 +118,7 @@ export default {
   data() {
     return {
       store: store,
-      specFocused: {},
+      // specFocused: {},
     };
   },
   methods: {
@@ -133,7 +133,7 @@ export default {
       if (matchingObject) {
         return matchingObject.name;
       } else {
-        return null;
+        return "tutti i dottori presenti";
       }
     },
   },
