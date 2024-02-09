@@ -10,10 +10,18 @@
             <h3>Seleziona una specializzazione</h3>
             <div class="d-block d-md-flex justify-content-between">
               <ul class="row justify-content-center gap-2">
-                <li class="badge-special col-auto" v-for="(specializzazione, index) in store.specializations" :key="index"
-                  @click="axiosDoctors(specializzazione.id)">
-                  <RouterLink :to="{ name: 'doctors.index' }" class="text-light decoration-none">
-                    {{ specializzazione.name }}</RouterLink>
+                <li
+                  class="badge-special col-auto"
+                  v-for="(specializzazione, index) in store.specializations"
+                  :key="index"
+                  @click="saveDataIntoStore(specializzazione.id)"
+                >
+                  <RouterLink
+                    :to="{ name: 'doctors.index' }"
+                    class="text-light decoration-none"
+                  >
+                    {{ specializzazione.name }}</RouterLink
+                  >
                 </li>
               </ul>
             </div>
@@ -22,10 +30,16 @@
       </section>
       <section class="top-rated">
         <div class="container">
-          <h2 class="text-center mb-5">Top rated (quelli che hanno pagato per farsi vedere)</h2>
-          <div class="d-block mb-2 d-md-flex gap-5 justify-content-evenly ">
+          <h2 class="text-center mb-5">
+            Top rated (quelli che hanno pagato per farsi vedere)
+          </h2>
+          <div class="d-block mb-2 d-md-flex gap-5 justify-content-evenly">
             <template v-if="store.allDoctors.length > 0">
-              <DoctorCard v-for="(doctor, index) in store.allDoctors.slice(0, 4)" :key="index" :item="doctor" />
+              <DoctorCard
+                v-for="(doctor, index) in store.allDoctors.slice(0, 4)"
+                :key="index"
+                :item="doctor"
+              />
             </template>
 
             <!-- <div class="card-container d-md-flex">
@@ -53,10 +67,7 @@
       </section>
     </div>
 
-    <div v-else class="loading">
-      Caricamento...
-    </div>
-
+    <div v-else class="loading">Caricamento...</div>
   </main>
 </template>
 
@@ -99,6 +110,9 @@ export default {
     //       console.log(this.store.doctorsPerSpecialization);
     //     });
     // },
+    saveDataIntoStore(id) {
+      this.store.savedData = id;
+    },
   },
   created() {
     this.fetchData();
@@ -113,7 +127,6 @@ export default {
   font-size: 100px;
   padding: 130px 0px;
 }
-
 
 li:hover {
   color: #c3e2a5;
