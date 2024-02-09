@@ -6,7 +6,7 @@ import "bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faEnvelope, faMagnifyingGlass, faStar } from "@fortawesome/free-solid-svg-icons";
 import { faCrown } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faUserDoctor } from "@fortawesome/free-solid-svg-icons";
@@ -34,7 +34,8 @@ library.add(
   faLinkedin,
   faYoutube,
   faMagnifyingGlass,
-  faStar
+  faStar,
+  faCircleCheck
 
 );
 
