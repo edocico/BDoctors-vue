@@ -10,10 +10,14 @@
             <h3>Seleziona una specializzazione</h3>
             <div class="d-block d-md-flex justify-content-between">
               <ul class="row justify-content-center gap-2">
-                <li class="badge-special col-auto" v-for="(specializzazione, index) in store.specializations" :key="index"
-                  @click="axiosDoctors(specializzazione.id)">
-                  <RouterLink :to="{ name: 'doctors.index' }" class="text-light decoration-none">
-                    {{ specializzazione.name }}</RouterLink>
+                <li class="badge-special col-auto" v-for="(specializzazione, index) in store.specializations"
+                  :key="index">
+                  <router-link 
+                    class="text-light decoration-none"
+                    :to="{ name: 'doctors.index', query: { specialization_id: specializzazione.id } }"
+                    >
+                    {{ specializzazione.name }}
+                  </router-link>
                 </li>
               </ul>
             </div>
@@ -82,27 +86,9 @@ export default {
     fetchData() {
       getSpecialization();
     },
-    axiosDoctors(id) {
-      getDoctors(id);
-    },
-    // fetchPerSpecialization(index) {
-    //   (this.store.allDoctors = []), console.log(index);
-    //   axios
-    //     .get(`${this.store.BASE_URL}/doctors`, {
-    //       params: {
-    //         specialization_ids: [index],
-    //       },
-    //     })
-    //     .then((res) => {
-    //       console.log(res.data);
-    //       this.store.doctorsPerSpecialization = res.data.results;
-    //       console.log(this.store.doctorsPerSpecialization);
-    //     });
-    // },
   },
   created() {
     this.fetchData();
-    this.axiosDoctors();
   },
 };
 </script>
