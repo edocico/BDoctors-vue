@@ -8,9 +8,13 @@
           <div class="col-6">
             <div class="head-profile">
               <div class="d-flex gap-4 align-items-end">
-                <img class="img-profile img-thumbnail rounded-circle" src="https://picsum.photos/100" alt="" />
+                <img
+                  class="img-profile img-thumbnail rounded-circle"
+                  src="https://picsum.photos/100"
+                  alt=""
+                />
                 <div class="">
-                  <h3>nome e cognome</h3>
+                  <h3>{{ doctor.id }}</h3>
                   <p>
                     <em>Sponsorizzato</em>
                     <font-awesome-icon icon="fa-solid fa-crown" class="crown" />
@@ -26,7 +30,7 @@
                     <h4>Altra Specializzazione</h4>
                   </div>
                   <div class="mb-3">
-                    <p>indirizzo</p>
+                    <p>{{ doctor.address }}</p>
                     <p>numero di telefono</p>
                   </div>
                   <div class="mb-3">
@@ -36,9 +40,10 @@
                     <p>
                       PRESTAZIONI---Lorem ipsum dolor, sit amet consectetur
                       adipisicing elit. Facere rerum architecto hic quos nostrum
-                      iusto veniam totam placeat aliquam exercitationem consequuntur
-                      porro nam natus ab quaerat amet quae animi expedita similique
-                      ipsum in omnis iure, harum voluptatem? Quos, nisi at!
+                      iusto veniam totam placeat aliquam exercitationem
+                      consequuntur porro nam natus ab quaerat amet quae animi
+                      expedita similique ipsum in omnis iure, harum voluptatem?
+                      Quos, nisi at!
                     </p>
                   </div>
                   <div class="mb-4">VOTO</div>
@@ -50,13 +55,15 @@
           <div>
             <div class="contact-profile d-inline-block col-auto">
               <div class="message mb-3" v-if="!showReviewForm">
-                <button class="btn-cust" v-if="!showForm" @click="showForm = true">
+                <button
+                  class="btn-cust"
+                  v-if="!showForm"
+                  @click="showForm = true"
+                >
                   <span class="icon">
                     <font-awesome-icon icon="fa-solid fa-envelope" />
                   </span>
-                  <span>
-                    Messaggio
-                  </span>
+                  <span> Messaggio </span>
                 </button>
                 <MessageForm v-else @close="closeForm" />
               </div>
@@ -64,13 +71,17 @@
             <!-- form reviews  -->
             <div>
               <div class="review mb-3" v-if="!showForm">
-                <button class="btn-cust" v-if="!showReviewForm" @click="showReviewForm = true">
+                <button
+                  class="btn-cust"
+                  v-if="!showReviewForm"
+                  @click="showReviewForm = true"
+                >
                   <span class="icon">
                     <font-awesome-icon icon="fa-solid fa-star" />
                   </span>
                   <span> Recensione</span>
                 </button>
-                <RewievForm v-else @close="closeReviewForm"/>
+                <RewievForm v-else @close="closeReviewForm" />
               </div>
             </div>
           </div>
@@ -81,11 +92,10 @@
 </template>
 
 <script>
-import MessageForm from '../../components/MessageForm.vue';
-import RewievForm from '../../components/RewievForm.vue';
-import { store } from '../../store'
-import axios from 'axios'
-
+import MessageForm from "../../components/MessageForm.vue";
+import RewievForm from "../../components/RewievForm.vue";
+import { store } from "../../store";
+import axios from "axios";
 
 export default {
   components: {
@@ -100,36 +110,44 @@ export default {
   data() {
     return {
       store: store,
-      doctor: null,
+      doctor: [],
       showForm: false,
-      showReviewForm: false
-
-    }
+      showReviewForm: false,
+    };
   },
   methods: {
-    fetchDoctor() {
-      axios.get(`${this.store.BASE_URL}/doctors/${this.id}`)
-      .then((res) => {
-        console.log(res)
-        this.doctor = res.data.doctor
-        console.log(this.doctor)
-      })
+    /* fetchDoctor() {
+      axios.get(`${this.store.BASE_URL}/doctors/${this.id}`).then((res) => {
+        console.log(res);
+        this.doctor = res.data.doctor;
+        console.log(this.doctor);
+      });
+    }, */
+    showDoctor(doctors, param) {
+      console.log(this.store.allDoctors);
+      const doctorID = doctors.filter((doctor) => doctor.id == param);
+      this.doctor = [...doctorID];
+      console.log(this.doctor);
     },
-
 
     closeForm() {
       this.showForm = false;
     },
     closeReviewForm() {
       this.showReviewForm = false;
-    }
+    },
   },
 
   created() {
-    this.fetchDoctor();
-    console.log('created show', this.$route.params)
-  }
-}
+    // this.fetchDoctor();
+    console.log("created show", this.$route.params);
+    this.showDoctor(this.store.allDoctors, this.id);
+  },
+  mounted() {
+    // this.showDoctor(this.store.allDoctors, id);
+    console.log(this.doctor);
+  },
+};
 </script>
 
 <style lang="scss" scoped>
