@@ -19,14 +19,13 @@
                   class="col-3 ju"
                   v-for="(specialization, index) in store.specializations"
                   :key="index"
-                  @click="axiosDoctors(specialization.id)"
                 >
-                  <RouterLink
-                    :to="{ name: 'doctors.index' }"
+                <router-link 
                     class="text-light decoration-none"
-                  >
-                    {{ specialization.name }}</RouterLink
-                  >
+                    :to="{ name: 'doctors.index', query: { specialization_id: specialization.id } }"
+                    >
+                    {{ specialization.name }}
+                  </router-link>
                 </li>
               </ul>
             </div>

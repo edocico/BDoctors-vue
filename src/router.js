@@ -23,6 +23,7 @@ const router = createRouter({
     },
     {
       path: "/medici",
+      props: true,
       name: "doctors.index",
       component: DoctorsIndex,
     },

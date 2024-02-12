@@ -9,28 +9,26 @@ export const store = reactive({
   specializations: [],
   allDoctors: [],
   doctorsPerSpecialization: [],
-  Idspec: "",
+  filtr: {
+    order: '',
+    specialization_id: '',
+    avg_vote: '',
+  }
 });
 
 export function getSpecialization() {
   axios.get(`${store.BASE_URL}/specializations`).then((res) => {
-    console.log(res.data.results);
+    // console.log('Risultato axios specializazione',res.data.results);
     store.specializations = res.data.results;
   });
 }
 
-export function getDoctors(index) {
-  console.log(index, "index");
-  store.Idspec = index;
-  axios
-    .get(`http://127.0.0.1:8000/api/doctors`, {
-      params: {
-        specialization_ids: [index],
-      },
-    })
-    .then((res) => {
-      console.log(res, "chiamata prova");
-      store.allDoctors = res.data.results;
-      // store.Idspec = "";
-    });
+export function getDoctors(queryParams) {
+  console.log('Axios queryParams', queryParams);
+  axios.get(`http://127.0.0.1:8000/api/doctors`, {
+    params: queryParams
+  }).then((res) => {
+    console.log('Axios doctors', res);
+    store.allDoctors = res.data.results;
+  });
 }

@@ -8,6 +8,7 @@
       <section class="search-header mb-4">
         <div class="container">
           <div class="d-flex align-items-center justify-content-between">
+<<<<<<< HEAD
             <div class="d-flex gap-3 align-items-center">
               <p v-if="store.allDoctors.length > 0">
                 <span class="results text-dark-green"
@@ -24,6 +25,29 @@
                 <span class="text-uppercase fw-bold fs-3 mx-2">
                   {{ findSpecName(store.specializations, store.Idspec) }}
                 </span>
+=======
+            <form action="/action_page.php">
+              <p>Please select your filtr</p>
+              <input type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
+              <label for="html">Crescente</label><br>
+              <input type="radio" value="desc" v-model="store.filtr.order" @change="filtrPage()">
+              <label for="css">Decrescente</label><br>
+
+              <input type="radio" value="1" v-model="store.filtr.avg_vote" @change="filtrPage()">
+              <label>1</label>
+              <input type="radio" value="2" v-model="store.filtr.avg_vote" @change="filtrPage()">
+              <label>2</label>
+              <input type="radio" value="3" v-model="store.filtr.avg_vote" @change="filtrPage()">
+              <label>3</label>
+              <input type="radio" value="4" v-model="store.filtr.avg_vote" @change="filtrPage()">
+              <label>4</label>
+              <input type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
+              <label>5</label>
+            </form>
+            <span>
+              <p v-if="store.allDoctors.length > 0">
+                <span class="results text-dark-green">{{ store.allDoctors.length }} risultati</span>
+>>>>>>> PROVA-CON-ROUTER-LINK
               </p>
               <!-- <p v-else>stai visualizzando tutti i medici</p> -->
             </div>
@@ -43,7 +67,9 @@
                   Specializzazioni
                 </span>
               </a>
+
               <ul class="dropdown-menu">
+<<<<<<< HEAD
                 <li
                   class=""
                   v-for="(specialization, index) in store.specializations"
@@ -54,8 +80,23 @@
                     :to="{ name: 'doctors.index' }"
                     class="text-light decoration-none"
                   >
+=======
+                <li>
+                  <label for="tutti">
+                    <input id="tutti" name="tutti" type="radio" value=""
+                      v-model="store.filtr.specialization_id"
+                      style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;" @change="filtrPage()">
+                    Tutti
+                  </label>
+                </li>
+                <li v-for="(specialization, index) in store.specializations" :key="index">
+                  <label :for="specialization.name">
+                    <input :id="specialization.name" :name="specialization.name" type="radio" :value="specialization.id"
+                      v-model="store.filtr.specialization_id"
+                      style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;" @change="filtrPage()">
+>>>>>>> PROVA-CON-ROUTER-LINK
                     {{ specialization.name }}
-                  </RouterLink>
+                  </label>
                 </li>
               </ul>
             </div>
@@ -64,6 +105,10 @@
       </section>
       <section class="search-results">
         <div class="container">
+<<<<<<< HEAD
+=======
+
+>>>>>>> PROVA-CON-ROUTER-LINK
           <!-- <p v-if="store.allDoctors.length > 0">
           {{ store.allDoctors.length }}
           risultati
@@ -117,16 +162,24 @@ export default {
     DoctorCard,
   },
 
+  props: {
+    id: String,
+  },
+
   data() {
     return {
       store: store,
+<<<<<<< HEAD
       // specFocused: {},
+=======
+>>>>>>> PROVA-CON-ROUTER-LINK
     };
   },
   methods: {
     fetchData() {
       getSpecialization();
     },
+<<<<<<< HEAD
     axiosDoctors(id) {
       getDoctors(id);
     },
@@ -157,6 +210,32 @@ export default {
     // this.fetchAllDoctors();
     console.log(this.store.allDoctors);
     console.log(this.store.Idspec);
+=======
+    axiosDoctors(query) {
+      getDoctors(query);
+    },
+    //Funzione che crea nuova url da utilizzare in chiamata axios
+    filtrPage() {
+      //Nuovo query
+      let newQuery = {};
+
+      //Cicliamo variabili per costruire nuova query 
+      for (let key in this.store.filtr) {
+        //Se il valore della variabile non e null, questa nome della variabile e il suo valore viene aggiunto nel newQuery 
+        if (this.store.filtr[key]) {
+          newQuery[key] = this.store.filtr[key]
+        }
+      }
+      //Inseriamo nuova query nel url
+      this.$router.push({ path: '/medici', query: newQuery })
+      //Uttilizziamo nuova url per fare chiamata axios
+      this.axiosDoctors(newQuery);
+    }
+  },
+  created() {
+    this.fetchData();
+    this.axiosDoctors(this.$route.query);
+>>>>>>> PROVA-CON-ROUTER-LINK
   },
 };
 </script>
