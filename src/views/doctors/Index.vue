@@ -19,7 +19,7 @@
               <p class="text-dark-green fst-italic fs-5">
                 stai visualizzando:
                 <span class="text-uppercase fw-bold fs-3 mx-2">
-                  {{ findSpecName(store.specializations, store.Idspec) }}
+                  {{ findSpecName(store.specializations) }}
                 </span>
               </p>
               <!-- <p v-else>stai visualizzando tutti i medici</p> -->
@@ -203,8 +203,11 @@ export default {
       //Uttilizziamo nuova url per fare chiamata axios
       this.axiosDoctors(newQuery);
     },
-    findSpecName(results, specId) {
-      const matchingObject = results.find((obj) => obj.id === specId);
+    findSpecName(results) {
+      let id = this.$route.query.specialization_id;
+      console.log('SPEC ID', id);
+
+      const matchingObject = results.find((obj) => obj.id == id );
       if (matchingObject) {
         return matchingObject.name;
       } else {
@@ -217,7 +220,6 @@ export default {
     this.axiosDoctors(this.$route.query);
   },
   mounted() {
-    this.axiosDoctors();
     console.log(this.store.allDoctors);
     console.log(this.store.Idspec);
   },
