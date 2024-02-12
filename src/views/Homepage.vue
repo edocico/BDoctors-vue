@@ -12,11 +12,9 @@
               <ul class="row justify-content-center gap-2">
                 <li class="badge-special col-auto" v-for="(specializzazione, index) in store.specializations"
                   :key="index">
-                  <router-link 
-                    class="text-light decoration-none"
+                  <router-link class="text-light decoration-none"
                     :to="{ name: 'doctors.index', query: { specialization_id: specializzazione.id } }"
-                    @click=clearDoctorsArray()
-                    >
+                    @click=clearDoctorsArray()>
                     {{ specializzazione.name }}
                   </router-link>
                 </li>
@@ -27,38 +25,14 @@
       </section>
       <section class="top-rated">
         <div class="container">
-          <h2 class="text-center mb-5">
-            Top rated (quelli che hanno pagato per farsi vedere)
+          <h2 class="title-sponsor border-yellow text-center mb-5">
+            consigliati
           </h2>
-          <div class="d-block mb-2 d-md-flex gap-5 justify-content-evenly">
-            <template v-if="store.allDoctors.length > 0">
-              <DoctorCard
-                v-for="(doctor, index) in store.allDoctors.slice(0, 4)"
-                :key="index"
-                :item="doctor"
-              />
+          <div class="d-block  d-md-flex gap-5 justify-content-evenly pt-5">
+            <template v-if="store.allSponsor.length > 0">
+              <DoctorCard v-for="(doctor, index) in store.allSponsor.slice(0, 3)" :key="index" :item="doctor"
+                :isSponsor=true />
             </template>
-
-            <!-- <div class="card-container d-md-flex">
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-            <div class="column d-sm-block col-md-4 col-xl-2">
-              <DoctorCard />
-            </div>
-          </div> -->
           </div>
         </div>
       </section>
@@ -93,7 +67,7 @@ export default {
     axiosDoctors(query) {
       getDoctors(query);
     },
-    clearDoctorsArray(){
+    clearDoctorsArray() {
       clearAllDoctors()
     },
   },
@@ -105,6 +79,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title-sponsor {
+  font-size: 40px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+
 .loading {
   text-align: center;
   font-size: 100px;
