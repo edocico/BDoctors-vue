@@ -13,11 +13,14 @@
       <div class="card-bottom">
         <!-- name/ sponsor -->
         <div>
+          <div>
+            
+          </div>
           <div class="d-flex justify-content-between align-items-center">
             <!-- name -->
             <span class="d-flex align-items-center">
               <p class="pe-3"><font-awesome-icon icon="fa-solid fa-user-doctor" /></p>
-              <p class="fs-5 fw-bold">{{ item.user.name }} {{ item.user.surname }}</p>
+              <p class="card-fullname fw-bold">{{ item.user.name }} {{ item.user.surname }}</p>
             </span>
             <!-- sponsor -->
             <p v-if="isSponsor" class="sponsor-icon "><font-awesome-icon icon="fa-solid fa-crown" class="crown" /></p>
@@ -49,7 +52,7 @@
           <!-- total vote -->
           <div v-if="calcVote > 0" class="star-vote">
             <div class="information mb-3">
-              <div class="d-flex">
+              <div class="d-flex justify-content-center ">
                 <span class="pe-2"><strong>Voto:</strong></span>
                 <span class="star-icon" v-for="item in calcVote"><font-awesome-icon icon="fa-solid fa-star" /></span>
                 <span class="star-icon" v-for="item in 5 - calcVote">&star;</span>
@@ -58,7 +61,7 @@
               <!-- <p><em>Media voto:</em> {{ item.media_voti }}</p> -->
             </div>
           </div>
-          <div v-else>
+          <div v-else class="mb-3 d-flex justify-content-center">
             <strong class="pe-2">Voto:</strong>
             <span class="information">nessun voto</span>
           </div>
@@ -147,8 +150,13 @@ export default {
       height: 200px;
       object-fit: cover;
     }
+
+  
   }
 
+  .card-fullname {
+    font-size: 18px;
+  }
   .card-bottom {
     padding: 10px 20px;
     color: black;
