@@ -14,7 +14,7 @@
                   alt=""
                 />
                 <div class="">
-                  <h3>{{ doctor.id }}</h3>
+                  <h3></h3>
                   <p>
                     <em>Sponsorizzato</em>
                     <font-awesome-icon icon="fa-solid fa-crown" class="crown" />
@@ -30,7 +30,7 @@
                     <h4>Altra Specializzazione</h4>
                   </div>
                   <div class="mb-3">
-                    <p>{{ doctor.address }}</p>
+                    <p></p>
                     <p>numero di telefono</p>
                   </div>
                   <div class="mb-3">
@@ -140,8 +140,8 @@ export default {
 
   created() {
     // this.fetchDoctor();
-    console.log("created show", this.$route.params);
-    this.showDoctor(this.store.allDoctors, this.id);
+    // console.log("created show", this.$route.params);
+    // this.showDoctor(this.store.allDoctors, this.id);
   },
   mounted() {
     // this.showDoctor(this.store.allDoctors, id);

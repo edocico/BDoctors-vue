@@ -22,6 +22,7 @@
           <div class="d-flex align-items-center justify-content-center">
             <font-awesome-icon icon="fa-solid fa-user-doctor" />
             <p class="">{{ item.user.name }} {{ item.user.surname }}</p>
+            <p v-if="isSponsor">&star;</p>
           </div>
         </div>
         <div>
@@ -97,6 +98,11 @@ export default {
     data: {
       type: Object,
     },
+
+    isSponsor: {
+      type: Boolean,
+      required: false,
+    }
   },
 
   computed: {
