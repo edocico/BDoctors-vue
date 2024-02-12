@@ -50,7 +50,7 @@
           <div v-if="calcVote > 0" class="star-vote">
             <div class="information mb-3">
               <div class="d-flex">
-                <span class="pe-2">Voto:</span>
+                <span class="pe-2"><strong>Voto:</strong></span>
                 <span class="star-icon" v-for="item in calcVote"><font-awesome-icon icon="fa-solid fa-star" /></span>
                 <span class="star-icon" v-for="item in 5 - calcVote">&star;</span>
               </div>
@@ -59,7 +59,7 @@
             </div>
           </div>
           <div v-else>
-            Voto:
+            <strong class="pe-2">Voto:</strong>
             <span class="information">nessun voto</span>
           </div>
 
@@ -110,7 +110,7 @@ export default {
 
 <style lang="scss" scoped>
 .star-icon {
-  color: #73b760;
+  color: #e2cc01;
 }
 
 .sponsor-icon {
