@@ -16,6 +16,23 @@ export const store = reactive({
   }
 });
 
+export function filtr(router){
+  //Nuovo query
+  let newQuery = {};
+
+  //Cicliamo variabili per costruire nuova query 
+  for (let key in store.filtr) {
+    //Se il valore della variabile non e null, questa nome della variabile e il suo valore viene aggiunto nel newQuery 
+    if (store.filtr[key]) {
+      newQuery[key] = store.filtr[key]
+    }
+  }
+  //Inseriamo nuova query nel url
+  router.push({ path: '/medici', query: newQuery })
+  //Uttilizziamo nuova url per fare chiamata axios
+  getDoctors(newQuery);
+};
+
 export function clearAllDoctors(){
   store.allDoctors = [];
   store.filtr.order = '';

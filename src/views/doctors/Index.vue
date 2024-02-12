@@ -161,7 +161,7 @@
 <script>
 import SearchBar from "../../components/SearchBar.vue";
 import DoctorCard from "../../components/DoctorCard.vue";
-import { store, getSpecialization, getDoctors } from "../../store";
+import { store, getSpecialization, getDoctors, filtr } from "../../store";
 import axios from "axios";
 
 export default {
@@ -188,20 +188,22 @@ export default {
     },
     //Funzione che crea nuova url da utilizzare in chiamata axios
     filtrPage() {
-      //Nuovo query
-      let newQuery = {};
+      let router = this.$router;
+      filtr(router)
+      // //Nuovo query
+      // let newQuery = {};
 
-      //Cicliamo variabili per costruire nuova query 
-      for (let key in this.store.filtr) {
-        //Se il valore della variabile non e null, questa nome della variabile e il suo valore viene aggiunto nel newQuery 
-        if (this.store.filtr[key]) {
-          newQuery[key] = this.store.filtr[key]
-        }
-      }
-      //Inseriamo nuova query nel url
-      this.$router.push({ path: '/medici', query: newQuery })
-      //Uttilizziamo nuova url per fare chiamata axios
-      this.axiosDoctors(newQuery);
+      // //Cicliamo variabili per costruire nuova query 
+      // for (let key in this.store.filtr) {
+      //   //Se il valore della variabile non e null, questa nome della variabile e il suo valore viene aggiunto nel newQuery 
+      //   if (this.store.filtr[key]) {
+      //     newQuery[key] = this.store.filtr[key]
+      //   }
+      // }
+      // //Inseriamo nuova query nel url
+      // this.$router.push({ path: '/medici', query: newQuery })
+      // //Uttilizziamo nuova url per fare chiamata axios
+      // this.axiosDoctors(newQuery);
     },
     findSpecName(results) {
       let id = this.$route.query.specialization_id;
