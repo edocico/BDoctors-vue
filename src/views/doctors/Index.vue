@@ -205,7 +205,7 @@ export default {
     },
     findSpecName(results) {
       let id = this.$route.query.specialization_id;
-      console.log('SPEC ID', id);
+      // console.log('SPEC ID', id);
 
       const matchingObject = results.find((obj) => obj.id == id );
       if (matchingObject) {
@@ -220,18 +220,10 @@ export default {
     this.axiosDoctors(this.$route.query);
   },
   mounted() {
-    console.log(this.store.allDoctors);
-    console.log(this.store.Idspec);
   },
   beforeUpdated() {
-    // this.fetchAllDoctors();
-    console.log(this.store.allDoctors);
-    console.log(this.store.Idspec);
   },
   updated() {
-    // this.fetchAllDoctors();
-    console.log(this.store.allDoctors);
-    console.log(this.store.Idspec);
   },
 };
 </script>

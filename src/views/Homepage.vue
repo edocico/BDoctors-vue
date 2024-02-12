@@ -15,6 +15,7 @@
                   <router-link 
                     class="text-light decoration-none"
                     :to="{ name: 'doctors.index', query: { specialization_id: specializzazione.id } }"
+                    @click=clearDoctorsArray()
                     >
                     {{ specializzazione.name }}
                   </router-link>
@@ -70,7 +71,7 @@
 <script>
 import SearchBar from "../components/SearchBar.vue";
 import DoctorCard from "../components/DoctorCard.vue";
-import { store, getSpecialization, getDoctors } from "../store";
+import { store, getSpecialization, getDoctors, clearAllDoctors } from "../store";
 import axios from "axios";
 import { RouterLink } from "vue-router";
 
@@ -91,6 +92,9 @@ export default {
     },
     axiosDoctors(query) {
       getDoctors(query);
+    },
+    clearDoctorsArray(){
+      clearAllDoctors()
     },
   },
   created() {

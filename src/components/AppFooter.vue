@@ -5,25 +5,15 @@
         <div class="d-lg-flex justify-content-between">
           <div class="order-lg-2 d-md-col-9">
             <h5 class="text-large-footer text-center">
-              <router-link
-                :to="{ name: 'doctors.index' }"
-                class="decoration-none text-light-green"
-                >I nostri specialisti</router-link
-              >
+              <router-link :to="{ name: 'doctors.index' }" class="decoration-none text-light-green"
+                @click="axiosDoctors()">I nostri specialisti
+              </router-link>
             </h5>
             <div class="container">
-              <ul
-                class="d-block d-md-flex flex-wrap gap-1 justify-content-between"
-              >
-                <li
-                  class="col-3 ju"
-                  v-for="(specialization, index) in store.specializations"
-                  :key="index"
-                >
-                <router-link 
-                    class="text-light decoration-none"
-                    :to="{ name: 'doctors.index', query: { specialization_id: specialization.id } }"
-                    >
+              <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between">
+                <li class="col-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
+                  <router-link class="text-light decoration-none"
+                    :to="{ name: 'doctors.index', query: { specialization_id: specialization.id } }">
                     {{ specialization.name }}
                   </router-link>
                 </li>
@@ -32,46 +22,28 @@
           </div>
           <div class="order-lg-1 d-md-col-3 pt-2">
             <div class="text-center">
-              <router-link
-                :to="{ name: 'home' }"
-                class="decoration-none text-light-green"
-              >
-                <img
-                  class="logo-full-color"
-                  src="../assets/logo-color.png"
-                  alt=""
-                />
+              <router-link :to="{ name: 'home' }" class="decoration-none text-light-green">
+                <img class="logo-full-color" src="../assets/logo-color.png" alt="" />
               </router-link>
             </div>
             <p class="text-medium-footer text-center">
               Per qualunque informazione ci troverai nella sezione
-              <router-link
-                :to="{ name: 'contacts' }"
-                class="decoration-none text-light"
-              >
+              <router-link :to="{ name: 'contacts' }" class="decoration-none text-light">
                 <strong class="text-light-green">Contattaci</strong>
               </router-link>
             </p>
             <ul class="d-flex justify-content-center gap-5">
               <li class="social-icon">
-                <a class="text-light-green" href="#"
-                  ><font-awesome-icon icon="fa-brands fa-facebook"
-                /></a>
+                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-facebook" /></a>
               </li>
               <li class="social-icon">
-                <a class="text-light-green" href="#"
-                  ><font-awesome-icon icon="fa-brands fa-square-instagram"
-                /></a>
+                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-square-instagram" /></a>
               </li>
               <li class="social-icon">
-                <a class="text-light-green" href="#"
-                  ><font-awesome-icon icon="fa-brands fa-linkedin"
-                /></a>
+                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-linkedin" /></a>
               </li>
               <li class="social-icon">
-                <a class="text-light-green" href="#"
-                  ><font-awesome-icon icon="fa-brands fa-youtube"
-                /></a>
+                <a class="text-light-green" href="#"><font-awesome-icon icon="fa-brands fa-youtube" /></a>
               </li>
             </ul>
           </div>
@@ -103,8 +75,8 @@ export default {
     fetchData() {
       getSpecialization();
     },
-    axiosDoctors(id) {
-      getDoctors(id);
+    axiosDoctors() {
+      getDoctors();
     },
 
     /* fetchPerSpecialization(index) {
@@ -140,6 +112,7 @@ footer {
 .logo-full-color {
   width: 140px;
 }
+
 .text-small-footer {
   font-size: 12px;
 }
