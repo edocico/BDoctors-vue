@@ -7,9 +7,7 @@
             <!-- NUOVO -->
             <div class="d-flex gap-3 align-items-center">
               <p v-if="store.allDoctors.length > 0">
-                <span class="results text-dark-green"
-                  >{{ store.allDoctors.length }} risultati</span
-                >
+                <span class="results text-dark-green">{{ store.allDoctors.length }} risultati</span>
               </p>
               <!--  <p v-else-if="store.doctorsPerSpecialization.length > 0">
                 <span class=""
@@ -24,10 +22,61 @@
               </p>
               <!-- <p v-else>stai visualizzando tutti i medici</p> -->
             </div>
-             <!-- NUOVO -->
+            <!-- NUOVO -->
 
             <!-- FORM FILTRI -->
-            <form action="/action_page.php">
+
+            <!-- 2 modo -->
+
+            <div class="btn bg-middle-green dropdown">
+              <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <font-awesome-icon icon="fa-solid fa-sliders" class="icon fs-5 pe-3" />
+                <span class="d-none d-md-inline-block fs-5"> filtro generale </span>
+              </a>
+
+              <div class="dropdown-menu">
+                <form action="/action_page.php">
+
+                  <input class="me-2" type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
+                  <label for="html">Crescente</label><br>
+                  <input class="me-2" type="radio" value="desc" v-model="store.filtr.order" @change="filtrPage()">
+                  <label for="css">Decrescente</label><br>
+
+                  <div>
+                    <div>
+                      <p class="mb-0">Ordina per voto :</p>
+                    </div>
+                    <span class="d-flex gap-2 mb-0">
+                      <input type="radio" value="1" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <label>1</label>
+                    </span>
+                    <span class="d-flex gap-2">
+                      <input type="radio" value="2" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <label>2</label>
+                    </span>
+                    <span class="d-flex gap-2">
+                      <input type="radio" value="3" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <label>3</label>
+                    </span>
+                    <span class="d-flex gap-2">
+                      <input type="radio" value="4" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <label>4</label>
+                    </span>
+                    <span class="d-flex gap-2">
+                      <input type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <label>5</label>
+                    </span>
+                  </div>
+
+
+                </form>
+              </div>
+            </div>
+
+            <!-- 1 modo -->
+
+            <!-- <form action="/action_page.php">
               <p>Please select your filtr</p>
               <input type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
               <label for="html">Crescente</label><br>
@@ -44,7 +93,8 @@
               <label>4</label>
               <input type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
               <label>5</label>
-            </form>
+            </form> -->
+
             <!-- FORM FILTRI -->
 
             <!-- Numero di risultati -->
@@ -54,20 +104,19 @@
               </p>
             </span> -->
             <!-- Numero di risultati -->
-            
+
             <!-- Lista specializzazioni -->
             <div class="btn bg-middle-green dropdown">
               <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <font-awesome-icon icon="fa-solid fa-user" class="icon fs-5 pe-3" />
-                <span class="d-none d-md-inline-block fs-5"> Specializzazioni </span>
+                <font-awesome-icon icon="fa-solid fa-user-tag" class="icon fs-5 pe-3" />
+                <span class="d-none d-md-inline-block fs-5">Filtro specializzazione </span>
               </a>
 
               <ul class="dropdown-menu">
                 <li>
                   <label for="tutti">
-                    <input id="tutti" name="tutti" type="radio" value=""
-                      v-model="store.filtr.specialization_id"
+                    <input id="tutti" name="tutti" type="radio" value="" v-model="store.filtr.specialization_id"
                       style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;" @change="filtrPage()">
                     Tutti
                   </label>
@@ -83,20 +132,20 @@
               </ul>
             </div>
             <!-- Lista specializzazioni -->
-            
+
           </div>
         </div>
       </section>
       <!-- <section class="search-results"> -->
-        <!-- <div class="container"> -->
-          <!-- <p v-if="store.allDoctors.length > 0">
+      <!-- <div class="container"> -->
+      <!-- <p v-if="store.allDoctors.length > 0">
           {{ store.allDoctors.length }}
           risultati
         </p>
         <p v-else-if="store.doctorsPerSpecialization.length > 0">
           {{ store.doctorsPerSpecialization.length }} risultati
         </p> -->
-          <!-- <div class="card-container d-block mb-2 d-md-flex gap-5 justify-content-evenly">
+      <!-- <div class="card-container d-block mb-2 d-md-flex gap-5 justify-content-evenly">
             <div v-if="store.allDoctors.length > 0">
               <DoctorCard v-for="(doctor, index) in store.allDoctors" :key="index" :item="doctor" />
             </div>
@@ -106,11 +155,11 @@
               ">
               <DoctorCard v-for="(doctor, index) in store.doctorsPerSpecialization" :key="index" :data="doctor" />
             </div> -->
-            <!-- <div v-else-if="store.doctorsPerSpecialization.length = 0">
+      <!-- <div v-else-if="store.doctorsPerSpecialization.length = 0">
               <p>nussun dottore trovato</p>
             </div> -->
-          <!-- </div> -->
-        <!-- </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
       <!-- </section> -->
       <section class="search-results">
         <div class="container">
@@ -121,28 +170,15 @@
         <p v-else-if="store.doctorsPerSpecialization.length > 0">
           {{ store.doctorsPerSpecialization.length }} risultati
         </p> -->
-          <div
-            class="card-container d-block mb-2 d-md-flex gap-5 justify-content-evenly"
-          >
+          <div class="card-container d-block mb-2 d-md-flex gap-5 justify-content-evenly">
             <template v-if="store.allDoctors.length > 0">
-              <DoctorCard
-                v-for="(doctor, index) in store.allDoctors"
-                :key="index"
-                :item="doctor"
-              />
+              <DoctorCard v-for="(doctor, index) in store.allDoctors" :key="index" :item="doctor" />
             </template>
 
-            <template
-              v-if="
-                store.allDoctors.length === 0 &&
-                store.doctorsPerSpecialization.length > 0
-              "
-            >
-              <DoctorCard
-                v-for="(doctor, index) in store.doctorsPerSpecialization"
-                :key="index"
-                :data="doctor"
-              />
+            <template v-if="store.allDoctors.length === 0 &&
+              store.doctorsPerSpecialization.length > 0
+              ">
+              <DoctorCard v-for="(doctor, index) in store.doctorsPerSpecialization" :key="index" :data="doctor" />
             </template>
             <!-- <div v-else-if="store.doctorsPerSpecialization.length = 0">
               <p>nussun dottore trovato</p>
@@ -207,7 +243,7 @@ export default {
       let id = this.$route.query.specialization_id;
       // console.log('SPEC ID', id);
 
-      const matchingObject = results.find((obj) => obj.id == id );
+      const matchingObject = results.find((obj) => obj.id == id);
       if (matchingObject) {
         return matchingObject.name;
       } else {
