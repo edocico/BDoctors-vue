@@ -5,20 +5,35 @@
         <div class="d-lg-flex justify-content-between">
           <div class="order-lg-2 d-md-col-9">
             <h5 class="text-large-footer text-center">
-              <router-link :to="{ name: 'doctors.index' }" class="decoration-none text-light-green"
-                @click="axiosDoctors()">I nostri specialisti
+              <router-link @click="axiosDoctors()" :to="{ name: 'doctors.index' }" class="decoration-none text-light-green">I nostri specialisti
               </router-link>
             </h5>
             <div class="container">
-              <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between">
+              <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between" v-if="$route.name === 'home'">
                 <li class="col-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
-                  <router-link class="text-light decoration-none"
+                  <router-link class="text-light decoration-none" @click="clearDoctorsArray()"
                     :to="{ name: 'doctors.index', query: { specialization_id: specialization.id } }">
-                    {{ specialization.name }}
+                    {{ specialization.name }} HOME
                   </router-link>
                 </li>
               </ul>
-            </div>
+              <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between" v-else>
+                <!-- <li class="col-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
+                  <router-link class="text-light decoration-none" @click="filtrPage()"
+                    :to="{ name: 'doctors.index', query: { specialization_id: specialization.id } }">
+                    {{ specialization.name }}
+                  </router-link>
+                </li> -->
+                <li class="col-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
+                  <label :for="specialization.name">
+                    <input :id="specialization.name" :name="specialization.name" type="radio" :value="specialization.id"
+                      v-model="store.filtr.specialization_id"
+                      style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;">
+                    {{ specialization.name }}
+                  </label>
+                </li>
+              </ul>
+            </div> 
           </div>
           <div class="order-lg-1 d-md-col-3 pt-2">
             <div class="text-center">
@@ -61,7 +76,7 @@
 </template>
 
 <script>
-import { store, getSpecialization, getDoctors } from "../store.js";
+import { store, getSpecialization, getDoctors, filtr, clearAllDoctors } from "../store.js";
 import axios from "axios";
 
 export default {
@@ -78,7 +93,29 @@ export default {
     axiosDoctors() {
       getDoctors();
     },
+    clearDoctorsArray(){
+      console.log('CLEART DA HOMER')
+      clearAllDoctors();
+    },
+    filtrPage(id){
+      console.log('FILTER DA FOOTER')
+      console.log('RETURN FILTR')
+      // let router = this.$router;
+      // filtr(router)
+        // router.push({ path: '/medici', query: {specialization_id: id} })
+        // return getDoctors(this.$route.query);
+      // if(this.$router.name == 'home'){
+      //   console.log('CLEAR')
+      //   clearAllDoctors();
+      // }
 
+      // if(this.$router.name == 'doctor.index'){
+      //   console.log('RETURN FILTR')
+      //   let router = this.$router;
+      //   router.push({ path: '/medici', query: {specialization_id: id} })
+      //   return getDoctors(this.$route.query);
+      // }
+    },
     /* fetchPerSpecialization(index) {
       (this.store.allDoctors = []), 
       console.log(index);
