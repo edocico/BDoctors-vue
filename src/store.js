@@ -9,6 +9,7 @@ export const store = reactive({
   specializations: [],
   allDoctors: [],
   doctorsPerSpecialization: [],
+  IdSpec: '',
   filtr: {
     order: '',
     specialization_id: '',
