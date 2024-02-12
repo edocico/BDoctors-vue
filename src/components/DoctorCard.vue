@@ -3,41 +3,28 @@
     <div class="card-cust h-100">
       <div class="card-top">
         <figure>
-          <img
-            v-if="item"
-            :src="store.Url + item.photo"
-            alt=""
-            class="rounded-circle img-thumbnail"
-          />
-          <img
-            v-else-if="data"
-            :src="store.Url + data.photo"
-            alt=""
-            class="rounded-circle img-thumbnail"
-          />
+          <img v-if="item" :src="store.Url + item.photo" alt="" class="rounded-circle img-thumbnail" />
+          <img v-else-if="data" :src="store.Url + data.photo" alt="" class="rounded-circle img-thumbnail" />
         </figure>
       </div>
       <div class="card-bottom">
         <div>
-          <font-awesome-icon icon="fa-solid fa-user-doctor" />
-          <p>name dottore</p>
-          <p><strong>COUNT REVIEWS</strong> {{ item.reviews_count }}</p>
+          <div class="d-flex align-items-center justify-content-center">
+            <font-awesome-icon icon="fa-solid fa-user-doctor" />
+            <p class="">{{ item.user.name }} {{ item.user.surname }}</p>
+          </div>
+
+
         </div>
         <div>
           <font-awesome-icon icon="fa-solid fa-stethoscope" />
           <ul v-if="item" class="list">
-            <li
-              v-for="(specializzazione, index) in item.specializations"
-              :key="index"
-            >
+            <li v-for="(specializzazione, index) in item.specializations" :key="index">
               {{ specializzazione.name }}
             </li>
           </ul>
           <ul v-else-if="data" class="list">
-            <li
-              v-for="(specializzazione, index) in data.specializations"
-              :key="index"
-            >
+            <li v-for="(specializzazione, index) in data.specializations" :key="index">
               {{ specializzazione.name }}
             </li>
           </ul>
@@ -45,18 +32,32 @@
         </div>
         <div>
           <font-awesome-icon icon="fa-solid fa-square-poll-vertical" />
-          <p v-if="item">{{ item.phone_number }}</p>
-          <p v-else-if="data">{{ data.phone_number }}</p>
+          <p><strong>Numero di recensioni:</strong> {{ item.reviews_count }}</p>
+          
+
+          <div v-if="calcVote > 0" class="star-vote">
+            Voto:
+            <div class="information">
+              <span class="star-icon" v-for="item in calcVote"><font-awesome-icon icon="fa-solid fa-star" /></span>
+              <span class="star-icon" v-for="item in 5 - calcVote">&star;</span>
+              <p><em>Media voto:</em> {{ item.media_voti }}</p>
+            </div>
+
+          </div>
+          <div v-else>
+            Voto:
+            <span class="information">nessun voto</span>
+          </div>
+          
+
+          <!-- <p v-if="item">{{ item.phone_number }}</p>
+          <p v-else-if="data">{{ data.phone_number }}</p> -->
         </div>
         <p v-if="item">
-          <router-link :to="{ name: 'doctors.show', params: { id: item.id } }"
-            >Vai al profilo...</router-link
-          >
+          <router-link :to="{ name: 'doctors.show', params: { id: item.id } }">Vai al profilo...</router-link>
         </p>
         <p v-else-if="data">
-          <router-link :to="{ name: 'doctors.show', params: { id: data.id } }"
-            >Vai al profilo...</router-link
-          >
+          <router-link :to="{ name: 'doctors.show', params: { id: data.id } }">Vai al profilo...</router-link>
         </p>
       </div>
     </div>
@@ -80,6 +81,12 @@ export default {
       type: Object,
     },
   },
+
+  computed: {
+    calcVote() {
+      return Math.trunc(this.item.media_voti)
+    }
+  }
 };
 </script>
 

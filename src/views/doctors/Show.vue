@@ -10,7 +10,7 @@
               <div class="d-flex gap-4 align-items-end">
                 <img class="img-profile img-thumbnail rounded-circle" src="https://picsum.photos/100" alt="" />
                 <div class="">
-                  <h3>Nome e Cognome dottore</h3>
+                  <h3>nome e cognome</h3>
                   <p>
                     <em>Sponsorizzato</em>
                     <font-awesome-icon icon="fa-solid fa-crown" class="crown" />
