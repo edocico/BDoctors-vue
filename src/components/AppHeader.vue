@@ -22,9 +22,9 @@
           </div>
           <div class="menu-item">
             <ul class="d-flex align-items-end gap-2">
-              <li class="header-item" @click="axiosDoctors()">
+              <li class="header-item">
                 <router-link
-                  :to="{ name: 'doctors.index' }"
+                  :to="{ name: 'doctors.index'}"
                   class="decoration-none text-light"
                 >
                   <font-awesome-icon

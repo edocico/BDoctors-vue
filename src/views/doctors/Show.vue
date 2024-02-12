@@ -127,6 +127,7 @@ export default {
 
   created() {
     this.fetchDoctor();
+    console.log('created show', this.$route.params)
   }
 }
 </script>

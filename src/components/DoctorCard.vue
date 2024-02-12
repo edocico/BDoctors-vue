@@ -21,6 +21,7 @@
         <div>
           <font-awesome-icon icon="fa-solid fa-user-doctor" />
           <p>name dottore</p>
+          <p><strong>COUNT REVIEWS</strong> {{ item.reviews_count }}</p>
         </div>
         <div>
           <font-awesome-icon icon="fa-solid fa-stethoscope" />
