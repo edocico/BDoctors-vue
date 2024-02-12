@@ -89,9 +89,13 @@ export default {
     fetchData() {
       getSpecialization();
     },
+    axiosDoctors(query) {
+      getDoctors(query);
+    },
   },
   created() {
     this.fetchData();
+    this.axiosDoctors();
   },
 };
 </script>
