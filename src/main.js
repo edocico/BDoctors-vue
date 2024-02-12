@@ -17,6 +17,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faSquareInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+// import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 
 // qua inseriamo singolarmente le icon da usare
@@ -35,7 +36,9 @@ library.add(
   faYoutube,
   faMagnifyingGlass,
   faStar,
-  faCircleCheck
+  faCircleCheck,
+  faStar
+  
 
 );
 

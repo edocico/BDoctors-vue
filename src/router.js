@@ -28,7 +28,7 @@ const router = createRouter({
       component: DoctorsIndex,
     },
     {
-      path: "/medici/ :id",
+      path: "/medici/:id",
       name: "doctors.show",
       props: true,
       component: DoctorsShow,
