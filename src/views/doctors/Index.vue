@@ -7,7 +7,7 @@
             <!-- NUOVO -->
             <div class="d-flex gap-3 align-items-center">
               <p v-if="store.allDoctors.length > 0">
-                <span class="results text-dark-green">{{ store.allDoctors.length }} risultati</span>
+                <span class="results text-dark-green">{{ store.allDoctors.length + store.allSponsor.length }} risultati</span>
               </p>
               <!--  <p v-else-if="store.doctorsPerSpecialization.length > 0">
                 <span class=""
@@ -171,9 +171,17 @@
           {{ store.doctorsPerSpecialization.length }} risultati
         </p> -->
           <div class="card-container d-block mb-2 d-md-flex gap-5 justify-content-evenly">
+
+            <template v-if="store.allSponsor.length > 0">
+              <DoctorCard v-for="(doctor, index) in store.allSponsor" :key="index" :item="doctor" :isSponsor=true />
+            </template>
+
             <template v-if="store.allDoctors.length > 0">
               <DoctorCard v-for="(doctor, index) in store.allDoctors" :key="index" :item="doctor" />
             </template>
+
+            
+
 
             <template v-if="store.allDoctors.length === 0 &&
               store.doctorsPerSpecialization.length > 0

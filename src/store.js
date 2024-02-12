@@ -8,6 +8,7 @@ export const store = reactive({
   Url: "http://127.0.0.1:8000/",
   specializations: [],
   allDoctors: [],
+  allSponsor: [],
   doctorsPerSpecialization: [],
   filtr: {
     order: '',
@@ -55,5 +56,7 @@ export function getDoctors(queryParams) {
   }).then((res) => {
     console.log('Axios doctors', res);
     store.allDoctors = res.data.results;
+    store.allSponsor = res.data.doctors_sponsorships;
+    // console.log(store.allSponsor)
   });
 }
