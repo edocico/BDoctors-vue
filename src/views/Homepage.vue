@@ -1,14 +1,18 @@
 <template>
   <main>
+
     <div v-if="store.specializations.length > 0">
       <section class="home-search">
         <div class="container">
+          <!-- image logo -->
           <figure>
             <img src="../assets/logo-color.png" alt="" class="logo" />
           </figure>
           <div class="search">
+            <!-- title homepage -->
             <h3>Seleziona una specializzazione</h3>
             <div class="d-block d-md-flex justify-content-between">
+              <!-- list specializations -->
               <ul class="row justify-content-center gap-2">
                 <li class="badge-special col-auto" v-for="(specializzazione, index) in store.specializations"
                   :key="index">
@@ -23,12 +27,14 @@
           </div>
         </div>
       </section>
+
+      <!-- top sponsor doctors -->
       <section class="top-rated">
         <div class="container">
           <h2 class="title-sponsor border-yellow text-center mb-5">
             consigliati
           </h2>
-          <div class="d-block  d-md-flex gap-5 justify-content-evenly pt-5">
+          <div class="d-block  d-md-flex gap-5 justify-content-evenly pt-1">
             <template v-if="store.allSponsor.length > 0">
               <DoctorCard v-for="(doctor, index) in store.allSponsor.slice(0, 3)" :key="index" :item="doctor"
                 :isSponsor=true />
@@ -36,6 +42,7 @@
           </div>
         </div>
       </section>
+
     </div>
 
     <div v-else class="loading">Caricamento...</div>
