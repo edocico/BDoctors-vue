@@ -1,44 +1,58 @@
 <template>
   <div>
-    <h1>show</h1>
     <section class="profile">
       <div class="container">
-        <div class="d-flex gap-4">
+        <div class="d-flex justify-content-center gap-4">
           <!-- profilo -->
           <div class="col-6">
+            <!-- header profile -->
             <div class="head-profile">
               <div class="d-flex gap-4 align-items-end">
+                <!-- image doctor -->
                 <img
                   class="img-profile img-thumbnail rounded-circle"
                   src="https://picsum.photos/100"
                   alt=""
                 />
                 <div class="">
-                  <h3></h3>
+                  <!-- fullname doctor -->
+                  <h3>Nome e Cognome dottore</h3>
+                  <!-- sponsor doctor -->
                   <p>
-                    <em>Sponsorizzato</em>
+                    <em>(Sponsorizzato) -></em>
                     <font-awesome-icon icon="fa-solid fa-crown" class="crown" />
                   </p>
                 </div>
               </div>
             </div>
+            <!-- body profile -->
             <div class="body-profile">
               <div class="d-block">
                 <div class="information-profile d-block d-md-col-9">
-                  <div>
-                    <h4 class="badge-specialization">Specializzazione</h4>
-                    <h4>Altra Specializzazione</h4>
+                  <!-- specialization doctor -->
+                  <div class="d-flex">
+                    <h5 class="badge-special">Specializzazione</h5>
                   </div>
-                  <div class="mb-3">
-                    <p></p>
-                    <p>numero di telefono</p>
+                  <!-- phone number doctor -->
+                  <div class="d-flex align-items-center">
+                    <span class="title-profile pe-3"><strong>numero di telefono:</strong></span>
+                    <p class="p-profile mb-0">numero</p>
+                  </div >
+                  <!-- address doctor -->
+                  <div class="d-flex align-items-center mb-3 ">
+                    <span class="title-profile pe-3"><strong>Indirizzo lavoro:</strong></span>
+                    <p class="p-profile mb-0">via delle via</p>
                   </div>
-                  <div class="mb-3">
-                    <p>cv del dottore</p>
+                  <!-- cv pdf doctor -->
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="title-profile pe-3"><strong>cv del dottore:</strong></span>
+                    <p class="mb-0">pdf</p>
                   </div>
+                  <!-- medical_specialization doctor -->
                   <div class="mb-3">
-                    <p>
-                      PRESTAZIONI---Lorem ipsum dolor, sit amet consectetur
+                    <span class="title-profile  pe-3"><strong>prestazioni:</strong></span>
+                    <p class="p-profile mb-0">
+                      Lorem ipsum dolor, sit amet consectetur
                       adipisicing elit. Facere rerum architecto hic quos nostrum
                       iusto veniam totam placeat aliquam exercitationem
                       consequuntur porro nam natus ab quaerat amet quae animi
@@ -46,7 +60,11 @@
                       Quos, nisi at!
                     </p>
                   </div>
-                  <div class="mb-4">VOTO</div>
+                  <!-- vote doctor -->
+                  <div class="d-flex align-items-center justify-content-center mb-4">
+                    <span class="title-profile  pe-3"><strong>Voto:</strong></span>
+                    <p class="p-profile mb-0">il voto totale</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -151,6 +169,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title-profile {
+  font-size: 24px;
+}
+
+.p-profile {
+  font-size: 20px;
+}
+
 .profile {
   padding: 50px 0px 100px 0px;
 }
@@ -176,5 +202,21 @@ export default {
 
 .crown {
   color: goldenrod;
+  font-size: 35px;
+}
+
+.badge-special {
+  background-color: #43762b;
+  color: white;
+  font-size: 25px;
+  padding: 0px 20px;
+  line-height: 40px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  &:hover {
+    color: #c3e2a5;
+  }
 }
 </style>
