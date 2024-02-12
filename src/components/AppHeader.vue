@@ -7,6 +7,7 @@
             <router-link
               :to="{ name: 'home' }"
               class="decoration-none text-light"
+              @click=clearDoctorsArray()
             >
               <img
                 class="logo-full-header d-none d-md-inline-block"
@@ -26,6 +27,7 @@
                 <router-link
                   :to="{ name: 'doctors.index'}"
                   class="decoration-none text-light"
+                  @click="axiosDoctors()"
                 >
                   <font-awesome-icon
                     icon="fa-solid fa-user-doctor"
@@ -104,7 +106,7 @@
 </template>
 
 <script>
-import { store, getDoctors } from "../store.js";
+import { store, getDoctors, clearAllDoctors } from "../store.js";
 import axios from "axios";
 
 export default {
@@ -119,6 +121,9 @@ export default {
   methods: {
     axiosDoctors(){
       getDoctors();
+    },
+    clearDoctorsArray(){
+      clearAllDoctors();
     },
     // fetchAllDoctors() {
     //   (this.store.allDoctors = []), (this.store.doctorsPerSpecialization = []);

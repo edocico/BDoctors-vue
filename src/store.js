@@ -16,6 +16,14 @@ export const store = reactive({
   }
 });
 
+export function clearAllDoctors(){
+  store.allDoctors = [];
+  store.filtr.order = '';
+  store.filtr.specialization_id = '';
+  store.filtr.avg_vote = '';
+  console.log('DOTORI PULITI', store.allDoctors)
+};
+
 export function getSpecialization() {
   axios.get(`${store.BASE_URL}/specializations`).then((res) => {
     // console.log('Risultato axios specializazione',res.data.results);
