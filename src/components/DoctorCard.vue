@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 col-md-5 col-lg-3">
-    <div class="card-cust h-100" 
-      :class="{'card-cust': true, 'sponsor-background' : isSponsor, 'sponsor-hover' : isSponsor}">
+    <div class="card-cust h-100"
+      :class="{ 'card-cust': true, 'sponsor-background': isSponsor, 'sponsor-hover': isSponsor }">
       <div class="card-top">
         <!-- image-doctor -->
         <figure>
@@ -10,16 +10,16 @@
         </figure>
       </div>
 
-      <div class="card-bottom">
+      <div class="card-bottom h-100">
         <!-- name/ sponsor -->
         <div>
           <div>
-            
+
           </div>
           <div class="d-flex justify-content-between align-items-center">
             <!-- name -->
             <span class="d-flex align-items-center">
-              <p class="pe-3"><font-awesome-icon icon="fa-solid fa-user-doctor" /></p>
+              <p class="pe-3 "><font-awesome-icon icon="fa-solid fa-user-doctor" /></p>
               <p class="card-fullname fw-bold">{{ item.user.name }} {{ item.user.surname }}</p>
             </span>
             <!-- sponsor -->
@@ -28,10 +28,10 @@
         </div>
 
         <!-- specializations -->
-        <div class="d-flex">
+        <div class="specializations d-flex">
           <font-awesome-icon icon="fa-solid fa-stethoscope" />
           <ul v-if="item" class="list">
-            <li v-for="(specializzazione, index) in item.specializations" :key="index">
+            <li class=" specializations" v-for="(specializzazione, index) in item.specializations" :key="index">
               {{ specializzazione.name }}
             </li>
           </ul>
@@ -57,8 +57,6 @@
                 <span class="star-icon" v-for="item in calcVote"><font-awesome-icon icon="fa-solid fa-star" /></span>
                 <span class="star-icon" v-for="item in 5 - calcVote">&star;</span>
               </div>
-              
-              <!-- <p><em>Media voto:</em> {{ item.media_voti }}</p> -->
             </div>
           </div>
           <div v-else class="mb-3 d-flex justify-content-center">
@@ -66,8 +64,6 @@
             <span class="information">nessun voto</span>
           </div>
 
-          <!-- <p v-if="item">{{ item.phone_number }}</p>
-          <p v-else-if="data">{{ data.phone_number }}</p> -->
         </div>
         <p v-if="item">
           <router-link :to="{ name: 'doctors.show', params: { id: item.id } }">Vai al profilo...</router-link>
@@ -112,16 +108,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.star-icon {
-  color: #e2cc01;
-}
-
-.sponsor-icon {
-  color: #daa520;
-  font-size: 20px;
-}
-
-
 .card-cust {
   border-color: transparent;
   background-color: #c3e2a5;
@@ -150,13 +136,25 @@ export default {
       height: 200px;
       object-fit: cover;
     }
+  }
 
-  
+  .specializations {
+    height: 130px;
+  }
+
+  .star-icon {
+    color: #e2cc01;
+  }
+
+  .sponsor-icon {
+    color: #daa520;
+    font-size: 20px;
   }
 
   .card-fullname {
     font-size: 18px;
   }
+
   .card-bottom {
     padding: 10px 20px;
     color: black;
@@ -180,9 +178,8 @@ export default {
 .sponsor-hover:hover {
   box-shadow: 0px 3px 3px 3px #e2cc01;
 }
+
 .sponsor-background {
   background-color: #eff161;
 }
-
-
 </style>
