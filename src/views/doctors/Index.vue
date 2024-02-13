@@ -7,22 +7,16 @@
           <div class="d-flex flex-row gap-3 align-items-center justify-content-end">
             <!-- FORM FILTRI -->
 
-            <!-- general filter -->
+            <!-- filter vote -->
             <div class="btn bg-middle-green dropdown">
               <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <font-awesome-icon icon="fa-solid fa-sliders" class="icon fs-5 pe-3" />
-                <span class="d-none d-md-inline-block fs-5"> filtro generale </span>
+                <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short"  class="icon fs-5 pe-3" />
+                <span class="d-none d-md-inline-block fs-5"> Filtro voti </span>
               </a>
 
               <div class="dropdown-menu">
                 <form action="/action_page.php">
-
-                  <!-- numerical order -->
-                  <input class="me-2" type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
-                  <label for="html">Crescente</label><br>
-                  <input class="me-2" type="radio" value="desc" v-model="store.filtr.order" @change="filtrPage()">
-                  <label for="css">Decrescente</label><br>
 
                   <!-- numerical order reviews -->
                   <div>
@@ -50,6 +44,27 @@
                       <label>5</label>
                     </span>
                   </div>
+                </form>
+              </div>
+            </div>
+
+
+            <!-- filter oreder review -->
+            <div class="btn bg-middle-green dropdown">
+              <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <font-awesome-icon icon="fa-solid fa-sliders" class="icon fs-5 pe-3" />
+                <span class="d-none d-md-inline-block fs-5"> Filtro numero recensioni </span>
+              </a>
+
+              <div class="dropdown-menu">
+                <form action="/action_page.php">
+
+                  <!-- oreder ASC/ DESC -->
+                  <input class="me-2" type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
+                  <label for="html">Crescente</label><br>
+                  <input class="me-2" type="radio" value="desc" v-model="store.filtr.order" @change="filtrPage()">
+                  <label for="css">Decrescente</label><br>
                 </form>
               </div>
             </div>
