@@ -1,99 +1,99 @@
 <template>
-    <section class="message" >
-      <!-- controllo invio messaggio - SE:
+  <section class="message">
+    <!-- controllo invio messaggio - SE:
         le vadiazioni non vengono rispettate si resta nel form 
         finchè i dati non saranno tutti corretti  -->
-        <div v-if="!messageSent" class="container" >
-          <form v-on:submit.prevent="messageForm" action="" method="POST">
-            <h2 class="text-center">Contatta il medico</h2>
-            <p class="rule text-center">(*) campi obbligatori</p>
-              <!-- input name -->
-              <div class="d-flex flex-column flex-md-row gap-5 mb-5">
-                <div class="d-flex flex-column pe-5">
-                    <div class="label-cust">
-                      <label for="name">Inserisci nome: *</label>
-                    </div>
-                    <div class="postion-relative">
-                      <input :class="{ 'input-cust' : true, 'error-input' : nameError  } " 
-                      type="text" placeholder="Francesco" name="name" v-model="nameParam">
-                      <div class="error-message" v-if="nameError">{{ nameError }}</div>
-                    </div>    
-                </div>
-                <!-- input surname -->
-                <div class="d-flex flex-column">
-                    <div class="label-cust">
-                      <label for="surname">Inserisci cognome: *</label>
-                    </div>
-                    <div class="postion-relative">
-                      <input :class="{ 'input-cust' : true, 'error-input' : surnameError  } " 
-                      type="text" placeholder="Rossi" name="surname" v-model="surnameParam">
-                      <div class="error-message" v-if="surnameError">{{ surnameError }}</div>
-                    </div>   
-                </div>
-              </div>
-              <!-- input phone -->
-              <div class="d-flex flex-column flex-md-row gap-5 mb-2">
-                <div class="d-flex flex-column pe-5">
-                    <div class="label-cust">
-                      <label for="phone">Inserisci cellulare: *</label>
-                    </div>
-                    <div class="postion-relative">
-                      <input :class="{ 'input-cust' : true, 'error-input' : phoneError  } "  
-                      type="tel" name="phone" id="phone"  
-                      v-model="phoneParam">
-                      <div class="error-message" v-if="phoneError">{{ phoneError }}</div>
-                    </div>    
-                </div>
-                <!-- input mail -->
-                <div class="d-flex flex-column mb-4">
-                    <div class="label-cust">
-                    <label for="email">Inserisci mail: *</label>
-                    </div>
-                    <div class="postion-relative">
-                      <input :class="{ 'input-cust' : true, 'error-input' : emailError  } "  
-                      type="email" name="email" id="email" 
-                      placeholder="francescorossi@gmail.com" v-model="emailParam">
-                      <div class="error-message" v-if="emailError">{{ emailError }}</div>
-                    </div>   
-                </div>
-              </div>
-              <!-- input message -->
-              <div class="mb-5">
-                <div class="label-cust mb-2">
-                    <label for="name">Scrivi messaggio: *</label>
-                </div>
-                <div class="postion-relative">
-                  <textarea :class="{ 'input-cust' : true, 'error-input' : textError  } " name="message" id="" cols="100" rows="6" placeholder="messaggio"
-                    v-model="textParam"></textarea>
-                  <div class="error-message" v-if="textError">{{ textError }}</div>
-                </div> 
-              </div>
-              <div class="d-flex gap-5">
-                <input class="btn-cust" type="submit" value="Invia">
-                <div class="btn-cust-red" @click="closeForm">Chiudi</div>
-              </div>
-
-          </form>
-        </div>
-        <!-- ALTRIMENTI: 
-        i dati sono corretti, allora si chiude il form -->
-        <div v-else class="success">
-          <div class="d-flex align-items-center mb-4">
-            <font-awesome-icon class="pe-2 text-middle-green icon-success" icon="fa-solid fa-circle-check" />
-            <p class="mb-0 msg-success">messaggio inviato con successo</p>
-            
+    <div v-if="!messageSent" class="container">
+      <form v-on:submit.prevent="messageForm" action="" method="POST">
+        <h2 class="text-center">Contatta il medico</h2>
+        <p class="rule text-center">(*) campi obbligatori</p>
+        <!-- input name -->
+        <div class="d-flex flex-column flex-md-row gap-5 mb-5">
+          <div class="d-flex flex-column pe-5">
+            <div class="label-cust">
+              <label for="name">Inserisci nome: *</label>
+            </div>
+            <div class="postion-relative">
+              <input :class="{ 'input-cust': true, 'error-input': nameError }" type="text" placeholder="Francesco"
+                name="name" v-model="nameParam">
+              <div class="error-message" v-if="nameError">{{ nameError }}</div>
+            </div>
           </div>
-          <div class="d-flex justify-content-center">
-            <button class="btn-cust-red" @click="closeForm">Chiudi</button>
-          </div>    
+          <!-- input surname -->
+          <div class="d-flex flex-column">
+            <div class="label-cust">
+              <label for="surname">Inserisci cognome: *</label>
+            </div>
+            <div class="postion-relative">
+              <input :class="{ 'input-cust': true, 'error-input': surnameError }" type="text" placeholder="Rossi"
+                name="surname" v-model="surnameParam">
+              <div class="error-message" v-if="surnameError">{{ surnameError }}</div>
+            </div>
+          </div>
         </div>
-    </section>
+        <!-- input phone -->
+        <div class="d-flex flex-column flex-md-row gap-5 mb-2">
+          <div class="d-flex flex-column pe-5">
+            <div class="label-cust">
+              <label for="phone">Inserisci cellulare: *</label>
+            </div>
+            <div class="postion-relative">
+              <input :class="{ 'input-cust': true, 'error-input': phoneError }" type="tel" name="phone" id="phone"
+                v-model="phoneParam">
+              <div class="error-message" v-if="phoneError">{{ phoneError }}</div>
+            </div>
+          </div>
+          <!-- input mail -->
+          <div class="d-flex flex-column mb-4">
+            <div class="label-cust">
+              <label for="email">Inserisci mail: *</label>
+            </div>
+            <div class="postion-relative">
+              <input :class="{ 'input-cust': true, 'error-input': emailError }" type="email" name="email" id="email"
+                placeholder="francescorossi@gmail.com" v-model="emailParam">
+              <div class="error-message" v-if="emailError">{{ emailError }}</div>
+            </div>
+          </div>
+        </div>
+        <!-- input message -->
+        <div class="mb-5">
+          <div class="label-cust mb-2">
+            <label for="name">Scrivi messaggio: *</label>
+          </div>
+          <div class="postion-relative">
+            <textarea :class="{ 'input-cust': true, 'error-input': textError }" name="message" id="" cols="100" rows="6"
+              placeholder="messaggio" v-model="textParam"></textarea>
+            <div class="error-message" v-if="textError">{{ textError }}</div>
+          </div>
+        </div>
+        <div class="d-flex gap-5">
+          <input class="btn-cust" type="submit" value="Invia">
+          <div class="btn-cust-red" @click="closeForm">Chiudi</div>
+        </div>
+      </form>
+    </div>
+    <!-- ALTRIMENTI: 
+        i dati sono corretti, allora si chiude il form -->
+    <div v-else class="success">
+      <div class="d-flex align-items-center mb-4">
+        <font-awesome-icon class="pe-2 text-middle-green icon-success" icon="fa-solid fa-circle-check" />
+        <p class="mb-0 msg-success">messaggio inviato con successo</p>
+
+      </div>
+      <div class="d-flex justify-content-center">
+        <button class="btn-cust-red" @click="closeForm">Chiudi</button>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 
 import axios from "axios";
 export default {
+  props: {
+    doctorId: String,
+  },
   data() {
     return {
       // dati ricavati dagli input del form
@@ -102,11 +102,11 @@ export default {
       phoneParam: '',
       emailParam: '',
       textParam: '',
-      BASE_URL:'http://127.0.0.1:8000',
+      BASE_URL: 'http://127.0.0.1:8000',
       //messaggio di errore, validazioni del form
       nameError: '',
       surnameError: '',
-      phoneError:'',
+      phoneError: '',
       emailError: '',
       textError: '',
       showForm: false,
@@ -116,6 +116,18 @@ export default {
   },
 
   methods: {
+    sendMessage() {
+      axios.post('http://127.0.0.1:8000/api/messages', {
+        name: this.nameParam,
+        surname: this.surnameParam,
+        phone_number:  this.phoneParam,
+        email: this.emailParam,
+        message: this.textParam,
+        doctor_id: this.doctorId
+      }).then((res) => {
+        this.messageSent = res.data.status
+      })
+    },
     closeForm() {
       this.$emit('close');
     },
@@ -129,29 +141,29 @@ export default {
       this.messageSent = false;
 
       //controllo delle validazioni degli input nel caso sia STRINGA VUOTA
-      if(!this.validateName()) {
+      if (!this.validateName()) {
         this.nameError = 'Il nome deve avere un min 2 max 100 caratteri'
       }
 
-      if(!this.validateSurname()) {
+      if (!this.validateSurname()) {
         this.surnameError = 'Il cognome deve avere un min 2 max 100 caratteri'
       }
 
-      if(!this.validatePhoneNumber()) {
+      if (!this.validatePhoneNumber()) {
         this.phoneError = 'Il numero di telefono deve contenere almeno 10 cifre'
       }
 
-      if(!this.validateEmail()) {
+      if (!this.validateEmail()) {
         this.emailError = 'Inserisci una mail valida'
       }
 
-      if(!this.validateText()) {
+      if (!this.validateText()) {
         this.textError = 'Il messaggio deve contenere come minimo 5 caratteri'
       }
 
       // Simula l'invio dei dati dal front-end al back-end
       if (!this.hasErrors()) {
-          console.log("Simulazione di dati inviati al backend:", {
+        console.log("Simulazione di dati inviati al backend:", {
           name: this.nameParam,
           surname: this.surnameParam,
           phone: this.phoneParam,
@@ -159,9 +171,18 @@ export default {
           message: this.textParam,
         });
 
+        let message = {
+          name: this.nameParam,
+          surname: this.surnameParam,
+          phone: this.phoneParam,
+          email: this.emailParam,
+          message: this.textParam,
+          doctor_id: '11'
+        }
         // nel caso in cui tutte le validazioni sono state inviate correttamente,
         // allora verrà mostrato un messaggio di completamento
-        this.messageSent = true;
+        // this.messageSent = true;
+        this.sendMessage()
       }
 
       // if (this.hasErrors()) {
@@ -173,7 +194,7 @@ export default {
       //     `- ${this.textError}`);
       //   return;
       // }
-      
+
     },
 
     //controllo e regole degli input
@@ -197,10 +218,10 @@ export default {
       return this.textParam.trim() !== '' && this.textParam.trim().length >= 5;
     },
 
-    
+
     //funzione per resettare i messaggi
     resetErrorMessages() {
-      
+
       this.nameError = '';
       this.surnameError = '';
       this.phoneError = '';
@@ -241,19 +262,19 @@ export default {
     font-weight: 600;
   }
 
-  
+
 }
 
 .success {
-    padding: 5px;
+  padding: 5px;
 
-    .icon-success {
-      font-size: 50px;
-    }
-
-    .msg-success {
-      font-size: 25px;
-      text-align:center;
-    }
+  .icon-success {
+    font-size: 50px;
   }
+
+  .msg-success {
+    font-size: 25px;
+    text-align: center;
+  }
+}
 </style>
