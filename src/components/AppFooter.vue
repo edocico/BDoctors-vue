@@ -13,7 +13,7 @@
                 <li class="col-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
                   <router-link class="text-light decoration-none" @click="clearDoctorsArray()"
                     :to="{ name: 'doctors.index', query: { specialization_id: specialization.id } }">
-                    {{ specialization.name }} HOME
+                    {{ specialization.name }}
                   </router-link>
                 </li>
               </ul>
