@@ -7,7 +7,7 @@
             <router-link
               :to="{ name: 'home' }"
               class="decoration-none text-light"
-              @click=clearDoctorsArray()
+              
             >
               <img
                 class="logo-full-header d-none d-md-inline-block"

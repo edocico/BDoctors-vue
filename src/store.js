@@ -36,6 +36,7 @@ export function filtr(router) {
 
 export function clearAllDoctors() {
   store.allDoctors = [];
+  store.allSponsor = [];
   store.filtr.order = '';
   store.filtr.specialization_id = '';
   store.filtr.avg_vote = '';
