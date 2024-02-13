@@ -11,12 +11,12 @@
                 <!-- image doctor -->
                 <img
                   class="img-profile img-thumbnail rounded-circle"
-                  src="https://picsum.photos/100"
+                  :src="store.Url + doctor.photo"
                   alt=""
                 />
                 <div class="">
                   <!-- fullname doctor -->
-                  <h3>Nome e Cognome dottore</h3>
+                  <h3>{{ doctor.user.name }} {{ doctor.user.surname }}</h3>
                   <!-- sponsor doctor -->
                   <p>
                     <em>(Sponsorizzato) -></em>
@@ -31,40 +31,64 @@
                 <div class="information-profile d-block d-md-col-9">
                   <!-- specialization doctor -->
                   <div class="d-flex">
-                    <h5 class="badge-special">Specializzazione</h5>
+                    <div class="title-profile">
+                      <strong>Specializzazione:</strong>
+                    </div>
+                    <ul>
+                      <li
+                        v-for="(
+                          specialization, index
+                        ) in doctor.specializations"
+                        :key="index"
+                        class=""
+                      >
+                        {{ specialization.name }}
+                      </li>
+                    </ul>
                   </div>
                   <!-- phone number doctor -->
                   <div class="d-flex align-items-center">
-                    <span class="title-profile pe-3"><strong>numero di telefono:</strong></span>
-                    <p class="p-profile mb-0">numero</p>
-                  </div >
+                    <span class="title-profile pe-3"
+                      ><strong>numero di telefono:</strong></span
+                    >
+                    <p class="p-profile mb-0">{{ doctor.phone_number }}</p>
+                  </div>
                   <!-- address doctor -->
-                  <div class="d-flex align-items-center mb-3 ">
-                    <span class="title-profile pe-3"><strong>Indirizzo lavoro:</strong></span>
-                    <p class="p-profile mb-0">via delle via</p>
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="title-profile pe-3"
+                      ><strong>Indirizzo lavoro:</strong></span
+                    >
+                    <p class="p-profile mb-0">{{ doctor.address }}</p>
                   </div>
                   <!-- cv pdf doctor -->
                   <div class="d-flex align-items-center mb-3">
-                    <span class="title-profile pe-3"><strong>cv del dottore:</strong></span>
-                    <p class="mb-0">pdf</p>
+                    <span class="title-profile pe-3"
+                      ><strong>cv del dottore:</strong></span
+                    >
+                    <p class="mb-0">
+                      <a :href="`${store.Url}${doctor.curriculum}`"
+                        >Vedi Curriculum</a
+                      >
+                    </p>
                   </div>
                   <!-- medical_specialization doctor -->
                   <div class="mb-3">
-                    <span class="title-profile  pe-3"><strong>prestazioni:</strong></span>
+                    <span class="title-profile pe-3"
+                      ><strong>prestazioni:</strong></span
+                    >
                     <p class="p-profile mb-0">
-                      Lorem ipsum dolor, sit amet consectetur
-                      adipisicing elit. Facere rerum architecto hic quos nostrum
-                      iusto veniam totam placeat aliquam exercitationem
-                      consequuntur porro nam natus ab quaerat amet quae animi
-                      expedita similique ipsum in omnis iure, harum voluptatem?
-                      Quos, nisi at!
+                      {{ doctor.medical_services }}
                     </p>
                   </div>
                   <!-- vote doctor -->
-                  <div class="d-flex align-items-center justify-content-center mb-4">
-                    <span class="title-profile  pe-3"><strong>Voto:</strong></span>
+                  <!-- <div
+                    class="d-flex align-items-center justify-content-center mb-4"
+                  >
+                    <span class="title-profile pe-3"
+                      ><strong>Voto:</strong></span
+                    >
                     <p class="p-profile mb-0">il voto totale</p>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -128,25 +152,25 @@ export default {
   data() {
     return {
       store: store,
-      doctor: [],
+      doctor: {},
       showForm: false,
       showReviewForm: false,
     };
   },
   methods: {
-    /* fetchDoctor() {
+    fetchDoctor() {
       axios.get(`${this.store.BASE_URL}/doctors/${this.id}`).then((res) => {
-        console.log(res);
-        this.doctor = res.data.doctor;
+        console.log(res.data);
+        this.doctor = res.data.results;
         console.log(this.doctor);
       });
-    }, */
-    showDoctor(doctors, param) {
+    },
+    /*  showDoctor(doctors, param) {
       console.log(this.store.allDoctors);
       const doctorID = doctors.filter((doctor) => doctor.id == param);
       this.doctor = [...doctorID];
       console.log(this.doctor);
-    },
+    }, */
 
     closeForm() {
       this.showForm = false;
@@ -155,11 +179,17 @@ export default {
       this.showReviewForm = false;
     },
   },
+  computed: {
+    calcVote() {
+      return Math.trunc(this.item.media_voti);
+    },
+  },
 
   created() {
-    // this.fetchDoctor();
+    this.fetchDoctor();
     // console.log("created show", this.$route.params);
     // this.showDoctor(this.store.allDoctors, this.id);
+    console.log(this.doctor);
   },
   mounted() {
     // this.showDoctor(this.store.allDoctors, id);
