@@ -107,7 +107,7 @@
                   </span>
                   <span> Messaggio </span>
                 </button>
-                <MessageForm v-else @close="closeForm" />
+                <MessageForm v-else @close="closeForm" :doctorId="id"/>
               </div>
             </div>
             <!-- form reviews  -->
