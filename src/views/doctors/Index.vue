@@ -1,6 +1,6 @@
 <template>
   <main class="pt-2">
-    <div v-if="store.allDoctors.length > 0 || store.doctorsPerSpecialization.length > 0">
+    <div v-if="store.allDoctors.length > 0 || store.allSponsor.length > 0">
       <!-- filter-dropdown -->
       <section class="search-header mb-2">
         <div class="container">
@@ -189,14 +189,11 @@
               <DoctorCard v-for="(doctor, index) in store.allDoctors" :key="index" :item="doctor" />
             </template>
 
-            
-
-
-            <template v-if="store.allDoctors.length === 0 &&
+            <!-- <template v-if="store.allDoctors.length === 0 &&
               store.doctorsPerSpecialization.length > 0
               ">
               <DoctorCard v-for="(doctor, index) in store.doctorsPerSpecialization" :key="index" :data="doctor" />
-            </template>
+            </template> -->
             <!-- <div v-else-if="store.doctorsPerSpecialization.length = 0">
               <p>nussun dottore trovato</p>
             </div> -->
