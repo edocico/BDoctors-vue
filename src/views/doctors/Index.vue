@@ -11,7 +11,7 @@
             <div class="btn bg-middle-green dropdown">
               <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short"  class="icon fs-5 pe-3" />
+                <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="icon fs-5 pe-3" />
                 <span class="d-none d-md-inline-block fs-5"> Filtro voti </span>
               </a>
 
@@ -24,31 +24,31 @@
                       <p class="mb-0">Ordina per voto :</p>
                     </div>
                     <span class="d-flex gap-2 mb-0">
-                      <input type="radio" value="1" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <input class="checkbox" type="radio" value="1" v-model="store.filtr.avg_vote" @change="filtrPage()">
                       <label>1</label>
                     </span>
                     <span class="d-flex gap-2">
-                      <input type="radio" value="2" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <input class="checkbox" type="radio" value="2" v-model="store.filtr.avg_vote" @change="filtrPage()">
                       <label>2</label>
                     </span>
                     <span class="d-flex gap-2">
-                      <input type="radio" value="3" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <input class="checkbox" type="radio" value="3" v-model="store.filtr.avg_vote" @change="filtrPage()">
                       <label>3</label>
                     </span>
                     <span class="d-flex gap-2">
-                      <input type="radio" value="4" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <input class="checkbox" type="radio" value="4" v-model="store.filtr.avg_vote" @change="filtrPage()">
                       <label>4</label>
                     </span>
                     <span class="d-flex gap-2">
-                      <input type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                      <input class="checkbox" type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
                       <label>5</label>
                     </span>
+
+
                   </div>
                 </form>
               </div>
             </div>
-
-
             <!-- filter oreder review -->
             <div class="btn bg-middle-green dropdown">
               <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
@@ -61,10 +61,12 @@
                 <form action="/action_page.php">
 
                   <!-- oreder ASC/ DESC -->
-                  <input class="me-2" type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
+                  <input class="me-2 checkbox" type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
                   <label for="html">Crescente</label><br>
-                  <input class="me-2" type="radio" value="desc" v-model="store.filtr.order" @change="filtrPage()">
+                  <input class="me-2 checkbox" id="prova" type="radio" value="desc" v-model="store.filtr.order"
+                    @change="filtrPage()">
                   <label for="css">Decrescente</label><br>
+
                 </form>
               </div>
             </div>
@@ -124,6 +126,14 @@
                 </li>
               </ul>
             </div>
+            
+            <!-- BUTTON AZZERA -->
+            <button class="btn bg-middle-green dropdown text-light" @click="removeChecked(),axiosDoctors()">
+              <font-awesome-icon :icon="['far', 'trash-can']" class="icon fs-5 pe-3"/>
+              <span class="d-none d-md-inline-block fs-5">
+                Azzera filtri
+              </span>
+            </button>
           </div>
         </div>
       </section>
@@ -158,18 +168,19 @@
         <div class="container">
           <!-- NUOVO -->
           <div class="d-flex mb-4 gap-3 align-items-center ">
-              <p v-if="store.allDoctors.length > 0">
-                <span class="results text-dark-green">{{ store.allDoctors.length + store.allSponsor.length }} risultati</span>
-              </p>
-              <p class="text-dark-green fst-italic fs-5">
-                stai visualizzando:
-                <span class="text-uppercase fw-bold fs-3 mx-2">
-                  {{ findSpecName(store.specializations) }}
-                </span>
-              </p>
-              <!-- <p v-else>stai visualizzando tutti i medici</p> -->
-            </div>
-            <!-- NUOVO -->
+            <p v-if="store.allDoctors.length > 0">
+              <span class="results text-dark-green">{{ store.allDoctors.length + store.allSponsor.length }}
+                risultati</span>
+            </p>
+            <p class="text-dark-green fst-italic fs-5">
+              stai visualizzando:
+              <span class="text-uppercase fw-bold fs-3 mx-2">
+                {{ findSpecName(store.specializations) }}
+              </span>
+            </p>
+            <!-- <p v-else>stai visualizzando tutti i medici</p> -->
+          </div>
+          <!-- NUOVO -->
           <!-- <p v-if="store.allDoctors.length > 0">
           {{ store.allDoctors.length }}
           risultati
@@ -211,7 +222,7 @@
 <script>
 import SearchBar from "../../components/SearchBar.vue";
 import DoctorCard from "../../components/DoctorCard.vue";
-import { store, getSpecialization, getDoctors, filtr } from "../../store";
+import { store, getSpecialization, getDoctors, filtr, clearInputChecked } from "../../store";
 import axios from "axios";
 
 export default {
@@ -230,6 +241,9 @@ export default {
     };
   },
   methods: {
+    removeChecked() {
+      clearInputChecked()
+    },
     fetchData() {
       getSpecialization();
     },

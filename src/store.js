@@ -17,7 +17,7 @@ export const store = reactive({
   }
 });
 
-export function filtr(router){
+export function filtr(router) {
   //Nuovo query
   let newQuery = {};
 
@@ -34,7 +34,7 @@ export function filtr(router){
   getDoctors(newQuery);
 };
 
-export function clearAllDoctors(){
+export function clearAllDoctors() {
   store.allDoctors = [];
   store.filtr.order = '';
   store.filtr.specialization_id = '';
@@ -59,4 +59,13 @@ export function getDoctors(queryParams) {
     store.allSponsor = res.data.doctors_sponsorships;
     // console.log(store.allSponsor)
   });
+}
+
+export function clearInputChecked() {
+  let inputs = document.querySelectorAll('.checkbox');
+
+  inputs.forEach(function (input) {
+    input.checked = false;
+  })
+  console.log('clear', inputs)
 }

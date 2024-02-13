@@ -27,7 +27,7 @@
                 <router-link
                   :to="{ name: 'doctors.index'}"
                   class="decoration-none text-light"
-                  @click="axiosDoctors()"
+                  @click="axiosDoctors(),removeChecked()"
                 >
                   <font-awesome-icon
                     icon="fa-solid fa-user-doctor"
@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import { store, getDoctors, clearAllDoctors } from "../store.js";
+import { store, getDoctors, clearAllDoctors, clearInputChecked } from "../store.js";
 import axios from "axios";
 
 export default {
@@ -119,6 +119,9 @@ export default {
   },
 
   methods: {
+    removeChecked() {
+      clearInputChecked()
+    },
     axiosDoctors(){
       getDoctors();
     },

@@ -17,6 +17,10 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faSquareInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+// REGULAR
+import { 
+  faTrashCan as farTrashCan,
+} from '@fortawesome/free-regular-svg-icons'
 // import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 
@@ -41,8 +45,7 @@ library.add(
   faSliders,
   faUserTag,
   faArrowDownWideShort,
-  
-
+  farTrashCan,
 );
 
 createApp(App)
