@@ -1,76 +1,76 @@
 <template>
   <main class="pt-2">
-    <div v-if="store.allDoctors.length > 0 || store.allSponsor.length > 0">
-      <!-- filter-dropdown -->
-      <section class="search-header mb-2">
-        <div class="container">
-          <div class="d-flex flex-row gap-3 align-items-center justify-content-end">
-            <!-- FORM FILTRI -->
 
-            <!-- filter vote -->
-            <div class="btn bg-middle-green dropdown">
-              <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short"  class="icon fs-5 pe-3" />
-                <span class="d-none d-md-inline-block fs-5"> Filtro voti </span>
-              </a>
+    <!-- filter-dropdown -->
+    <section class="search-header mb-2">
+      <div class="container">
+        <div class="d-flex flex-row gap-3 align-items-center justify-content-end">
+          <!-- FORM FILTRI -->
 
-              <div class="dropdown-menu">
-                <form action="/action_page.php">
+          <!-- filter vote -->
+          <div class="btn bg-middle-green dropdown">
+            <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="icon fs-5 pe-3" />
+              <span class="d-none d-md-inline-block fs-5"> Filtro voti </span>
+            </a>
 
-                  <!-- numerical order reviews -->
+            <div class="dropdown-menu">
+              <form action="/action_page.php">
+
+                <!-- numerical order reviews -->
+                <div>
                   <div>
-                    <div>
-                      <p class="mb-0">Ordina per voto :</p>
-                    </div>
-                    <span class="d-flex gap-2 mb-0">
-                      <input type="radio" value="1" v-model="store.filtr.avg_vote" @change="filtrPage()">
-                      <label>1</label>
-                    </span>
-                    <span class="d-flex gap-2">
-                      <input type="radio" value="2" v-model="store.filtr.avg_vote" @change="filtrPage()">
-                      <label>2</label>
-                    </span>
-                    <span class="d-flex gap-2">
-                      <input type="radio" value="3" v-model="store.filtr.avg_vote" @change="filtrPage()">
-                      <label>3</label>
-                    </span>
-                    <span class="d-flex gap-2">
-                      <input type="radio" value="4" v-model="store.filtr.avg_vote" @change="filtrPage()">
-                      <label>4</label>
-                    </span>
-                    <span class="d-flex gap-2">
-                      <input type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
-                      <label>5</label>
-                    </span>
+                    <p class="mb-0">Ordina per voto :</p>
                   </div>
-                </form>
-              </div>
+                  <span class="d-flex gap-2 mb-0">
+                    <input type="radio" value="1" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                    <label>1</label>
+                  </span>
+                  <span class="d-flex gap-2">
+                    <input type="radio" value="2" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                    <label>2</label>
+                  </span>
+                  <span class="d-flex gap-2">
+                    <input type="radio" value="3" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                    <label>3</label>
+                  </span>
+                  <span class="d-flex gap-2">
+                    <input type="radio" value="4" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                    <label>4</label>
+                  </span>
+                  <span class="d-flex gap-2">
+                    <input type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
+                    <label>5</label>
+                  </span>
+                </div>
+              </form>
             </div>
+          </div>
 
 
-            <!-- filter oreder review -->
-            <div class="btn bg-middle-green dropdown">
-              <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <font-awesome-icon icon="fa-solid fa-sliders" class="icon fs-5 pe-3" />
-                <span class="d-none d-md-inline-block fs-5"> Filtro numero recensioni </span>
-              </a>
+          <!-- filter oreder review -->
+          <div class="btn bg-middle-green dropdown">
+            <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <font-awesome-icon icon="fa-solid fa-sliders" class="icon fs-5 pe-3" />
+              <span class="d-none d-md-inline-block fs-5"> Filtro numero recensioni </span>
+            </a>
 
-              <div class="dropdown-menu">
-                <form action="/action_page.php">
+            <div class="dropdown-menu">
+              <form action="/action_page.php">
 
-                  <!-- oreder ASC/ DESC -->
-                  <input class="me-2" type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
-                  <label for="html">Crescente</label><br>
-                  <input class="me-2" type="radio" value="desc" v-model="store.filtr.order" @change="filtrPage()">
-                  <label for="css">Decrescente</label><br>
-                </form>
-              </div>
+                <!-- oreder ASC/ DESC -->
+                <input class="me-2" type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
+                <label for="html">Crescente</label><br>
+                <input class="me-2" type="radio" value="desc" v-model="store.filtr.order" @change="filtrPage()">
+                <label for="css">Decrescente</label><br>
+              </form>
             </div>
+          </div>
 
-            <!-- 1 modo -->
-            <!-- <form action="/action_page.php">
+          <!-- 1 modo -->
+          <!-- <form action="/action_page.php">
               <p>Please select your filtr</p>
               <input type="radio" value="asc" v-model="store.filtr.order" @change="filtrPage()">
               <label for="html">Crescente</label><br>
@@ -88,56 +88,56 @@
               <input type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
               <label>5</label>
             </form> -->
-            <!-- FORM FILTRI -->
-            <!-- Numero di risultati -->
-            <!-- <span>
+          <!-- FORM FILTRI -->
+          <!-- Numero di risultati -->
+          <!-- <span>
               <p v-if="store.allDoctors.length > 0">
                 <span class="results text-dark-green">{{ store.allDoctors.length }} risultati</span>
               </p>
             </span> -->
-            <!-- Numero di risultati -->
+          <!-- Numero di risultati -->
 
-            <!-- filter specializations -->
-            <div class="btn bg-middle-green dropdown">
-              <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <font-awesome-icon icon="fa-solid fa-user-tag" class="icon fs-5 pe-3" />
-                <span class="d-none d-md-inline-block fs-5">Filtro specializzazione </span>
-              </a>
+          <!-- filter specializations -->
+          <div class="btn bg-middle-green dropdown">
+            <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <font-awesome-icon icon="fa-solid fa-user-tag" class="icon fs-5 pe-3" />
+              <span class="d-none d-md-inline-block fs-5">Filtro specializzazione </span>
+            </a>
 
-              <ul class="dropdown-menu">
-                <li>
-                  <label for="tutti">
-                    <input id="tutti" name="tutti" type="radio" value="" v-model="store.filtr.specialization_id"
-                      style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;" @change="filtrPage()">
-                    Tutti
-                  </label>
-                </li>
-                <!-- list of specializations -->
-                <li v-for="(specialization, index) in store.specializations" :key="index">
-                  <label :for="specialization.name">
-                    <input :id="specialization.name" :name="specialization.name" type="radio" :value="specialization.id"
-                      v-model="store.filtr.specialization_id"
-                      style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;" @change="filtrPage()">
-                    {{ specialization.name }}
-                  </label>
-                </li>
-              </ul>
-            </div>
+            <ul class="dropdown-menu">
+              <li>
+                <label for="tutti">
+                  <input id="tutti" name="tutti" type="radio" value="" v-model="store.filtr.specialization_id"
+                    style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;" @change="filtrPage()">
+                  Tutti
+                </label>
+              </li>
+              <!-- list of specializations -->
+              <li v-for="(specialization, index) in store.specializations" :key="index">
+                <label :for="specialization.name">
+                  <input :id="specialization.name" :name="specialization.name" type="radio" :value="specialization.id"
+                    v-model="store.filtr.specialization_id"
+                    style="position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0;" @change="filtrPage()">
+                  {{ specialization.name }}
+                </label>
+              </li>
+            </ul>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- <section class="search-results"> -->
-      <!-- <div class="container"> -->
-      <!-- <p v-if="store.allDoctors.length > 0">
+    <!-- <section class="search-results"> -->
+    <!-- <div class="container"> -->
+    <!-- <p v-if="store.allDoctors.length > 0">
           {{ store.allDoctors.length }}
           risultati
         </p>
         <p v-else-if="store.doctorsPerSpecialization.length > 0">
           {{ store.doctorsPerSpecialization.length }} risultati
         </p> -->
-      <!-- <div class="card-container d-block mb-2 d-md-flex gap-5 justify-content-evenly">
+    <!-- <div class="card-container d-block mb-2 d-md-flex gap-5 justify-content-evenly">
             <div v-if="store.allDoctors.length > 0">
               <DoctorCard v-for="(doctor, index) in store.allDoctors" :key="index" :item="doctor" />
             </div>
@@ -147,29 +147,30 @@
               ">
               <DoctorCard v-for="(doctor, index) in store.doctorsPerSpecialization" :key="index" :data="doctor" />
             </div> -->
-      <!-- <div v-else-if="store.doctorsPerSpecialization.length = 0">
+    <!-- <div v-else-if="store.doctorsPerSpecialization.length = 0">
               <p>nussun dottore trovato</p>
             </div> -->
-      <!-- </div> -->
-      <!-- </div> -->
-      <!-- </section> -->
-
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </section> -->
+    <div v-if="store.allDoctors.length > 0 || store.allSponsor.length > 0">
       <section class="search-results">
         <div class="container">
           <!-- NUOVO -->
           <div class="d-flex mb-4 gap-3 align-items-center ">
-              <p v-if="store.allDoctors.length > 0">
-                <span class="results text-dark-green">{{ store.allDoctors.length + store.allSponsor.length }} risultati</span>
-              </p>
-              <p class="text-dark-green fst-italic fs-5">
-                stai visualizzando:
-                <span class="text-uppercase fw-bold fs-3 mx-2">
-                  {{ findSpecName(store.specializations) }}
-                </span>
-              </p>
-              <!-- <p v-else>stai visualizzando tutti i medici</p> -->
-            </div>
-            <!-- NUOVO -->
+            <p v-if="store.allDoctors.length > 0">
+              <span class="results text-dark-green">{{ store.allDoctors.length + store.allSponsor.length }}
+                risultati</span>
+            </p>
+            <p class="text-dark-green fst-italic fs-5">
+              stai visualizzando:
+              <span class="text-uppercase fw-bold fs-3 mx-2">
+                {{ findSpecName(store.specializations) }}
+              </span>
+            </p>
+            <!-- <p v-else>stai visualizzando tutti i medici</p> -->
+          </div>
+          <!-- NUOVO -->
           <!-- <p v-if="store.allDoctors.length > 0">
           {{ store.allDoctors.length }}
           risultati
@@ -203,7 +204,7 @@
 
     </div>
     <div v-else class="loading">
-      Caricamento...
+      Non ci sono risultati
     </div>
   </main>
 </template>
