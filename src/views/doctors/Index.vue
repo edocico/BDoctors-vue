@@ -1,6 +1,7 @@
 <template>
   <main class="pt-2">
     <div v-if="store.allDoctors.length > 0 || store.allSponsor.length > 0">
+      <!-- PROVA -->
       <!-- filter-dropdown -->
       <section class="search-header mb-2">
         <div class="container">
@@ -43,8 +44,6 @@
                       <input class="checkbox" type="radio" value="5" v-model="store.filtr.avg_vote" @change="filtrPage()">
                       <label>5</label>
                     </span>
-
-
                   </div>
                 </form>
               </div>
