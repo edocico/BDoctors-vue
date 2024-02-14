@@ -92,13 +92,6 @@ export default {
   text-transform: uppercase;
 }
 
-
-.loading {
-  text-align: center;
-  font-size: 100px;
-  padding: 130px 0px;
-}
-
 li:hover {
   color: #c3e2a5;
 }
