@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <!-- controllo caricamento:
+  Se i dati sono stati ricevuti allora stamperò il contenuto -->
+  <div v-if="!loading">
     <section class="profile">
       <div class="container">
         <div class="d-flex justify-content-center gap-4">
@@ -131,6 +133,9 @@
       </div>
     </section>
   </div>
+  <!-- Altrimenti:
+  stampa "Carimento" durante il processo di acquisizione dati -->
+  <div v-else class="loading">Caricamento...</div>
 </template>
 
 <script>
@@ -155,6 +160,7 @@ export default {
       doctor: {},
       showForm: false,
       showReviewForm: false,
+      loading: true,
     };
   },
   methods: {
@@ -163,6 +169,9 @@ export default {
         console.log(res.data);
         this.doctor = res.data.results;
         console.log(this.doctor);
+
+        // quando arrivano i dati loading diventa false, così da interrompere il carimento
+        this.loading = false;
       });
     },
     /*  showDoctor(doctors, param) {
