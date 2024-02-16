@@ -183,7 +183,9 @@
                           :key="index"
                           class="border-bottom border-black mb-3"
                         >
-                          <h5>{{ review.name }}</h5>
+                          <h5>
+                            <strong>{{ review.name }}</strong>
+                          </h5>
                           <p>{{ review.message }}</p>
                         </li>
                       </ul>
