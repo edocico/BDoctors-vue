@@ -71,7 +71,13 @@
 </template>
 
 <script>
+
+import axios from "axios";
+
 export default {
+  props: {
+    doctorId: String,
+  },
   data() {
     return {
       // dati ricavati dagli input del form
@@ -92,6 +98,17 @@ export default {
     };
   },
   methods: {
+    sendRewievs() {
+      axios.post('http://127.0.0.1:8000/api/reviews', {
+        name: this.fullNameParam,
+        message: this.reviewParam,
+        vote_id: this.voteParam,
+        doctor_id: this.doctorId,
+      }).then((res) => {
+        console.log('res rewiew',res)
+        this.reviewSent = res.data.status
+      })
+    },
     closeReviewForm() {
       this.$emit('close');
     },
@@ -123,8 +140,8 @@ export default {
         // nel caso in cui tutte le validazioni sono state inviate correttamente,
         // allora verrà mostrato un messaggio di completamento
         this.reviewSent = true;
-
       }
+      this.sendRewievs()
     },
 
     validateFullName() {
