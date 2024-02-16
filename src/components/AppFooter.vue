@@ -1,30 +1,34 @@
 <template>
   <footer>
     <div class="container">
+      <!-- footer-top -->
       <div class="footer-top">
+        <!-- list-specializations -->
         <div class="d-lg-flex justify-content-between">
           <div class="order-lg-2 d-md-col-9">
-            <h5 class="text-large-footer text-center">
-              <router-link @click="axiosDoctors()" :to="{ name: 'doctors.index' }" class="decoration-none text-light-green">I nostri specialisti
+            <h5 class="text-large-footer text-center ps-4 pb-2">
+              <router-link 
+              @click="axiosDoctors()" :to="{ name: 'doctors.index' }" 
+              class="decoration-none text-light-green">I nostri specialisti
               </router-link>
             </h5>
             <div class="container">
-              <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between" v-if="$route.name === 'home'">
-                <li class="col-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
+              <ul class="d-block text-center d-md-flex flex-wrap gap-1 justify-content-between" v-if="$route.name === 'home'">
+                <li class="col-12 col-md-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
                   <router-link class="text-light decoration-none" @click="clearDoctorsArray()"
                     :to="{ name: 'doctors.index', query: { specialization_id: specialization.id } }">
                     {{ specialization.name }}
                   </router-link>
                 </li>
               </ul>
-              <ul class="d-block d-md-flex flex-wrap gap-1 justify-content-between" v-else>
+              <ul class="d-block text-center d-md-flex flex-wrap gap-1 justify-content-between" v-else>
                 <!-- <li class="col-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
                   <router-link class="text-light decoration-none" @click="filtrPage()"
                     :to="{ name: 'doctors.index', query: { specialization_id: specialization.id } }">
                     {{ specialization.name }}
                   </router-link>
                 </li> -->
-                <li class="col-3 ju" v-for="(specialization, index) in store.specializations" :key="index">
+                <li class="col-12 col-md-3 p-2 p-md-0 ju" v-for="(specialization, index) in store.specializations" :key="index">
                   <label :for="specialization.name">
                     <input :id="specialization.name" :name="specialization.name" type="radio" :value="specialization.id"
                       v-model="store.filtr.specialization_id"
@@ -35,6 +39,7 @@
               </ul>
             </div> 
           </div>
+          <!-- information-socials icon -->
           <div class="order-lg-1 d-md-col-3 pt-2">
             <div class="text-center">
               <router-link :to="{ name: 'home' }" class="decoration-none text-light-green">
@@ -64,6 +69,7 @@
           </div>
         </div>
       </div>
+      <!-- footer-bottom -->
       <div class="footer-bottom">
         <p class="text-small-footer text-center">
           Copyright &#169; 2024
