@@ -107,16 +107,18 @@
         <div class="container">
           <!-- Risultati di ricerca - nome specializazzione -->
           <div class="d-black d-lg-flex mb-4 gap-3 align-items-center ">
-            <p v-if="store.allDoctors.length > 0">
-              <span class="results text-dark-green">{{ store.allDoctors.length + store.allSponsor.length }}
-                risultati</span>
-            </p>
-            <p class="text-dark-green fst-italic fs-5">
+
+            <p class="text-dark-green fst-italic fs-5 order-lg-2">
               stai visualizzando:
               <span class="text-uppercase fw-bold fs-3 mx-2">
                 {{ findSpecName(store.specializations) }}
               </span>
             </p>
+            <p v-if="store.allDoctors.length > 0">
+              <span class="results text-dark-green">{{ store.allDoctors.length + store.allSponsor.length }}
+                risultati</span>
+            </p>
+
           </div>
 
           <div class="card-container d-block mb-2 d-md-flex gap-lg-5 justify-content-evenly">
