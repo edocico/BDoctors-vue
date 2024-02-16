@@ -4,9 +4,9 @@
   <div v-if="!loading">
     <section class="profile">
       <div class="container">
-        <div class="d-flex justify-content-center gap-4">
+        <div class="d-md-flex justify-content-center gap-4">
           <!-- profilo -->
-          <div class="col-6">
+          <div class="col-12 mb-3 col-md-7 mb-md-0">
             <!-- header profile -->
             <div
               class="head-profile"
@@ -38,11 +38,14 @@
               </div>
             </div>
             <!-- body profile -->
-            <div class="body-profile">
+            <div class="body-profile"
+            v-bind:style="{
+                borderColor: hasSponsor ? '#eff161' : '#c3e2a5',
+              }">
               <div class="d-block">
-                <div class="information-profile d-block d-md-col-9">
+                <div class="information-profile d-block col-md-9">
                   <!-- specialization doctor -->
-                  <div class="d-flex">
+                  <div class=" align-items-start">
                     <div class="title-profile">
                       <strong>Specializzazione:</strong>
                     </div>
@@ -52,28 +55,28 @@
                           specialization, index
                         ) in doctor.specializations"
                         :key="index"
-                        class=""
+                        class="p-profile"
                       >
                         {{ specialization.name }}
                       </li>
                     </ul>
                   </div>
                   <!-- phone number doctor -->
-                  <div class="d-flex align-items-center">
-                    <span class="title-profile pe-3"
+                  <div class="d-lg-flex align-items-center mb-3">
+                    <span class="title-profile col-auto pe-3"
                       ><strong>numero di telefono:</strong></span
                     >
-                    <p class="p-profile mb-0">{{ doctor.phone_number }}</p>
+                    <p class="p-profile col-6 mb-0">{{ doctor.phone_number }}</p>
                   </div>
                   <!-- address doctor -->
-                  <div class="d-flex align-items-center mb-3">
-                    <span class="title-profile pe-3"
+                  <div class="d-lg-flex align-items-center mb-3">
+                    <span class="title-profile col-auto pe-3"
                       ><strong>Indirizzo lavoro:</strong></span
                     >
-                    <p class="p-profile mb-0">{{ doctor.address }}</p>
+                    <p class="p-profile col-6 mb-0">{{ doctor.address }}</p>
                   </div>
                   <!-- cv pdf doctor -->
-                  <div class="d-flex align-items-center mb-3">
+                  <div class="d-lg-flex align-items-center mb-3">
                     <span class="title-profile pe-3"
                       ><strong>cv del dottore:</strong></span
                     >
@@ -84,7 +87,7 @@
                     </p>
                   </div>
                   <!-- medical_specialization doctor -->
-                  <div class="mb-3">
+                  <div class="d-lg-flex align-items-center mb-3">
                     <span class="title-profile pe-3"
                       ><strong>prestazioni:</strong></span
                     >
@@ -106,7 +109,7 @@
             </div>
           </div>
           <!-- form messages  -->
-          <div>
+          <div class="d-flex gap-5 d-md-block pt-md-5 col-md-5">
             <div class="contact-profile d-inline-block col-auto">
               <div class="message mb-3" v-if="!showReviewForm">
                 <button
@@ -229,7 +232,7 @@ export default {
 }
 
 .p-profile {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .profile {
