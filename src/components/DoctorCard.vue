@@ -3,33 +3,54 @@
     <!-- Router link che
     permette il click diretto sulla card, per collegarsi alla show id
     del dottore -->
-    <router-link :to="{ name: 'doctors.show', params: { id: item.id } }"
-      class="col-12  col-md-5 col-lg-3 text-decoration-none">
-
-      <div class="card-cust h-100"
-        :class="{ 'card-cust': true, 'sponsor-background': isSponsor, 'sponsor-hover': isSponsor }">
+    <router-link
+      :to="{ name: 'doctors.show', params: { id: item.id } }"
+      class="col-12 col-md-5 col-lg-3 text-decoration-none"
+    >
+      <div
+        class="card-cust h-100"
+        :class="{
+          'card-cust': true,
+          'sponsor-background': isSponsor,
+          'sponsor-hover': isSponsor,
+        }"
+      >
         <div class="card-top">
           <!-- image-doctor -->
           <figure>
-            <img v-if="item" :src="store.Url + item.photo" alt="" class="rounded-circle img-thumbnail" />
-            <img v-else-if="data" :src="store.Url + data.photo" alt="" class="rounded-circle img-thumbnail" />
+            <img
+              v-if="item"
+              :src="store.Url + item.photo"
+              alt=""
+              class="rounded-circle img-thumbnail"
+            />
+            <img
+              v-else-if="data"
+              :src="store.Url + data.photo"
+              alt=""
+              class="rounded-circle img-thumbnail"
+            />
           </figure>
         </div>
 
         <div class="card-bottom h-100">
           <!-- name/ sponsor -->
           <div>
-            <div>
-
-            </div>
+            <div></div>
             <div class="d-flex justify-content-between align-items-center">
               <!-- name -->
               <span class="d-flex align-items-center">
-                <p class="pe-3 "><font-awesome-icon icon="fa-solid fa-user-doctor" /></p>
-                <p class="card-fullname fw-bold">{{ item.user.name }} {{ item.user.surname }}</p>
+                <p class="pe-3">
+                  <font-awesome-icon icon="fa-solid fa-user-doctor" />
+                </p>
+                <p class="card-fullname fw-bold">
+                  {{ item.user.name }} {{ item.user.surname }}
+                </p>
               </span>
               <!-- sponsor -->
-              <p v-if="isSponsor" class="sponsor-icon "><font-awesome-icon icon="fa-solid fa-crown" class="crown" /></p>
+              <p v-if="isSponsor" class="sponsor-icon">
+                <font-awesome-icon icon="fa-solid fa-crown" class="crown" />
+              </p>
             </div>
           </div>
 
@@ -37,12 +58,19 @@
           <div class="specializations d-flex">
             <font-awesome-icon icon="fa-solid fa-stethoscope" />
             <ul v-if="item" class="list">
-              <li class=" specializations" v-for="(specializzazione, index) in item.specializations" :key="index">
+              <li
+                class="specializations"
+                v-for="(specializzazione, index) in item.specializations"
+                :key="index"
+              >
                 {{ specializzazione.name }}
               </li>
             </ul>
             <ul v-else-if="data" class="list">
-              <li v-for="(specializzazione, index) in data.specializations" :key="index">
+              <li
+                v-for="(specializzazione, index) in data.specializations"
+                :key="index"
+              >
                 {{ specializzazione.name }}
               </li>
             </ul>
@@ -51,17 +79,25 @@
           <!-- total review -->
           <div class="">
             <div class="d-flex align-items-center">
-              <p class="pe-3"><font-awesome-icon icon="fa-solid fa-square-poll-vertical" /></p>
-              <p><strong>Numero di recensioni:</strong> {{ item.reviews_count }}</p>
+              <p class="pe-3">
+                <font-awesome-icon icon="fa-solid fa-square-poll-vertical" />
+              </p>
+              <p>
+                <strong>Numero di recensioni:</strong> {{ item.reviews_count }}
+              </p>
             </div>
 
             <!-- total vote -->
             <div v-if="calcVote > 0" class="star-vote">
               <div class="information mb-3">
-                <div class="d-flex justify-content-center ">
+                <div class="d-flex justify-content-center">
                   <span class="pe-2"><strong>Voto:</strong></span>
-                  <span class="star-icon" v-for="item in calcVote"><font-awesome-icon icon="fa-solid fa-star" /></span>
-                  <span class="star-icon" v-for="item in 5 - calcVote">&star;</span>
+                  <span class="star-icon" v-for="item in calcVote"
+                    ><font-awesome-icon icon="fa-solid fa-star"
+                  /></span>
+                  <span class="star-icon" v-for="item in 5 - calcVote"
+                    >&star;</span
+                  >
                 </div>
               </div>
             </div>
@@ -69,17 +105,15 @@
               <strong class="pe-2">Voto:</strong>
               <span class="information">nessun voto</span>
             </div>
-
           </div>
-          <p v-if="item">
+          <!-- <p v-if="item">
             <router-link :to="{ name: 'doctors.show', params: { id: item.id } }">Vai al profilo...</router-link>
           </p>
           <p v-else-if="data">
             <router-link :to="{ name: 'doctors.show', params: { id: data.id } }">Vai al profilo...</router-link>
-          </p>
+          </p> -->
         </div>
       </div>
-
     </router-link>
   </div>
 </template>
@@ -104,7 +138,7 @@ export default {
     isSponsor: {
       type: Boolean,
       required: false,
-    }
+    },
   },
 
   computed: {
@@ -181,7 +215,6 @@ export default {
     flex-grow: 1;
   }
 }
-
 
 .sponsor-hover:hover {
   box-shadow: 0px 3px 3px 3px #e2cc01;
