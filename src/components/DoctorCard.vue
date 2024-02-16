@@ -1,10 +1,10 @@
 <template>
-  <div v-if="item">
+  <div v-if="item" class="pb-4 pb-lg-0">
     <!-- Router link che
     permette il click diretto sulla card, per collegarsi alla show id
     del dottore -->
     <router-link :to="{ name: 'doctors.show', params: { id: item.id } }"
-      class="col-12 col-md-5 col-lg-3 text-decoration-none">
+      class="col-12  col-md-5 col-lg-3 text-decoration-none">
 
       <div class="card-cust h-100"
         :class="{ 'card-cust': true, 'sponsor-background': isSponsor, 'sponsor-hover': isSponsor }">

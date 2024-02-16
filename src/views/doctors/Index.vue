@@ -11,16 +11,13 @@
           <div class="btn bg-middle-green dropdown">
             <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="icon fs-5 pe-3" />
-              <span class="d-none d-md-inline-block fs-5"> Filtro voti </span>
+              <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="icon fs-5 pe-lg-3" />
+              <span class="d-none d-lg-inline-block fs-5"> Filtro voti </span>
             </a>
             <div class="dropdown-menu">
               <form action="/action_page.php">
                 <!-- numerical order reviews -->
                 <div>
-                  <div>
-                    <p class="mb-0">Ordina per voto :</p>
-                  </div>
                   <span class="d-flex gap-2 mb-0">
                     <input class="checkbox" type="radio" value="1" v-model="store.filtr.avg_vote" @change="filtrPage()">
                     <label>1</label>
@@ -50,8 +47,8 @@
           <div class="btn bg-middle-green dropdown">
             <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              <font-awesome-icon icon="fa-solid fa-sliders" class="icon fs-5 pe-3" />
-              <span class="d-none d-md-inline-block fs-5"> Filtro numero recensioni </span>
+              <font-awesome-icon icon="fa-solid fa-sliders" class="icon fs-5 pe-lg-3" />
+              <span class="d-none d-lg-inline-block fs-5"> Filtro numero recensioni </span>
             </a>
 
             <div class="dropdown-menu">
@@ -69,8 +66,8 @@
           <div class="btn bg-middle-green dropdown">
             <a class="decoration-none text-light header-item" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              <font-awesome-icon icon="fa-solid fa-user-tag" class="icon fs-5 pe-3" />
-              <span class="d-none d-md-inline-block fs-5">Filtro specializzazione </span>
+              <font-awesome-icon icon="fa-solid fa-user-tag" class="icon fs-5 pe-lg-3" />
+              <span class="d-none d-lg-inline-block fs-5">Filtro specializzazione </span>
             </a>
 
             <ul class="dropdown-menu">
@@ -95,8 +92,8 @@
 
           <!-- BUTTON AZZERA -->
           <button class="btn bg-middle-green dropdown text-light" @click="removeChecked(), axiosDoctors()">
-            <font-awesome-icon :icon="['far', 'trash-can']" class="icon fs-5 pe-3" />
-            <span class="d-none d-md-inline-block fs-5">
+            <font-awesome-icon :icon="['far', 'trash-can']" class="icon fs-5 pe-lg-3" />
+            <span class="d-none d-lg-inline-block fs-5">
               Azzera filtri
             </span>
           </button>
@@ -109,7 +106,7 @@
       <section class="search-results">
         <div class="container">
           <!-- Risultati di ricerca - nome specializazzione -->
-          <div class="d-flex mb-4 gap-3 align-items-center ">
+          <div class="d-black d-lg-flex mb-4 gap-3 align-items-center ">
             <p v-if="store.allDoctors.length > 0">
               <span class="results text-dark-green">{{ store.allDoctors.length + store.allSponsor.length }}
                 risultati</span>
@@ -122,7 +119,7 @@
             </p>
           </div>
 
-          <div class="card-container d-block mb-2 d-md-flex gap-5 justify-content-evenly">
+          <div class="card-container d-block mb-2 d-md-flex gap-lg-5 justify-content-evenly">
             <!-- sponsored profiles -->
             <template v-if="store.allSponsor.length > 0">
               <DoctorCard v-for="(doctor, index) in store.allSponsor" :key="index" :item="doctor" :isSponsor=true />
