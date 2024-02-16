@@ -96,14 +96,15 @@
                     </p>
                   </div>
                   <!-- vote doctor -->
-                  <!-- <div
-                    class="d-flex align-items-center justify-content-center mb-4"
-                  >
-                    <span class="title-profile pe-3"
-                      ><strong>Voto:</strong></span
+                  <div class="d-flex">
+                    <span class="pe-2"><strong>Voto:</strong></span>
+                    <span class="star-icon" v-for="item in mediaVoto"
+                      ><font-awesome-icon icon="fa-solid fa-star"
+                    /></span>
+                    <span class="star-icon" v-for="item in 5 - mediaVoto"
+                      >&star;</span
                     >
-                    <p class="p-profile mb-0">il voto totale</p>
-                  </div> -->
+                  </div>
                 </div>
               </div>
             </div>
@@ -138,7 +139,7 @@
                   </span>
                   <span> Recensione</span>
                 </button>
-                <RewievForm v-else @close="closeReviewForm" :doctorId="id"/>
+                <RewievForm v-else @close="closeReviewForm" :doctorId="id" />
               </div>
             </div>
           </div>
@@ -175,6 +176,7 @@ export default {
       showReviewForm: false,
       loading: true,
       hasSponsor: false,
+      mediaVoto: "",
     };
   },
   methods: {
@@ -185,12 +187,20 @@ export default {
         console.log(this.doctor);
         if (res.data.is_sponsored) {
           this.hasSponsor = true;
-        } /* else {
-          this.hasSponsor = false;
-        } */
+        }
+        this.mediaVoto = Math.round(this.calcAverageRating(res.data.results));
+        console.log(this.calcAverageRating(res.data.results));
+
         // quando arrivano i dati loading diventa false, così da interrompere il carimento
         this.loading = false;
       });
+    },
+    calcAverageRating(doctorInfo) {
+      const votes = doctorInfo.reviews.map((review) => review.vote.value);
+      const totalVotes = votes.reduce((sum, vote) => sum + vote, 0);
+      const averageRating = totalVotes / votes.length;
+
+      return averageRating;
     },
     /*  showDoctor(doctors, param) {
       console.log(this.store.allDoctors);
@@ -207,9 +217,9 @@ export default {
     },
   },
   computed: {
-    calcVote() {
+    /* calcVote() {
       return Math.trunc(this.item.media_voti);
-    },
+    }, */
   },
 
   created() {
@@ -285,5 +295,9 @@ export default {
 
 .sponsor {
   font-weight: 900;
+}
+
+.star-icon {
+  color: #e2cc01;
 }
 </style>
