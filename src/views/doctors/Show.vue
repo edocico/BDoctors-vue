@@ -135,7 +135,7 @@
                   </span>
                   <span> Recensione</span>
                 </button>
-                <RewievForm v-else @close="closeReviewForm" />
+                <RewievForm v-else @close="closeReviewForm" :doctorId="id"/>
               </div>
             </div>
           </div>
