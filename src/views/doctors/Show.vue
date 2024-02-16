@@ -8,7 +8,12 @@
           <!-- profilo -->
           <div class="col-6">
             <!-- header profile -->
-            <div class="head-profile">
+            <div
+              class="head-profile"
+              v-bind:style="{
+                backgroundColor: hasSponsor ? '#eff161' : '#c3e2a5',
+              }"
+            >
               <div class="d-flex gap-4 align-items-end">
                 <!-- image doctor -->
                 <img
@@ -21,8 +26,13 @@
                   <h3>{{ doctor.user.name }} {{ doctor.user.surname }}</h3>
                   <!-- sponsor doctor -->
                   <p>
-                    <em>(Sponsorizzato) -></em>
-                    <font-awesome-icon icon="fa-solid fa-crown" class="crown" />
+                    <span v-if="hasSponsor">
+                      <em class="sponsor">Consigliato</em>
+                      <font-awesome-icon
+                        icon="fa-solid fa-crown"
+                        class="crown"
+                      />
+                    </span>
                   </p>
                 </div>
               </div>
@@ -109,7 +119,7 @@
                   </span>
                   <span> Messaggio </span>
                 </button>
-                <MessageForm v-else @close="closeForm" :doctorId="id"/>
+                <MessageForm v-else @close="closeForm" :doctorId="id" />
               </div>
             </div>
             <!-- form reviews  -->
@@ -161,6 +171,7 @@ export default {
       showForm: false,
       showReviewForm: false,
       loading: true,
+      hasSponsor: false,
     };
   },
   methods: {
@@ -169,7 +180,11 @@ export default {
         console.log(res.data);
         this.doctor = res.data.results;
         console.log(this.doctor);
-
+        if (res.data.is_sponsored) {
+          this.hasSponsor = true;
+        } /* else {
+          this.hasSponsor = false;
+        } */
         // quando arrivano i dati loading diventa false, così da interrompere il carimento
         this.loading = false;
       });
@@ -203,6 +218,7 @@ export default {
   mounted() {
     // this.showDoctor(this.store.allDoctors, id);
     console.log(this.doctor);
+    console.log(this.hasSponsor);
   },
 };
 </script>
@@ -222,7 +238,7 @@ export default {
 
 .head-profile {
   padding: 15px 15px;
-  background-color: #c3e2a5;
+
   border-radius: 80px 80px 0px 0px;
 }
 
@@ -231,6 +247,11 @@ export default {
 }
 
 .body-profile {
+  border: 5px solid #c3e2a5;
+  padding: 20px;
+}
+
+.sponsored-body-profile {
   border: 5px solid #c3e2a5;
   padding: 20px;
 }
@@ -257,5 +278,9 @@ export default {
   &:hover {
     color: #c3e2a5;
   }
+}
+
+.sponsor {
+  font-weight: 900;
 }
 </style>
