@@ -180,7 +180,7 @@ export default {
         console.log(res.data);
         this.doctor = res.data.results;
         console.log(this.doctor);
-        if (res.data.results.sponsorships) {
+        if (res.data.is_sponsored) {
           this.hasSponsor = true;
         } /* else {
           this.hasSponsor = false;
