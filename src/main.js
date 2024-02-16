@@ -6,7 +6,15 @@ import "bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowDownWideShort, faCircleCheck, faEnvelope, faMagnifyingGlass, faSliders, faStar, faUserTag } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDownWideShort,
+  faCircleCheck,
+  faEnvelope,
+  faMagnifyingGlass,
+  faSliders,
+  faStar,
+  faUserTag,
+} from "@fortawesome/free-solid-svg-icons";
 import { faCrown } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faUserDoctor } from "@fortawesome/free-solid-svg-icons";
@@ -17,12 +25,10 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faSquareInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 // REGULAR
-import { 
-  faTrashCan as farTrashCan,
-} from '@fortawesome/free-regular-svg-icons'
+import { faTrashCan as farTrashCan } from "@fortawesome/free-regular-svg-icons";
 // import { faStar } from "@fortawesome/free-regular-svg-icons";
-
 
 // qua inseriamo singolarmente le icon da usare
 
@@ -46,6 +52,7 @@ library.add(
   faUserTag,
   faArrowDownWideShort,
   farTrashCan,
+  faXmark
 );
 
 createApp(App)

@@ -38,14 +38,16 @@
               </div>
             </div>
             <!-- body profile -->
-            <div class="body-profile"
-            v-bind:style="{
+            <div
+              class="body-profile"
+              v-bind:style="{
                 borderColor: hasSponsor ? '#eff161' : '#c3e2a5',
-              }">
+              }"
+            >
               <div class="d-block">
                 <div class="information-profile d-block col-md-9">
                   <!-- specialization doctor -->
-                  <div class=" align-items-start">
+                  <div class="align-items-start">
                     <div class="title-profile">
                       <strong>Specializzazione:</strong>
                     </div>
@@ -66,7 +68,9 @@
                     <span class="title-profile col-auto pe-3"
                       ><strong>numero di telefono:</strong></span
                     >
-                    <p class="p-profile col-6 mb-0">{{ doctor.phone_number }}</p>
+                    <p class="p-profile col-6 mb-0">
+                      {{ doctor.phone_number }}
+                    </p>
                   </div>
                   <!-- address doctor -->
                   <div class="d-lg-flex align-items-center mb-3">
@@ -97,7 +101,7 @@
                   </div>
                   <!-- vote doctor -->
                   <div class="d-flex">
-                    <span class="pe-2"><strong>Voto:</strong></span>
+                    <span class="pe-2"><strong>Media Voto:</strong></span>
                     <span class="star-icon" v-for="item in mediaVoto"
                       ><font-awesome-icon icon="fa-solid fa-star"
                     /></span>
@@ -140,6 +144,52 @@
                   <span> Recensione</span>
                 </button>
                 <RewievForm v-else @close="closeReviewForm" :doctorId="id" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--accordion reviews-->
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-7">
+              <div class="accordion mt-3" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                      v-bind:style="{
+                        backgroundColor: hasSponsor ? '#eff161' : '#c3e2a5',
+                      }"
+                    >
+                      <strong class="fs-4 text-black"
+                        >Recensioni ({{ this.doctor.reviews.length }})</strong
+                      >
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse show"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <ul>
+                        <li
+                          v-for="(review, index) in this.doctor.reviews"
+                          :key="index"
+                          class="border-bottom border-black mb-3"
+                        >
+                          <h5>{{ review.name }}</h5>
+                          <p>{{ review.message }}</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
