@@ -152,11 +152,14 @@
         <div class="container">
           <div class="row">
             <div class="col-12 col-md-7">
-              <div class="accordion mt-3" id="accordionExample">
+              <div
+                class="accordion accordion-flush mt-3"
+                id="accordionFlushExample"
+              >
                 <div class="accordion-item">
                   <h2 class="accordion-header">
                     <button
-                      class="accordion-button"
+                      class="accordion-button collapsed"
                       type="button"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseOne"
@@ -173,7 +176,7 @@
                   </h2>
                   <div
                     id="collapseOne"
-                    class="accordion-collapse collapse show"
+                    class="accordion-collapse collapse"
                     data-bs-parent="#accordionExample"
                   >
                     <div class="accordion-body">
