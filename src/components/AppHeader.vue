@@ -33,7 +33,7 @@
                     icon="fa-solid fa-user-doctor"
                     class="icon fs-3"
                   />
-                  <span class="d-none d-md-inline-block text-uppercase">I nostri medici</span>
+                  <span class="d-none d-lg-inline-block text-uppercase">I nostri medici</span>
                 </router-link>
               </li>
 
@@ -46,7 +46,7 @@
                     icon="fa-solid fa-address-book"
                     class="icon fs-3"
                   />
-                  <span class="d-none d-md-inline-block text-uppercase">Contattaci</span>
+                  <span class="d-none d-lg-inline-block text-uppercase">Contattaci</span>
                 </router-link>
               </li>
 
@@ -62,7 +62,7 @@
                     icon="fa-solid fa-user"
                     class="icon fs-3"
                   />
-                  <span v-if="!authenticated" class="d-none d-md-inline-block text-uppercase"
+                  <span v-if="!authenticated" class="d-none d-lg-inline-block text-uppercase"
                     >profilo dottore
                   </span>
                   <span v-else="authenticated" class="d-none d-md-inline-block"
