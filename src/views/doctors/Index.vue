@@ -214,6 +214,9 @@ export default {
       }
     },
     clearQuery() {
+      this.store.filtr.order = '';
+      this.store.filtr.specialization_id = '';
+      this.store.filtr.avg_vote = '';
       this.$router.replace({ query: {} });
     }
   },
