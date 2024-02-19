@@ -127,3 +127,13 @@ background-color: rgb(247, 230, 230);
     font-size: 100px;
     padding: 130px 0px;
   }
+
+#app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer{
+    margin-top: auto;
+}

@@ -102,7 +102,7 @@
     </section>
 
     <!-- Print card doctors -->
-    <div v-if="store.allDoctors.length > 0 || store.allSponsor.length > 0">
+    <div v-if="store.allDoctors.length > 0 && store.allSponsor.length > 0">
       <section class="search-results">
         <div class="container">
           <!-- Risultati di ricerca - nome specializazzione -->
@@ -135,8 +135,18 @@
         </div>
       </section>
     </div>
-    
-    <div v-else class="loading">
+
+    <div class="container" v-if="store.loadingStart">
+      <div class="row justify-content-center m-5">
+        <div class="col-auto">
+          <div class="spinner-border m-5" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading" v-if="!store.loadingStart && store.allDoctors.length == 0">
       Non ci sono risultati
     </div>
   </main>
