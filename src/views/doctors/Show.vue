@@ -114,8 +114,8 @@
             </div>
           </div>
           <!-- form messages  -->
-          <div class="d-flex gap-5 d-md-block pt-md-5 col-md-5">
-            <div class="contact-profile d-inline-block col-auto">
+          <div class="d-flex gap-5 d-md-block pt-md-5 col-md-6">
+            <div class="contact-profile d-block col-md-auto">
               <div class="message mb-3" v-if="!showReviewForm">
                 <button
                   class="btn-cust"

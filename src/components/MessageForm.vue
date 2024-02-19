@@ -1,5 +1,5 @@
 <template>
-  <section class="message">
+  <section class="message d-block col-md-12">
     <!-- controllo invio messaggio - SE:
         le vadiazioni non vengono rispettate si resta nel form 
         finchè i dati non saranno tutti corretti  -->
