@@ -66,7 +66,7 @@
                   <!-- phone number doctor -->
                   <div class="d-lg-flex align-items-center mb-3">
                     <span class="title-profile col-auto pe-3"
-                      ><strong>numero di telefono:</strong></span
+                      ><strong>Numero di telefono:</strong></span
                     >
                     <p class="p-profile col-6 mb-0">
                       {{ doctor.phone_number }}
@@ -82,7 +82,7 @@
                   <!-- cv pdf doctor -->
                   <div class="d-lg-flex align-items-center mb-3">
                     <span class="title-profile pe-3"
-                      ><strong>cv del dottore:</strong></span
+                      ><strong>Cv del dottore:</strong></span
                     >
                     <p class="mb-0">
                       <a :href="`${store.Url}${doctor.curriculum}`"
@@ -93,15 +93,15 @@
                   <!-- medical_specialization doctor -->
                   <div class="d-lg-flex align-items-center mb-3">
                     <span class="title-profile pe-3"
-                      ><strong>prestazioni:</strong></span
+                      ><strong>Prestazioni:</strong></span
                     >
                     <p class="p-profile mb-0">
                       {{ doctor.medical_services }}
                     </p>
                   </div>
                   <!-- vote doctor -->
-                  <div class="d-flex">
-                    <span class="pe-2"><strong>Media Voto:</strong></span>
+                  <div class="d-flex align-items-center">
+                    <span class="title-profile pe-2"><strong>Media Voto:</strong></span>
                     <span class="star-icon" v-for="item in mediaVoto"
                       ><font-awesome-icon icon="fa-solid fa-star"
                     /></span>
