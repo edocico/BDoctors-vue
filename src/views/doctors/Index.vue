@@ -91,7 +91,7 @@
           </div>
 
           <!-- BUTTON AZZERA -->
-          <button class="btn bg-middle-green dropdown text-light" @click="removeChecked(), axiosDoctors()">
+          <button class="btn bg-middle-green dropdown text-light" @click="removeChecked(), axiosDoctors(), clearQuery()">
             <font-awesome-icon :icon="['far', 'trash-can']" class="icon fs-5 pe-lg-3" />
             <span class="d-none d-lg-inline-block fs-5">
               Azzera filtri
@@ -146,7 +146,7 @@
       </div>
     </div>
 
-    <div class="loading" v-if="!store.loadingStart && store.allDoctors.length == 0">
+    <div class="loading" v-if="!store.loadingStart && (store.allDoctors.length == 0 || store.allSponsor.length == 0)">
       Non ci sono risultati
     </div>
   </main>
@@ -213,6 +213,9 @@ export default {
         return "tutti i dottori presenti";
       }
     },
+    clearQuery() {
+      this.$router.replace({ query: {} });
+    }
   },
   created() {
     this.fetchData();
