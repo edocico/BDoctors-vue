@@ -68,7 +68,7 @@
                     <span class="title-profile col-auto pe-3"
                       ><strong>Numero di telefono:</strong></span
                     >
-                    <p class="p-profile col-6 mb-0">
+                    <p class="p-profile col-auto mb-0">
                       {{ doctor.phone_number }}
                     </p>
                   </div>
@@ -77,7 +77,7 @@
                     <span class="title-profile col-auto pe-3"
                       ><strong>Indirizzo lavoro:</strong></span
                     >
-                    <p class="p-profile col-6 mb-0">{{ doctor.address }}</p>
+                    <p class="p-profile col-10 mb-0">{{ doctor.address }}</p>
                   </div>
                   <!-- cv pdf doctor -->
                   <div class="d-lg-flex align-items-center mb-3">
