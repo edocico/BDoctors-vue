@@ -14,7 +14,8 @@ export const store = reactive({
     order: '',
     specialization_id: '',
     avg_vote: '',
-  }
+  },
+  loadingStart: false,
 });
 
 export function filtr(router) {
@@ -51,6 +52,7 @@ export function getSpecialization() {
 }
 
 export function getDoctors(queryParams) {
+  store.loadingStart = !store.loadingStart;
   console.log('Axios queryParams', queryParams);
   axios.get(`http://127.0.0.1:8000/api/doctors`, {
     params: queryParams
@@ -58,6 +60,7 @@ export function getDoctors(queryParams) {
     console.log('Axios doctors', res);
     store.allDoctors = res.data.results;
     store.allSponsor = res.data.doctors_sponsorships;
+    store.loadingStart = !store.loadingStart;
     // console.log(store.allSponsor)
   });
 }
