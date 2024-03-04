@@ -4,13 +4,16 @@
     <div v-if="store.specializations.length > 0">
       <section class="home-search">
         <div class="container">
-          <!-- image logo -->
-          <figure>
-            <img src="../assets/logo-color.png" alt="" class="logo" />
-          </figure>
+          <div class="d-flex justify-content-center">
+            <!-- image logo -->
+            <figure>
+              <img src="../assets/logo-color.png" alt="" class="logo" />
+            </figure>
+          </div>
+
           <div class="search">
             <!-- title homepage -->
-            <h3>Seleziona una specializzazione</h3>
+            <h3 class="pb-3">Seleziona una specializzazione</h3>
             <div class="d-block d-md-flex justify-content-between">
               <!-- list specializations -->
               <ul class="row justify-content-center gap-2">
@@ -135,8 +138,7 @@ li:hover {
     flex-direction: column;
     background-color: #c3e2a5;
     padding: 20px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 10px #c3e2a5;
+    border-radius: 20px;
   }
 }
 
