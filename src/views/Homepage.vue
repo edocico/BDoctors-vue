@@ -21,7 +21,7 @@
                   :key="index">
                   <router-link class="text-light decoration-none"
                     :to="{ name: 'doctors.index', query: { specialization_id: specializzazione.id } }"
-                    @click=clearDoctorsArray()>
+                    @click="clearDoctorsArray(), saveSpecial(specializzazione.id)">
                     {{ specializzazione.name }}
                   </router-link>
                 </li>
@@ -71,6 +71,9 @@ export default {
     };
   },
   methods: {
+    saveSpecial(id){
+      this.store.filtr.specialization_id = id;
+    },
     fetchData() {
       getSpecialization();
     },
